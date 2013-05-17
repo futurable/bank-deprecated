@@ -23,47 +23,33 @@ return array(
 	),
 
 	'modules'=>array(
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'futural',
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-                'user'=>array(
-                    # encrypting method (php hash function)
-                    'hash' => 'md5',
-                    # send activation email
-                    'sendActivationMail' => true,
-                    # allow access for non-activated users
-                    'loginNotActiv' => false,
-                    # activate user on registration (only sendActivationMail = false)
-                    'activeAfterRegister' => false,
-                    # automatically login from registration
-                    'autoLogin' => true,
-                    # registration path
-                    'registrationUrl' => array('/user/registration'),
-                    # recovery password path
-                    'recoveryUrl' => array('/user/recovery'),
-                    # login form path
-                    'loginUrl' => array('/user/login'),
-                    # page after login
-                    'returnUrl' => array('/user/profile'),
-                    # page after logout
-                    'returnLogoutUrl' => array('/user/login'),
-                ),
-                'rights'=>array(
+            'gii'=>array(
+                    'class'=>'system.gii.GiiModule',
+                    'password'=>'futural',
+                    'ipFilters'=>array('127.0.0.1','::1'),
+            ),
+            'user'=>array(
+                    'tableUsers' => 'users',
+                    'tableProfiles' => 'profiles',
+                    'tableProfileFields' => 'profiles_fields',
+            ),
+            'rights'=>array(
                     'install'=>true,
-                ),
-	),
+            ),
+        ),
 
-	// application components
+            // application components
 	'components'=>array(
-		'user'=>array(
-                        'class' =>'WebUser',
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
-		),
+                'user'=>array(
+                        'class'=>'RWebUser',
+                        // enable cookie-based authentication
+                        'allowAutoLogin'=>true,
+                        'loginUrl'=>array('/user/login'),
+                ),
                 'authManager'=>array(
-                    'class'=>'RDbAuthManager',
+                        'class'=>'RDbAuthManager',
+                        'connectionID'=>'db',
+                        'defaultRoles'=>array('Authenticated', 'Guest'),
                 ),
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(

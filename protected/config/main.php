@@ -31,7 +31,7 @@ return array(
         'user'=>array(
                 'tableUsers' => 'user',
                 'tableProfiles' => 'profile',
-                'tableProfileFields' => 'profile_fields',
+                'tableProfileFields' => 'profile_field',
                 # encrypting method (php hash function)
                 'hash' => 'md5',
                 # send activation email

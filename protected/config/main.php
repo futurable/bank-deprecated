@@ -29,9 +29,9 @@ return array(
                     'ipFilters'=>array('127.0.0.1','::1'),
             ),
         'user'=>array(
-                'tableUsers' => 'user',
-                'tableProfiles' => 'profile',
-                'tableProfileFields' => 'profile_field',
+                'tableUsers' => 'bank_user',
+                'tableProfiles' => 'bank_profile',
+                'tableProfileFields' => 'bank_profile_field',
                 # encrypting method (php hash function)
                 'hash' => 'md5',
                 # send activation email

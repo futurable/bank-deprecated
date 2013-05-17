@@ -16,6 +16,8 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+                'application.modules.rights.*', 
+                'application.modules.rights.components.*',
 	),
 
 	'modules'=>array(
@@ -33,9 +35,13 @@ return array(
 	// application components
 	'components'=>array(
 		'user'=>array(
+                        'class' =>'RWebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+                'authManager'=>array(
+                    'class'=>'RDbAuthManager',
+                )
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
@@ -80,6 +86,12 @@ return array(
 			),
 		),
 	),
+    
+        'modules'=>array(
+            'rights'=>array(
+                'install'=>true,
+            ),
+        ),
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

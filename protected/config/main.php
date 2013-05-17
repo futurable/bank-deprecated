@@ -16,26 +16,49 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+                'application.modules.user.models.*',
+                'application.modules.user.components.*',
                 'application.modules.rights.*', 
                 'application.modules.rights.components.*',
 	),
 
 	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		/*
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
+			'password'=>'futural',
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+                'user'=>array(
+                    # encrypting method (php hash function)
+                    'hash' => 'md5',
+                    # send activation email
+                    'sendActivationMail' => true,
+                    # allow access for non-activated users
+                    'loginNotActiv' => false,
+                    # activate user on registration (only sendActivationMail = false)
+                    'activeAfterRegister' => false,
+                    # automatically login from registration
+                    'autoLogin' => true,
+                    # registration path
+                    'registrationUrl' => array('/user/registration'),
+                    # recovery password path
+                    'recoveryUrl' => array('/user/recovery'),
+                    # login form path
+                    'loginUrl' => array('/user/login'),
+                    # page after login
+                    'returnUrl' => array('/user/profile'),
+                    # page after logout
+                    'returnLogoutUrl' => array('/user/login'),
+                ),
+                'rights'=>array(
+                    'install'=>true,
+                ),
 	),
 
 	// application components
 	'components'=>array(
 		'user'=>array(
-                        'class' =>'RWebUser',
+                        'class' =>'WebUser',
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
@@ -54,8 +77,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=futurality.fi;dbname=futural_bank',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'futural',
+			'username' => 'futural_bank',
+			'password' => 'futural_bank',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
@@ -78,12 +101,6 @@ return array(
 			),
 		),
 	),
-    
-        'modules'=>array(
-            'rights'=>array(
-                'install'=>true,
-            ),
-        ),
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

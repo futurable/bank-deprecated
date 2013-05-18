@@ -24,10 +24,10 @@
 
 <div class="container" id="page">
 
-		<div id="logo">
-                    <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/img/futural_logo_bank.png'); ?>
-                    <?php //echo CHtml::encode(Yii::app()->name); ?>
-                </div>
+        <div id="logo">
+            <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/img/futural_logo_bank.png'); ?>
+            <?php //echo CHtml::encode(Yii::app()->name); ?>
+        </div>
 
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
@@ -46,11 +46,6 @@
             ),
 		)); ?>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
 
 	<?php echo $content; ?>
 

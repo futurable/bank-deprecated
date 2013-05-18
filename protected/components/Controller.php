@@ -29,14 +29,31 @@ class Controller extends CController
         public function accessRules()
         {
             return array(
-                array('allow', // allow authenticated users to access all actions
-                    'users'=>array('@'),
-                ),
                 array('allow',
                     'actions'=>array('login'),
                     'users'=>array('*'),
                 ),
+                array('allow', // allow authenticated users to access all actions
+                    'actions'=>array('index','logout'),
+                    'users'=>array('@'),
+                ),
+                array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                        'actions'=>array('admin','delete'),
+                        'users'=>array('admin'),
+                ),
                 array('deny'),
             );
+        }
+        
+        public function filterAccessControl($filterChain)
+        {   
+            $rules = $this->accessRules();
+
+            // default deny
+            $rules[] = array('deny');
+
+            $filter = new CAccessControlFilter;
+            $filter->setRules( $rules );
+            $filter->filter($filterChain);
         }
 }

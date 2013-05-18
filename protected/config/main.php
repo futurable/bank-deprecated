@@ -49,7 +49,7 @@ return array(
                 # login form path
                 'loginUrl' => array('/user/login'),
                 # page after login
-                'returnUrl' => array('/user/profile'),
+                'returnUrl' => array('/'),
                 # page after logout
                 'returnLogoutUrl' => array('/user/login'),
            ),

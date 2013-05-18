@@ -39,7 +39,8 @@ class AccountTransaction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('recipient_bic, bank_account_id', 'required'),
+			array('recipient_bic, bank_account_id, recipient_iban', 'required', 'on' => '-validIban'),
+                        array('recipient_iban', 'required', 'on' => 'validIban'),
 			array('bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('recipient_iban', 'length', 'max'=>32),
 			array('recipient_bic, exchange_rate', 'length', 'max'=>11),

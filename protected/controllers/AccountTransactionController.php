@@ -62,20 +62,30 @@ class AccountTransactionController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new AccountTransaction;
+            $accountTransaction=new AccountTransaction;
+            $accountTransaction->scenario = 'validIban';
+            $accountTransaction->validate();
+            
+            // IBAN validation (step 1)
+            if(isset($accountTransaction->recipient_iban)){
+                $accountTransaction->attributes=$_POST['AccountTransaction'];
+                $accountTransaction->scenario = 'validIban';
+                
+                $controller->redirect(array('create','iban'=>$accountTransaction->recipient_iban));
+            }             
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['AccountTransaction']))
 		{
-			$model->attributes=$_POST['AccountTransaction'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$accountTransaction->attributes=$_POST['AccountTransaction'];
+			//if($model->save())
+			//$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$accountTransaction,
 		));
 	}
 

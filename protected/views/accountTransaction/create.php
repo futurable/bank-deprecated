@@ -1,18 +1,4 @@
-<?php
-/* @var $this AccountTransactionController */
-/* @var $model AccountTransaction */
+<h1>Create Transaction</h1>
 
-$this->breadcrumbs=array(
-	'Account Transactions'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List AccountTransaction', 'url'=>array('index')),
-	array('label'=>'Manage AccountTransaction', 'url'=>array('admin')),
-);
-?>
-
-<h1>Create AccountTransaction</h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_formStep1', array('model'=>$model)); ?>
+<?php // echo $this->renderPartial('_form', array('model'=>$model)); ?>

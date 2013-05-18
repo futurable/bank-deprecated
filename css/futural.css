@@ -31,7 +31,7 @@
 
 body {
 	background-color: #555;
-	font-family: normal 10pt 'Ubuntu','Helvetica',sans-serif;
+	font-family: 'Ubuntu','Helvetica', 'sans-serif' !important;
         margin: 0;
         padding: 0;
 }

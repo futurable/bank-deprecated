@@ -41,23 +41,24 @@
 {
 	background-color: transparent;
         padding-top: 20px;
+        float: left;
 }
 
 #mainmenu ul
 {
 	padding:6px 20px 5px 20px;
 	margin:0px;
+        list-style-type: none;
 }
 
 #mainmenu ul li
 {
-	display: inline;
+	
 }
 
 #mainmenu ul li a
 {
 	color:#000;
-	background-color:#C8DA30;
 	font-size:12px;
 	font-weight:bold;
 	text-decoration:none;
@@ -69,11 +70,11 @@
         text-align: center;
 }
 
-#mainmenu ul li a:hover, #mainmenu ul li.active a
-{
-	color: #fff;
-	background-color:#transparent;
-	text-decoration:none;
+#mainmenu ul li a:hover{
+	color: #C8DA30;
+}
+#mainmenu ul li.active a{
+    color: #A8CF38;
 }
 
 div.flash-error, div.flash-notice, div.flash-success

@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
+body{
+    background-color: #555 !important;
+}
+
+h1{
+    font-size: 2em !important;
+}
+
 .disclaimer {
 	margin: 0 auto;
 	text-align: center;
@@ -99,7 +107,7 @@ a:hover{
     background-color: #fff !important;
 }
 #langbox{
-    margin-right: 20px;
+    margin: 20px 20px 0 0;
     float: right;
 }
 #logo{

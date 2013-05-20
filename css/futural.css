@@ -91,3 +91,7 @@ a:hover{
 .grid-view table.items td{
     background-color: #fff !important;
 }
+#langbox{
+    margin-right: 20px;
+    float: right;
+}

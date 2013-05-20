@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "user".
+ * This is the model class for table "bank_user".
  *
- * The followings are the available columns in table 'user':
+ * The followings are the available columns in table 'bank_user':
  * @property integer $id
  * @property string $username
  * @property string $password
@@ -13,6 +13,9 @@
  * @property integer $lastvisit
  * @property integer $superuser
  * @property integer $status
+ *
+ * The followings are the available model relations:
+ * @property Account[] $accounts
  */
 class User extends CActiveRecord
 {
@@ -21,7 +24,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'user';
+		return 'bank_user';
 	}
 
 	/**
@@ -50,6 +53,8 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'accounts' => array(self::HAS_MANY, 'Account', 'bank_user_id'),
+                        'profile'=>array(self::HAS_ONE, 'Profile', 'user_id'),
 		);
 	}
 

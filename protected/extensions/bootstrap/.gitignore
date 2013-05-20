@@ -1,0 +1,34 @@
+## Our own stuff
+
+# Directory for distribution archives, gets recreated on each test run
+/dist
+/reports
+/doc
+
+## Stuff from external utilities
+
+# OS cache directories
+Thumbs.db
+*.DS_Store
+*.empty
+
+# Phpstorm project files
+.idea
+
+# Netbeans project files
+nbproject
+
+# Zend studio project files
+.buildpath
+.project
+.settings
+
+# Sass cache files
+*.sass-cache
+
+# mac deployment helpers
+switch
+
+# Composer stuff
+/composer*
+/vendor*

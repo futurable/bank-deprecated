@@ -21,6 +21,21 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
         
+        function init()
+        {
+            parent::init();
+            $app = Yii::app();
+            if (isset($_POST['_lang']))
+            {
+                $app->language = $_POST['_lang'];
+                $app->session['_lang'] = $app->language;
+            }
+            else if (isset($app->session['_lang']))
+            {
+                $app->language = $app->session['_lang'];
+            }
+        }
+        
         public function filters()
         {
             return array( 'accessControl' ); // perform access control for CRUD operations
@@ -30,11 +45,10 @@ class Controller extends CController
         {
             return array(
                 array('allow',
-                    'actions'=>array('login'),
+                    'actions'=>array('login', 'registration','recovery'),
                     'users'=>array('*'),
                 ),
                 array('allow', // allow authenticated users to access all actions
-                    'actions'=>array('index','logout'),
                     'users'=>array('@'),
                 ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions

@@ -36,10 +36,10 @@
         <div id="logo">
             <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/img/futural_logo_bank.png'); ?>
             <?php //echo CHtml::encode(Yii::app()->name); ?>
-        </div>
- 
-        <div id="langbox">
-            <?php $this->widget('application.components.LangBox'); ?>
+            
+            <div id="langbox">
+                <?php $this->widget('application.components.LangBox'); ?>
+            </div>
         </div>
 
 	<div id="mainmenu">

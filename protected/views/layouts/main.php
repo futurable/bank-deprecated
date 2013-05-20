@@ -37,17 +37,9 @@
             <?php echo CHtml::image(Yii::app()->request->baseUrl.'/css/img/futural_logo_bank.png'); ?>
             <?php //echo CHtml::encode(Yii::app()->name); ?>
             
-            <div id="uibox">
+            <div id="langbox">
                 <?php $this->widget('application.components.LangBox'); ?>
-                
-                <p><?php
-                if(isset($this->WebUser)){
-                    echo $this->WebUser->profile->firstname." ".$this->WebUser->profile->lastname."<br/>";
-                    echo $this->WebUser->profile->company."<br/>";
-                    echo CHtml::link(Yii::t('Header','Logout'),array('user/logout'));
-                } ?></p>
             </div>
-           
         </div>
 
 	<div id="mainmenu">

@@ -5,6 +5,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
+<div id="loginForm">
 <h1><?php echo UserModule::t("Login to Futural bank"); ?></h1>
 
 <?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
@@ -36,7 +37,7 @@ $this->breadcrumbs=array(
 	
 <?php echo CHtml::endForm(); ?>
 </div><!-- form -->
-
+</div><!-- loginForm -->
 
 <?php
 $form = new CForm(array(

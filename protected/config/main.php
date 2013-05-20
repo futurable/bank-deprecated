@@ -12,7 +12,7 @@ return array(
         'language'=>'en',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'bootstrap'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -26,11 +26,14 @@ return array(
 
 	'modules'=>array(
             'gii'=>array(
-                    'class'=>'system.gii.GiiModule',
-                    'password'=>'futural',
-                    'ipFilters'=>array('127.0.0.1','::1'),
+                'class'=>'system.gii.GiiModule',
+                'password'=>'futural',
+                'ipFilters'=>array('127.0.0.1','::1'),
+                'generatorPaths'=>array(
+                    'bootstrap.gii',
+                ),
             ),
-        'user'=>array(
+            'user'=>array(
                 'tableUsers' => 'bank_user',
                 'tableProfiles' => 'bank_profile',
                 'tableProfileFields' => 'bank_profile_field',
@@ -54,7 +57,7 @@ return array(
                 'returnUrl' => array('/'),
                 # page after logout
                 'returnLogoutUrl' => array('/user/login'),
-           ),
+            ),
             'rights'=>array(
                 'superuserName'=>'Admin', // Name of the role with super user privileges. 
                 'authenticatedName'=>'Authenticated',  // Name of the authenticated user role. 
@@ -122,8 +125,11 @@ return array(
 				*/
 			),
 		),
+                'bootstrap'=>array(
+                    'class'=>'ext.bootstrap.components.Bootstrap',
+                    'responsiveCss'=>true,
+                ),
 	),
-
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(

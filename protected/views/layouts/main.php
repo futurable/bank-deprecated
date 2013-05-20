@@ -22,7 +22,15 @@
 </head>
 
 <body>
-
+    
+<div class='disclaimer'>
+    <p>
+            Welcome to <a href='http://futurable.fi/index.php/en/tuotteet-ja-palvelut/oppimisymparistot'>Futural</a> - a virtual learning environment 
+            by <a href='http://futurable.fi'>Futurable</a>.
+            <a href='#'>Give feedback</a>.
+    </p>
+</div>
+    
 <div class="container" id="page">
 
         <div id="logo">
@@ -53,9 +61,8 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		Copyright &copy; <?php echo date('Y'); ?> Futurable Oy<br/>
+		All Rights Reserved<br/>
 	</div><!-- footer -->
 
 </div><!-- page -->

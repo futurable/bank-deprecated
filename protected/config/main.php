@@ -8,6 +8,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Futural Bank',
+        'sourceLanguage'=>'00',
+        'language'=>'en',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

@@ -36,7 +36,14 @@ body {
         padding: 0;
 }
 
-#container {
+#page{
+    box-shadow: 10px 10px 15px #000;
+    margin-top: 5px;
+    background: white;
+    border-radius: 15px;
+}
+
+#page, #footer{
 	width: 1000px;
 	margin: 0 auto;
 }
@@ -94,4 +101,15 @@ a:hover{
 #langbox{
     margin-right: 20px;
     float: right;
+}
+#logo{
+    border-bottom: 5px solid #A8CF38;
+    margin-bottom: 10px;
+}
+
+#footer{
+    background-color: #A8CF38;
+    text-align: center;
+    padding: 30px 0 50px 0;
+    border-radius: 0 0 15px 15px;
 }

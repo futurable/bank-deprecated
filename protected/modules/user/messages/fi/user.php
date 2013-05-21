@@ -1,7 +1,6 @@
 <?php
 /**
-* (c) Vitaliy Stepanenko,
-* (c) Alexander Listunov
+* (c) Jarmo Kortetjärvi,
 */
 return array(
         'Login to Futural bank' => 'Kirjaudu Futural Pankkiin',

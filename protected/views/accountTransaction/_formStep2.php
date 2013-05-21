@@ -19,13 +19,13 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 	<div class="row">
 		<?php echo $form->label($accountTransaction,'recipient_iban'); ?>
-		<?php echo $form->textField($accountTransaction,'recipient_iban',array('size'=>32,'maxlength'=>32)); ?>
+		<?php echo $form->textField($accountTransaction,'recipient_iban',array('readonly'=>true)); ?>
 		<?php echo $form->error($accountTransaction,'recipient_iban'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($accountTransaction,'recipient_bic'); ?>
-		<?php echo $form->textField($accountTransaction,'recipient_bic',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->textField($accountTransaction,'recipient_bic',array('readonly'=>true)); ?>
 		<?php echo $form->error($accountTransaction,'recipient_bic'); ?>
 	</div>
 
@@ -37,8 +37,22 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 	<div class="row">
 		<?php echo $form->label($accountTransaction,'event_date'); ?>
-		<?php echo $form->textField($accountTransaction,'event_date'); ?>
-		<?php echo $form->error($accountTransaction,'event_date'); ?>
+                <?php
+                    $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                        'model'=>$accountTransaction,
+                        'attribute'=>'event_date',
+                        // additional javascript options for the date picker plugin
+                        'options'=>array(
+                            'showAnim'=>'fold',
+                            'dateFormat'=>'dd.mm.yy',
+                            'defaultDate'=>$accountTransaction->event_date,
+                        ),
+                        'htmlOptions'=>array(
+                            'style'=>'height:20px;'
+                        ),
+                    ));
+                ?>
+                <?php echo $form->error($accountTransaction,'event_date'); ?>
 	</div>
 
 	<div class="row">

@@ -22,12 +22,12 @@ $this->breadcrumbs=array(
 	<?php echo CHtml::errorSummary($model); ?>
 	
 	<div class="row">
-		<?php echo CHtml::activeLabelEx($model,'username'); ?>
+		<?php echo CHtml::activeLabel($model,'username'); ?>
 		<?php echo CHtml::activeTextField($model,'username') ?>
 	</div>
 	
 	<div class="row">
-		<?php echo CHtml::activeLabelEx($model,'password'); ?>
+		<?php echo CHtml::activeLabel($model,'password'); ?>
 		<?php echo CHtml::activePasswordField($model,'password') ?>
         </div>
 

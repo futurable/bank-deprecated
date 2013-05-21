@@ -14,12 +14,14 @@ class CreateAction extends CAction
                 $accountTransaction->attributes=$_POST['AccountTransaction'];
             }
             $accountTransaction->form_step = $this->getFormStep();
-            echo $accountTransaction->form_step;
+
             // Step 1 (give IBAN)
             if($accountTransaction->form_step === 1){
-                $accountTransaction->scenario = 'validIban';
-                if($accountTransaction->validate() AND $accountTransaction->form_step===1){
-                    $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
+                if(isset($accountTransaction->recipient_iban)){
+                    $accountTransaction->scenario = 'validIban';
+                    if($accountTransaction->validate() AND $accountTransaction->form_step===1){
+                        $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
+                    }
                 }
             }
             elseif($accountTransaction->form_step === 2){            
@@ -28,7 +30,6 @@ class CreateAction extends CAction
 
                 //if($model->save())
                 //$this->redirect(array('view','id'=>$model->id));
-
             }
 
             $controller->render('create',array(
@@ -42,12 +43,9 @@ class CreateAction extends CAction
     private function getFormStep(){
         $form_step = 1;
         
-        if(isset($_GET['recipient_iban'])){
-            $form_step=2;
-        }
-        else{
-            $form_step=1;
-        }
+        if(isset($_GET['recipient_iban'])) $form_step=2;
+        else $form_step=1;
+     
         return $form_step;
     }
 }

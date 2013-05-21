@@ -95,6 +95,12 @@ Class IBANComponent{
 		
 		return $checkDigits;
 	}
+        
+        public static function getBranchCode($IBAN){
+            if(self::verify_iban($IBAN)){
+                return self::iban_get_branch_part($IBAN);
+            }
+        }
 	
 	# PHP IBAN - http://code.google.com/p/php-iban - LGPLv3
 	

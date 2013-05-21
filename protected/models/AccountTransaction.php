@@ -42,13 +42,15 @@ class AccountTransaction extends CActiveRecord
 		// will receive user inputs.
 		return array(
                         array('recipient_iban', 'ext.iban.validate'),
-			array('recipient_bic, bank_account_id, recipient_iban', 'required', 'on' => '-validIban'),
-                        array('recipient_iban', 'required', 'on' => 'validIban'),
+			array('recipient_bic, bank_account_id, recipient_iban, recipient_name, event_date, amount', 'required', 'on'=>'-stepOne'),
+                        array('recipient_iban', 'required'),
 			array('bank_account_id', 'numerical', 'integerOnly'=>true),
+			array('reference_number', 'numerical'),
 			array('recipient_iban', 'length', 'max'=>32),
 			array('recipient_bic, exchange_rate', 'length', 'max'=>11),
 			array('recipient_name', 'length', 'max'=>35),
 			array('amount', 'length', 'max'=>19),
+                        array('amount', 'numerical'),
 			array('reference_number', 'length', 'max'=>20),
 			array('message', 'length', 'max'=>420),
 			array('currency', 'length', 'max'=>3),

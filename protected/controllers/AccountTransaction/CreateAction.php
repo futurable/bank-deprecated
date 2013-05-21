@@ -10,6 +10,9 @@ class CreateAction extends CAction
             $controller=$this->getController();
             
             $accountTransaction=new AccountTransaction;
+            // Decide the form step
+            $accountTransaction->form_step = $this->getFormStep();
+            
             $accountTransaction->scenario = 'validIban';
             $accountTransaction->validate();
             
@@ -34,6 +37,22 @@ class CreateAction extends CAction
             $controller->render('create',array(
                     'model'=>$accountTransaction,
             ));
+    }
+    
+    /**
+     * Gets the current form step
+     */
+    private function getFormStep(){
+        $form_step = 1;
+        
+        if(isset($_GET['recipient_iban'])){
+            $form_step=2;
+        }
+        else{
+            $form_step=1;
+        }
+            
+        return $form_step;
     }
 }
 ?>

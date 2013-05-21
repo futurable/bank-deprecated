@@ -7,89 +7,45 @@
 <div class="form">
 
 <?php 
-$form=$this->beginWidget('CActiveForm', array(
-	'id'=>'account-transaction-form',
-	'enableAjaxValidation'=>false,
+$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id'=>'account-transaction-form',
+    'enableAjaxValidation'=>false,
+    'htmlOptions'=>array('class'=>'well'),
 ));
-
 ?>
 
 	<?php echo $form->errorSummary($accountTransaction); ?>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'recipient_iban'); ?>
-		<?php echo $form->textField($accountTransaction,'recipient_iban',array('size'=>32,'maxlength'=>32)); ?>
-		<?php echo $form->error($accountTransaction,'recipient_iban'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'recipient_iban',array('size'=>32,'maxlength'=>32, 'labelOptions' => array('required' => false)) ); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'recipient_bic'); ?>
-		<?php echo $form->textField($accountTransaction,'recipient_bic',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($accountTransaction,'recipient_bic'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'recipient_bic',array('size'=>11,'maxlength'=>11)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'recipient_name'); ?>
-		<?php echo $form->textField($accountTransaction,'recipient_name',array('size'=>35,'maxlength'=>35)); ?>
-		<?php echo $form->error($accountTransaction,'recipient_name'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'recipient_name',array('size'=>35,'maxlength'=>35)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'event_date'); ?>
-		<?php echo $form->textField($accountTransaction,'event_date'); ?>
-		<?php echo $form->error($accountTransaction,'event_date'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'event_date'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'create_date'); ?>
-		<?php echo $form->textField($accountTransaction,'create_date'); ?>
-		<?php echo $form->error($accountTransaction,'create_date'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'amount',array('size'=>19,'maxlength'=>19)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'modify_date'); ?>
-		<?php echo $form->textField($accountTransaction,'modify_date'); ?>
-		<?php echo $form->error($accountTransaction,'modify_date'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'reference_number',array('size'=>20,'maxlength'=>20)); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($accountTransaction,'amount'); ?>
-		<?php echo $form->textField($accountTransaction,'amount',array('size'=>19,'maxlength'=>19)); ?>
-		<?php echo $form->error($accountTransaction,'amount'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($accountTransaction,'reference_number'); ?>
-		<?php echo $form->textField($accountTransaction,'reference_number',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($accountTransaction,'reference_number'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($accountTransaction,'message'); ?>
-		<?php echo $form->textField($accountTransaction,'message',array('size'=>60,'maxlength'=>420)); ?>
-		<?php echo $form->error($accountTransaction,'message'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($accountTransaction,'exchange_rate'); ?>
-		<?php echo $form->textField($accountTransaction,'exchange_rate',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($accountTransaction,'exchange_rate'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($accountTransaction,'currency'); ?>
-		<?php echo $form->textField($accountTransaction,'currency',array('size'=>3,'maxlength'=>3)); ?>
-		<?php echo $form->error($accountTransaction,'currency'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($accountTransaction,'bank_account_id'); ?>
-		<?php echo $form->textField($accountTransaction,'bank_account_id'); ?>
-		<?php echo $form->error($accountTransaction,'bank_account_id'); ?>
+		<?php echo $form->textFieldRow($accountTransaction,'message',array('size'=>60,'maxlength'=>420)); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($accountTransaction->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton('Continue'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

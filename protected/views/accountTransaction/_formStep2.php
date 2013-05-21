@@ -17,6 +17,9 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 	<?php echo $form->errorSummary($accountTransaction); ?>
 
+    <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
+    
+    <legend><?php echo Yii::t('AccountTransaction', 'RecipientInfo')?></legend>
 	<div class="row">
 		<?php echo $form->label($accountTransaction,'recipient_iban'); ?>
 		<?php echo $form->textField($accountTransaction,'recipient_iban',array('readonly'=>true)); ?>
@@ -35,6 +38,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		<?php echo $form->error($accountTransaction,'recipient_name'); ?>
 	</div>
 
+    <legend><?php echo Yii::t('AccountTransaction', 'PaymentInfo')?></legend>
 	<div class="row">
 		<?php echo $form->label($accountTransaction,'event_date'); ?>
                 <?php

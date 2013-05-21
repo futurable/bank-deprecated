@@ -41,7 +41,7 @@ class AccountTransaction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-                        array('recipient_iban', 'ext.iban.validate'),
+                        array('recipient_iban', 'ext.validators.validIban'),
 			array('recipient_bic, bank_account_id, recipient_iban, recipient_name, event_date, amount', 'required', 'on'=>'-stepOne'),
                         array('recipient_iban', 'required'),
 			array('bank_account_id', 'numerical', 'integerOnly'=>true),
@@ -49,6 +49,7 @@ class AccountTransaction extends CActiveRecord
 			array('recipient_iban', 'length', 'max'=>32),
 			array('recipient_bic, exchange_rate', 'length', 'max'=>11),
 			array('recipient_name', 'length', 'max'=>35),
+                        array('event_date', 'date', 'format'=>'dd.MM.yyyy'),
 			array('amount', 'length', 'max'=>19),
                         array('amount', 'numerical'),
 			array('reference_number', 'length', 'max'=>20),

@@ -11,14 +11,10 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
 	<div class="row">
-		<?php echo $form->labelEx($model,'recipient_iban'); ?>
-		<?php echo $form->textField($model,'recipient_iban',array('size'=>32,'maxlength'=>32)); ?>
-		<?php echo $form->error($model,'recipient_iban'); ?>
+		<?php echo $form->label($accountTransaction,'recipient_iban'); ?>
+		<?php echo $form->textField($accountTransaction,'recipient_iban',array('size'=>32,'maxlength'=>32)); ?>
+		<?php echo $form->error($accountTransaction,'recipient_iban'); ?>
 	</div>
 
 	<div class="row buttons">

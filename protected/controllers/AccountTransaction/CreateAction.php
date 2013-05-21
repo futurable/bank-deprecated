@@ -10,32 +10,29 @@ class CreateAction extends CAction
             $controller=$this->getController();
             
             $accountTransaction=new AccountTransaction;
-            // Decide the form step
-            $accountTransaction->form_step = $this->getFormStep();
-            
-            $accountTransaction->scenario = 'validIban';
-            $accountTransaction->validate();
-            
-            // IBAN validation (step 1)
-            if(isset($accountTransaction->recipient_iban)){
+            if(isset($_POST['AccountTransaction'])){
                 $accountTransaction->attributes=$_POST['AccountTransaction'];
+            }
+            $accountTransaction->form_step = $this->getFormStep();
+            echo $accountTransaction->form_step;
+            // Step 1 (give IBAN)
+            if($accountTransaction->form_step === 1){
                 $accountTransaction->scenario = 'validIban';
-                
-                $controller->redirect(array('create','iban'=>$accountTransaction->recipient_iban));
-            }             
+                if($accountTransaction->validate() AND $accountTransaction->form_step===1){
+                    $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
+                }
+            }
+            elseif($accountTransaction->form_step === 2){            
+                // Uncomment the following line if AJAX validation is needed
+                //$controller->performAjaxValidation($accountTransaction);
 
-            // Uncomment the following line if AJAX validation is needed
-            //$controller->performAjaxValidation($accountTransaction);
+                //if($model->save())
+                //$this->redirect(array('view','id'=>$model->id));
 
-            if(isset($_POST['AccountTransaction']))
-            {
-                    $accountTransaction->attributes=$_POST['AccountTransaction'];
-                    //if($model->save())
-                    //$this->redirect(array('view','id'=>$model->id));
             }
 
             $controller->render('create',array(
-                    'model'=>$accountTransaction,
+                    'accountTransaction'=>$accountTransaction,
             ));
     }
     
@@ -51,7 +48,6 @@ class CreateAction extends CAction
         else{
             $form_step=1;
         }
-            
         return $form_step;
     }
 }

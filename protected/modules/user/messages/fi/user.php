@@ -1,6 +1,6 @@
 <?php
 /**
-* (c) Jarmo Kortetjärvi,
+* (c) Jarmo Kortetjärvi
 */
 return array(
         'Login to Futural bank' => 'Kirjaudu Futural Pankkiin',

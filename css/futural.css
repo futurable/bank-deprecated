@@ -133,3 +133,7 @@ body {
 #loginForm{
     padding: 40px 80px;
 }
+
+#account-transaction-form label, #account-transaction-form input{
+    display: inline;
+}

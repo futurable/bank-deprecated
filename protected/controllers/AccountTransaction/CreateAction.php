@@ -18,13 +18,20 @@ class CreateAction extends CAction
             // Step 1 (give IBAN)
             if($accountTransaction->form_step === 1){
                 if(isset($accountTransaction->recipient_iban)){
-                    $accountTransaction->scenario = 'validIban';
+                    $accountTransaction->scenario = 'stepOne';
                     if($accountTransaction->validate() AND $accountTransaction->form_step===1){
                         $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
                     }
                 }
             }
-            elseif($accountTransaction->form_step === 2){            
+            elseif($accountTransaction->form_step === 2){
+                $accountTransaction->scenario = 'stepTwo';
+                
+                if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
+                if(!isset($accountTransaction->recipient_bic)) $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
+                if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
+                
+                $accountTransaction->validate();
                 // Uncomment the following line if AJAX validation is needed
                 //$controller->performAjaxValidation($accountTransaction);
 

@@ -22,7 +22,7 @@ class CreateAction extends CAction
             }             
 
             // Uncomment the following line if AJAX validation is needed
-            $this->performAjaxValidation($model);
+            //$controller->performAjaxValidation($accountTransaction);
 
             if(isset($_POST['AccountTransaction']))
             {
@@ -31,7 +31,7 @@ class CreateAction extends CAction
                     //$this->redirect(array('view','id'=>$model->id));
             }
 
-            $this->render('create',array(
+            $controller->render('create',array(
                     'model'=>$accountTransaction,
             ));
     }

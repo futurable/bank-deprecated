@@ -75,7 +75,7 @@ class AccountTransaction extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'recipient_iban' => 'Recipient Iban',
+			'recipient_iban' => Yii::t('AccountTransaction', 'RecipientIban'),
 			'recipient_bic' => 'Recipient Bic',
 			'recipient_name' => 'Recipient Name',
 			'event_date' => 'Event Date',

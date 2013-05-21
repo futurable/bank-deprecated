@@ -2,6 +2,13 @@
 
 class AccountTransactionController extends Controller
 {
+        public function actions()
+        {
+            return array(
+                'create'=>'application.controllers.accountTransaction.CreateAction',
+            );
+        }
+    
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -53,39 +60,6 @@ class AccountTransactionController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-		));
-	}
-
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-            $accountTransaction=new AccountTransaction;
-            $accountTransaction->scenario = 'validIban';
-            $accountTransaction->validate();
-            
-            // IBAN validation (step 1)
-            if(isset($accountTransaction->recipient_iban)){
-                $accountTransaction->attributes=$_POST['AccountTransaction'];
-                $accountTransaction->scenario = 'validIban';
-                
-                $controller->redirect(array('create','iban'=>$accountTransaction->recipient_iban));
-            }             
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['AccountTransaction']))
-		{
-			$accountTransaction->attributes=$_POST['AccountTransaction'];
-			//if($model->save())
-			//$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create',array(
-			'model'=>$accountTransaction,
 		));
 	}
 

@@ -14,10 +14,15 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'htmlOptions'=>array('class'=>'well'),
 ));
 ?>
+    <?php echo $form->errorSummary($accountTransaction); ?>
 
-	<?php echo $form->errorSummary($accountTransaction); ?>
-
+    <fieldset>
     <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
+    	<div class="row">
+		<?php echo $form->label($accountTransaction,'create_date'); ?>
+		<?php echo $form->textField($accountTransaction,'create_date',array('readonly'=>true)); ?>
+		<?php echo $form->error($accountTransaction,'create_date'); ?>
+	</div>    
     
     <legend><?php echo Yii::t('AccountTransaction', 'RecipientInfo')?></legend>
 	<div class="row">
@@ -80,7 +85,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($accountTransaction->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
-
+    </fieldset>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

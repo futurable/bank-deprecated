@@ -23,7 +23,7 @@
  */
 class AccountTransaction extends CActiveRecord
 {
-        protected $form_step = 1;
+        public $form_step = 1;
     
 	/**
 	 * @return string the associated database table name

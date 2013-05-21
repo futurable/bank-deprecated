@@ -135,5 +135,9 @@ body {
 }
 
 #account-transaction-form label, #account-transaction-form input{
-    display: inline;
+    display: inline-block;
+}
+
+#account-transaction-form label{
+    width: 30%;
 }

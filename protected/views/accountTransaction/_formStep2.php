@@ -19,9 +19,11 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <fieldset>
     <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
     	<div class="row">
-		<?php echo $form->label($accountTransaction,'create_date'); ?>
-		<?php echo $form->textField($accountTransaction,'create_date',array('readonly'=>true)); ?>
-		<?php echo $form->error($accountTransaction,'create_date'); ?>
+		<?php echo $form->label($accountTransaction,'bank_account_id'); ?>
+                <?php $condition = 'bank_user_id=:bank_user_id'; ?>
+                <?php $params = array(':bank_user_id'=>$this->WebUser->id); ?>
+		<?php echo $form->dropDownList($accountTransaction, 'bank_account_id', CHtml::listData(Account::model()->findAll(array('condition'=>$condition, 'params'=>$params)),'id','iban'));?>
+		<?php echo $form->error($accountTransaction,'bank_account_id'); ?>
 	</div>    
     
     <legend><?php echo Yii::t('AccountTransaction', 'RecipientInfo')?></legend>

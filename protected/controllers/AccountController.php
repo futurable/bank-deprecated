@@ -2,6 +2,13 @@
 
 class AccountController extends Controller
 {
+        public function actions()
+        {
+            return array(
+                'createBankAccount'=>'application.controllers.account.CreateBankAccountAction',
+                'createLoanAccount'=>'application.controllers.account.CreateLoanAccountAction',
+            );
+        }
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -36,7 +43,7 @@ class AccountController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','createBankAccount'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users

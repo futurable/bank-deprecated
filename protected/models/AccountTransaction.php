@@ -82,17 +82,17 @@ class AccountTransaction extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'recipient_iban' => Yii::t('AccountTransaction', 'RecipientIban'),
-			'recipient_bic' => 'Recipient Bic',
-			'recipient_name' => 'Recipient Name',
-			'event_date' => 'Event Date',
-			'create_date' => 'Create Date',
-			'modify_date' => 'Modify Date',
-			'amount' => 'Amount',
-			'reference_number' => 'Reference Number',
-			'message' => 'Message',
-			'exchange_rate' => 'Exchange Rate',
-			'currency' => 'Currency',
-			'bank_account_id' => 'Bank Account',
+			'recipient_bic' => Yii::t('AccountTransaction', 'RecipientBic'),
+			'recipient_name' => Yii::t('AccountTransaction', 'RecipientName'),
+			'event_date' => Yii::t('AccountTransaction', 'EventDate'),
+			'create_date' => Yii::t('AccountTransaction', 'CreateDate'),
+			'modify_date' => Yii::t('AccountTransaction', 'ModifyDate'),
+			'amount' => Yii::t('AccountTransaction', 'Amount'),
+			'reference_number' => Yii::t('AccountTransaction', 'ReferenceNumber'),
+			'message' => Yii::t('AccountTransaction', 'Message'),
+			'exchange_rate' => Yii::t('AccountTransaction', 'ExchangeRate'),
+			'currency' => Yii::t('AccountTransaction', 'Currency'),
+			'bank_account_id' => Yii::t('AccountTransaction', 'BankAccount'),
 		);
 	}
 

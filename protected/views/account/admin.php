@@ -2,16 +2,6 @@
 /* @var $this AccountController */
 /* @var $model Account */
 
-$this->breadcrumbs=array(
-	'Accounts'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Account', 'url'=>array('index')),
-	array('label'=>'Create Account', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();

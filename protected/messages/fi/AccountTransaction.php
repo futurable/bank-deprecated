@@ -1,10 +1,20 @@
 <?php
 return array(
     "PayerInfo" => "Maksajan tiedot",
-    "RecipientInfo" => "Maksun saajan tiedot",
-    "RecipientIban" => "Maksun saajan IBAN",
+    "RecipientInfo" => "Saajan tiedot",
+    "RecipientIban" => "Saajan IBAN",
+    "RecipientBic" => "Saajan BIC",
+    "RecipientName" => "Saajan nimi",
+    "EventDate" => "Eräpäivä",
+    "CreateDate" => "Luontipäivä",
+    "ModifyDate" => "Muokkausäivä",
+    "Amount" => "Summa",
+    "ReferenceNumber" => "Viitenumero",
+    "Message" => "Viesti",
+    "ExchangeRate" => "Viitenumero",
+    "Currency" => "Valuutta",
+    "BankAccount" => "Pankkitili",
     "PaymentInfo" => "Maksun tiedot",
-    "RecipientIban" => "Vastaanottajan IBAN",
     "CreateTransaction" => "Uusi maksu",
 );
 ?>

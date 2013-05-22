@@ -13,10 +13,6 @@
 	<?php echo CHtml::encode($data->iban); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('currency')); ?>:</b>
-	<?php echo CHtml::encode($data->currency); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
@@ -33,11 +29,11 @@
 	<?php echo CHtml::encode($data->modify_date); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('bank_user_id')); ?>:</b>
 	<?php echo CHtml::encode($data->bank_user_id); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('bank_bic_id')); ?>:</b>
 	<?php echo CHtml::encode($data->bank_bic_id); ?>
 	<br />

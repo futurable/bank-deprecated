@@ -13,8 +13,9 @@ return array(
     "Message" => "Viesti",
     "ExchangeRate" => "Viitenumero",
     "Currency" => "Valuutta",
-    "BankAccount" => "Pankkitili",
+    "PayerBankAccount" => "Maksajan IBAN",
     "PaymentInfo" => "Maksun tiedot",
     "CreateTransaction" => "Uusi maksu",
+    "PayerName" => "Maksajan Nimi",
 );
 ?>

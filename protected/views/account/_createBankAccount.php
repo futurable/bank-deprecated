@@ -2,7 +2,9 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'account-form',
-	'enableAjaxValidation'=>false,
+        'enableClientValidation'=>true,
+        'clientOptions'=>array('validateOnSubmit'=>true,'validateOnChange'=>true),
+        'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -11,14 +13,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'iban'); ?>
-		<?php echo $form->textField($Account,'iban',array('size'=>32,'maxlength'=>32)); ?>
+		<?php echo $form->textField($Account,'iban',array('readonly'=>true)); ?>
 		<?php echo $form->error($Account,'iban'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($Account,'currency'); ?>
-		<?php echo $form->textField($Account,'currency',array('size'=>3,'maxlength'=>3)); ?>
-		<?php echo $form->error($Account,'currency'); ?>
 	</div>
 
 	<div class="row">
@@ -29,19 +25,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'status'); ?>
-		<?php echo $form->textField($Account,'status',array('size'=>8,'maxlength'=>8)); ?>
+		<?php echo $form->textField($Account,'status',array('readonly'=>true)); ?>
 		<?php echo $form->error($Account,'status'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_user_id'); ?>
-		<?php echo $form->textField($Account,'bank_user_id'); ?>
+                <?php echo $form->dropDownList($Account, 'bank_user_id', CHtml::listData(User::model()->findAll(),'id','username'),array('prompt'=>'- Select user -'));?>
 		<?php echo $form->error($Account,'bank_user_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_bic_id'); ?>
-		<?php echo $form->textField($Account,'bank_bic_id'); ?>
+		<?php echo $form->textField($Account,'bank_bic_id', array('readonly'=>true)); ?>
 		<?php echo $form->error($Account,'bank_bic_id'); ?>
 	</div>
 

@@ -13,8 +13,9 @@ return array(
     "Message" => "Message",
     "ExchangeRate" => "Exchange rate",
     "Currency" => "Currency",
-    "BankAccount" => "Bank Account",
+    "PayerBankAccount" => "Payer IBAN",
     "PaymentInfo" => "Payment Info",
     "CreateTransaction" => "Create transaction",
+    "PayerName" => "Payer name",
 );
 ?>

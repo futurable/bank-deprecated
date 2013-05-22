@@ -10,8 +10,8 @@ class CreateBankAccountAction extends CAction
         
         // IBAN
         $branchCode = '970300'; // TODO: get this from conf
-        $accountNumber = 1;
-        $bban = BBANComponent::generateFinnishBBANaccount($branchCode, $accountNumber);
+        $accountNumber = Account::model()->count(array('select'=>'id'));
+        $bban = BBANComponent::generateFinnishBBANaccount($branchCode, $accountNumber)+1;
         $bbanAccountNumber = substr($bban, -6);
         $iban = IBANComponent::generateFinnishIBANaccount($branchCode, $bbanAccountNumber);
         $Account->iban = $iban;

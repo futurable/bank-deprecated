@@ -92,7 +92,7 @@ class AccountTransaction extends CActiveRecord
 			'message' => Yii::t('AccountTransaction', 'Message'),
 			'exchange_rate' => Yii::t('AccountTransaction', 'ExchangeRate'),
 			'currency' => Yii::t('AccountTransaction', 'Currency'),
-			'bank_account_id' => Yii::t('AccountTransaction', 'BankAccount'),
+			'bank_account_id' => Yii::t('AccountTransaction', 'PayerBankAccount'),
 		);
 	}
 

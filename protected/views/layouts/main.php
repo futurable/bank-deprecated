@@ -51,21 +51,29 @@
         </div>
 
 	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-                'items'=>array(
-                    array('label'=>'Front page', 'url'=>array('/site/index'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'New transaction', 'url'=>array('/accountTransaction/create'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Payments for due', 'url'=>array('/accountTransaction/index'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Transactions', 'url'=>array('/account/index'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Loan applications', 'url'=>array('/account/create'), 'visible'=>!Yii::app()->user->isGuest),
-                    array('label'=>'Loans', 'url'=>array('/account/view'), 'visible'=>!Yii::app()->user->isGuest),
-                   
-                    array('label'=>'Users', 'url'=>array('/user'), 'visible'=>Yii::app()->getModule('user')->isAdmin()),
-                    array('label'=>'Rights', 'url'=>array('/rights'), 'visible'=>Yii::app()->getModule('user')->isAdmin()),
-                    array('label'=>'Profile', 'url'=>array('/user/login'), 'visible'=>Yii::app()->getModule('user')->isAdmin()),
-                    array('label'=>'Logout', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest),
-            ),
-		)); ?>
+		<?php 
+                if(Yii::app()->getModule('user')->isAdmin()){
+                    $this->widget('zii.widgets.CMenu',array(
+                        'items'=>array(
+                            array('label'=>'Accounts', 'url'=>array('/account/createAccount')),
+                            array('label'=>'Users', 'url'=>array('/user')),
+                            array('label'=>'Rights', 'url'=>array('/rights')),
+                        )
+                    ));     
+                }
+                elseif(!Yii::app()->user->isGuest){
+                    $this->widget('zii.widgets.CMenu',array(
+                        'items'=>array(
+                            array('label'=>'Front page', 'url'=>array('/site/index')),
+                            array('label'=>'New transaction', 'url'=>array('/accountTransaction/create')),
+                            array('label'=>'Payments for due', 'url'=>array('/accountTransaction/index')),
+                            array('label'=>'Transactions', 'url'=>array('/account/index')),
+                            array('label'=>'Loan applications', 'url'=>array('/account/create')),
+                            array('label'=>'Loans', 'url'=>array('/account/view')),
+                        ),
+                    ));
+                } 
+                ?>
 	</div><!-- mainmenu -->
 
 	<?php echo $content; ?>

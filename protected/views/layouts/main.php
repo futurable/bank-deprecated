@@ -55,7 +55,11 @@
                 if(Yii::app()->getModule('user')->isAdmin()){
                     $this->widget('zii.widgets.CMenu',array(
                         'items'=>array(
-                            array('label'=>'Accounts', 'url'=>array('/account/')),
+                            array('label'=>'Accounts', 'url'=>array('/account/'), 'items'=>array(
+                                array('label'=>'Create', 'url'=>array('/account/createBankAccount')),
+                                array('label'=>'Manage', 'url'=>array('/account/admin')),
+                                ),  
+                            ),
                             array('label'=>'Users', 'url'=>array('/user')),
                             array('label'=>'Rights', 'url'=>array('/rights')),
                         )

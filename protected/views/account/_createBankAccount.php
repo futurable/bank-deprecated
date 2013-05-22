@@ -43,19 +43,19 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_interest_id'); ?>
-		<?php echo $form->dropDownList($Account, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','interest_type'),array('prompt'=>'- Select interest -'));?>
+		<?php echo $form->dropDownList($Account, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','type'),array('prompt'=>'- Select interest -'));?>
 		<?php echo $form->error($Account,'bank_interest_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_currency_id'); ?>
-		<?php echo $form->textField($Account,'bank_currency_id'); ?>
+		<?php echo $form->dropDownList($Account, 'bank_currency_id', CHtml::listData(Currency::model()->findAll(),'id','code'),array('prompt'=>'- Select currency -'));?>
 		<?php echo $form->error($Account,'bank_currency_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_account_type_id'); ?>
-		<?php echo $form->textField($Account,'bank_account_type_id'); ?>
+		<?php echo $form->dropDownList($Account, 'bank_account_type_id', CHtml::listData(AccountType::model()->findAll(),'id','type'),array('prompt'=>'- Select account type -'));?>
 		<?php echo $form->error($Account,'bank_account_type_id'); ?>
 	</div>
 

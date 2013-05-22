@@ -43,7 +43,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_interest_id'); ?>
-		<?php echo $form->textField($Account,'bank_interest_id'); ?>
+		<?php echo $form->dropDownList($Account, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','interest_type'),array('prompt'=>'- Select interest -'));?>
 		<?php echo $form->error($Account,'bank_interest_id'); ?>
 	</div>
 

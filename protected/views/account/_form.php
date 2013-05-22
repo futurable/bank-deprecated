@@ -22,12 +22,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'currency'); ?>
-		<?php echo $form->textField($model,'currency',array('size'=>3,'maxlength'=>3)); ?>
-		<?php echo $form->error($model,'currency'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>64)); ?>
 		<?php echo $form->error($model,'name'); ?>

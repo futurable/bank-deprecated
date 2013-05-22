@@ -47,12 +47,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'iban',
-		'currency',
 		'name',
 		'status',
 		'create_date',
-		/*
 		'modify_date',
+		/*
 		'bank_user_id',
 		'bank_bic_id',
 		'bank_interest_id',

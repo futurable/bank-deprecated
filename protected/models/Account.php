@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'bank_account':
  * @property integer $id
  * @property string $iban
- * @property string $currency
  * @property string $name
  * @property string $status
  * @property string $create_date
@@ -18,11 +17,11 @@
  * @property integer $bank_account_type_id
  *
  * The followings are the available model relations:
- * @property User $bankUser
- * @property Bic $bankBic
- * @property Interest $bankInterest
- * @property Currency $bankCurrency
  * @property AccountType $bankAccountType
+ * @property Bic $bankBic
+ * @property Currency $bankCurrency
+ * @property Interest $bankInterest
+ * @property User $bankUser
  * @property AccountTransaction[] $accountTransactions
  */
 class Account extends CActiveRecord
@@ -46,13 +45,12 @@ class Account extends CActiveRecord
 			array('bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'required'),
 			array('bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'numerical', 'integerOnly'=>true),
 			array('iban', 'length', 'max'=>32),
-			array('currency', 'length', 'max'=>3),
 			array('name', 'length', 'max'=>64),
 			array('status', 'length', 'max'=>8),
 			array('create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, iban, currency, name, status, create_date, modify_date, bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'safe', 'on'=>'search'),
+			array('id, iban, name, status, create_date, modify_date, bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,11 +62,11 @@ class Account extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
-			'bankBic' => array(self::BELONGS_TO, 'Bic', 'bank_bic_id'),
-			'bankInterest' => array(self::BELONGS_TO, 'Interest', 'bank_interest_id'),
-			'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
 			'bankAccountType' => array(self::BELONGS_TO, 'AccountType', 'bank_account_type_id'),
+			'bankBic' => array(self::BELONGS_TO, 'Bic', 'bank_bic_id'),
+			'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
+			'bankInterest' => array(self::BELONGS_TO, 'Interest', 'bank_interest_id'),
+			'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
 			'accountTransactions' => array(self::HAS_MANY, 'AccountTransaction', 'bank_account_id'),
 		);
 	}
@@ -81,7 +79,6 @@ class Account extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'iban' => 'Iban',
-			'currency' => 'Currency',
 			'name' => 'Name',
 			'status' => 'Status',
 			'create_date' => 'Create Date',
@@ -114,7 +111,6 @@ class Account extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('iban',$this->iban,true);
-		$criteria->compare('currency',$this->currency,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('create_date',$this->create_date,true);

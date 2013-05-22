@@ -44,10 +44,8 @@ Class IBANComponent{
 	 * @return  string 	$IBAN
 	 */
 	public static function generateFinnishIBANaccount($branchCode, $accountNumber){
-		exit; // TODO: fix this
-                require_once 'CommonServices/Datavalidator.php';
 		$iban = false;
-		
+
 		// Branch code is valid
 		if( Datavalidator::isPositiveIntValid($branchCode, 6) and
                     Datavalidator::isPositiveIntValid($accountNumber) and strlen($accountNumber) <= 7){ 

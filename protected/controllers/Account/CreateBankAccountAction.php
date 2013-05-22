@@ -26,8 +26,7 @@ class CreateBankAccountAction extends CAction
         if(isset($_POST['Account']))
         {
             $Account->attributes=$_POST['Account'];
-            //if($Account->save())
-                //$this->redirect(array('view','id'=>$Account->id));
+            if($Account->save()) $controller->redirect(array('view','id'=>$Account->id));
         }
 
         $controller->render('createBankAccount',array(

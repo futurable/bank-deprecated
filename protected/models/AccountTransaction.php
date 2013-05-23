@@ -43,8 +43,9 @@ class AccountTransaction extends CActiveRecord
 		return array(
                         array('recipient_iban', 'ext.validators.validIban'),
                         array('reference_number', 'ext.validators.validReferenceNumber'),
-			array('recipient_bic, bank_account_id, recipient_iban, recipient_name, event_date, amount', 'required', 'on'=>'-stepOne'),
                         array('recipient_iban', 'required'),
+			array('recipient_bic, bank_account_id, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
+                        array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
 			array('bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('reference_number', 'numerical'),
 			array('recipient_iban', 'length', 'max'=>32),
@@ -62,6 +63,15 @@ class AccountTransaction extends CActiveRecord
 			array('id, recipient_iban, recipient_bic, recipient_name, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency, bank_account_id', 'safe', 'on'=>'search'),
 		);
 	}
+        
+        public function required_referencenumber_or_msg($attribute_name, $params){
+            if (empty($this->reference_number) && empty($this->message)) {
+                $this->addError($attribute_name, Yii::t('AccountTransacition', 'ReferenceNumberOrMessageIsRequired'));
+                return false;
+            }
+
+            return true;
+        }
 
 	/**
 	 * @return array relational rules.

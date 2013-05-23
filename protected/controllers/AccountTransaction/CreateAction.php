@@ -26,6 +26,7 @@ class CreateAction extends CAction
             }
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
+                $ibanDropdown = $this->getIbanDropdown();
 
                 if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
                 $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
@@ -33,7 +34,7 @@ class CreateAction extends CAction
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
                 // @TODO: multi-currency options
                 $accountTransaction->exchange_rate=1;
-                $accountTransaction->currency="EUR"; 
+                $accountTransaction->currency="EUR";
                                            
                 if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();
@@ -42,7 +43,8 @@ class CreateAction extends CAction
             }
 
             $controller->render('create',array(
-                    'accountTransaction'=>$accountTransaction,
+                'accountTransaction'=>$accountTransaction,
+                'ibanDropdown'=>$ibanDropdown,
             ));
     }
     
@@ -56,6 +58,22 @@ class CreateAction extends CAction
         else $form_step=1;
      
         return $form_step;
+    }
+    
+    private function getIbanDropdown(){
+        $id = $this->getController()->WebUser->id;
+        $record=Account::model()->findAll(array(
+           'select'=>'iban, name',
+           'condition'=>'bank_user_id=:id',
+           'params'=>array(':id'=>$id),
+        ));
+        
+        $ibanDropdown = array();
+        foreach($record as $account){
+            $saldo = BankSaldo::getAccountSaldo($account['iban']);
+            $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR)";
+        }
+        return $ibanDropdown;
     }
 }
 ?>

@@ -23,5 +23,7 @@ return array(
     "InvalidReferenceNumber" => "Invalid reference number",
     "InvalidIBANAccount" => "Invalid IBAN account",
     "ReferenceNumberOrMessageIsRequired" => "Reference number or message is required",
+    "InsufficientSaldo" => "Insufficient saldo",
+    "CreateTransaction" => "Create transaction",
 );
 ?>

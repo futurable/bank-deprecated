@@ -31,6 +31,9 @@ class CreateAction extends CAction
                 $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
                 $accountTransaction->payer_bic = BICComponent::getBICFromIBAN($accountTransaction->payer_iban);
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
+                // @TODO: multi-currency options
+                $accountTransaction->exchange_rate=1;
+                $accountTransaction->currency="EUR";
                 
                 $accountTransaction->validate();
 

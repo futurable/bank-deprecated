@@ -9,12 +9,10 @@
 		'recipient_name',
 		'event_date',
 		'create_date',
-		'modify_date',
 		'amount',
 		'reference_number',
 		'message',
 		'exchange_rate',
 		'currency',
-		'bank_account_id',
 	),
 )); ?>

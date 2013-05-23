@@ -17,5 +17,7 @@ return array(
     "PaymentInfo" => "Maksun tiedot",
     "CreateTransaction" => "Uusi maksu",
     "PayerName" => "Maksajan Nimi",
+    "InvalidReferenceNumber" => "Virheellinen viitenumero",
+    "InvalidIBANAccount" => "Virheellinen IBAN-tili",
 );
 ?>

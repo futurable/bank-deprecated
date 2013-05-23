@@ -8,6 +8,9 @@
  * @property string $recipient_iban
  * @property string $recipient_bic
  * @property string $recipient_name
+ * @property string $payer_iban
+ * @property string $payer_bic
+ * @property string $payer_name
  * @property string $event_date
  * @property string $create_date
  * @property string $modify_date
@@ -44,9 +47,8 @@ class AccountTransaction extends CActiveRecord
                         array('recipient_iban', 'ext.validators.validIban'),
                         array('reference_number', 'ext.validators.validReferenceNumber'),
                         array('recipient_iban', 'required'),
-			array('recipient_bic, bank_account_id, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
+			array('recipient_bic, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
                         array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
-			array('bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('reference_number', 'numerical'),
 			array('recipient_iban', 'length', 'max'=>32),
 			array('recipient_bic, exchange_rate', 'length', 'max'=>11),
@@ -60,7 +62,7 @@ class AccountTransaction extends CActiveRecord
 			array('event_date, create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_name, payer_bic, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency, bank_account_id', 'safe', 'on'=>'search'),
+			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_name, payer_bic, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency', 'safe', 'on'=>'search'),
 		);
 	}
         
@@ -106,7 +108,6 @@ class AccountTransaction extends CActiveRecord
 			'message' => Yii::t('AccountTransaction', 'Message'),
 			'exchange_rate' => Yii::t('AccountTransaction', 'ExchangeRate'),
 			'currency' => Yii::t('AccountTransaction', 'Currency'),
-			'bank_account_id' => Yii::t('AccountTransaction', 'PayerBankAccount'),
 		);
 	}
 

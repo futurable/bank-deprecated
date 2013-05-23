@@ -25,9 +25,10 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	</div>
     
         <div class="row">
-            <?php echo CHTML::label(Yii::t('AccountTransaction', 'PayerName'),'payer_name'); ?>
+            <?php echo $form->label($accountTransaction,'payer_name'); ?>
             <?php $payerName = $this->WebUser->profile->firstname." ".$this->WebUser->profile->lastname; ?>
-            <?php echo CHTML::textField(Yii::t('AccountTransaction', 'PayerName'),$payerName,array('readonly'=>true)); ?>
+            <?php echo $form->textField($accountTransaction,'payer_name',array('readonly'=>true, 'value'=>$payerName)); ?>
+            <?php echo $form->error($accountTransaction,'payer_name'); ?>
         </div>
     
     <legend><?php echo Yii::t('AccountTransaction', 'RecipientInfo')?></legend>

@@ -38,6 +38,7 @@ class AccountTransaction extends CActiveRecord
         public function beforeSave(){
             if(parent::beforeSave()){
                 $this->event_date = date("Y-m-d", strtotime($this->event_date));
+                $this->create_date = date('Y-m-d H:i:s');
                 return true;
             }
             else return false;
@@ -67,7 +68,6 @@ class AccountTransaction extends CActiveRecord
 			array('message', 'length', 'max'=>420),
 			array('currency', 'length', 'max'=>3),
 			array('event_date, create_date, modify_date', 'safe'),
-                        array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
                         // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_bic, payer_name, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency', 'safe', 'on'=>'search'),

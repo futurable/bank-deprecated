@@ -19,10 +19,9 @@
  * @property string $message
  * @property string $exchange_rate
  * @property string $currency
- * @property integer $bank_account_id
  *
  * The followings are the available model relations:
- * @property Account $bankAccount
+ * @property Account $payerIban
  */
 class AccountTransaction extends CActiveRecord
 {
@@ -47,11 +46,11 @@ class AccountTransaction extends CActiveRecord
                         array('recipient_iban', 'ext.validators.validIban'),
                         array('reference_number', 'ext.validators.validReferenceNumber'),
                         array('recipient_iban', 'required'),
-			array('recipient_bic, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
+			array('recipient_bic, payer_iban, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
                         array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
 			array('reference_number', 'numerical'),
-			array('recipient_iban', 'length', 'max'=>32),
-			array('recipient_bic, exchange_rate', 'length', 'max'=>11),
+			array('recipient_iban, payer_iban', 'length', 'max'=>32),
+			array('recipient_bic, payer_bic, exchange_rate', 'length', 'max'=>11),
 			array('recipient_name, payer_name', 'length', 'max'=>35),
                         array('event_date', 'date', 'format'=>'dd.MM.yyyy'),
 			array('amount', 'length', 'max'=>19),
@@ -60,9 +59,10 @@ class AccountTransaction extends CActiveRecord
 			array('message', 'length', 'max'=>420),
 			array('currency', 'length', 'max'=>3),
 			array('event_date, create_date, modify_date', 'safe'),
+                        array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_name, payer_bic, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency', 'safe', 'on'=>'search'),
+			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_bic, payer_name, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency', 'safe', 'on'=>'search'),
 		);
 	}
         
@@ -83,7 +83,7 @@ class AccountTransaction extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
+			'payerIban' => array(self::BELONGS_TO, 'Account', 'payer_iban'),
 		);
 	}
 
@@ -144,7 +144,6 @@ class AccountTransaction extends CActiveRecord
 		$criteria->compare('message',$this->message,true);
 		$criteria->compare('exchange_rate',$this->exchange_rate,true);
 		$criteria->compare('currency',$this->currency,true);
-		$criteria->compare('bank_account_id',$this->bank_account_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

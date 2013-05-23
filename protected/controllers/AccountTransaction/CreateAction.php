@@ -33,11 +33,9 @@ class CreateAction extends CAction
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
                 
                 $accountTransaction->validate();
-                // Uncomment the following line if AJAX validation is needed
-                //$controller->performAjaxValidation($accountTransaction);
 
-                //if($model->save())
-                //$this->redirect(array('view','id'=>$model->id));
+                if($accountTransaction->save())
+                $controller->redirect(array('view','id'=>$accountTransaction->id));
             }
 
             $controller->render('create',array(

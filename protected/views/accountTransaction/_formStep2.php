@@ -17,11 +17,11 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <fieldset>
     <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
     	<div class="row">
-            <?php echo $form->label($accountTransaction,'bank_account_id'); ?>
+            <?php echo $form->label($accountTransaction,'payer_iban'); ?>
             <?php $condition = 'bank_user_id=:bank_user_id'; ?>
             <?php $params = array(':bank_user_id'=>$this->WebUser->id); ?>
-            <?php echo $form->dropDownList($accountTransaction, 'bank_account_id', CHtml::listData(Account::model()->findAll(array('condition'=>$condition, 'params'=>$params)),'id','iban'));?>
-            <?php echo $form->error($accountTransaction,'bank_account_id'); ?>
+            <?php echo $form->dropDownList($accountTransaction, 'payer_iban', CHtml::listData(Account::model()->findAll(array('condition'=>$condition, 'params'=>$params)),'iban','iban'));?>
+            <?php echo $form->error($accountTransaction,'payer_iban'); ?>
 	</div>
     
         <div class="row">

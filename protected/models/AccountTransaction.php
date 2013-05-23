@@ -66,7 +66,7 @@ class AccountTransaction extends CActiveRecord
         
         public function required_referencenumber_or_msg($attribute_name, $params){
             if (empty($this->reference_number) && empty($this->message)) {
-                $this->addError($attribute_name, Yii::t('AccountTransacition', 'ReferenceNumberOrMessageIsRequired'));
+                $this->addError($attribute_name, Yii::t('AccountTransaction', 'ReferenceNumberOrMessageIsRequired'));
                 return false;
             }
 

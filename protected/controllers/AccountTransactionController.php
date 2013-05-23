@@ -58,9 +58,30 @@ class AccountTransactionController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+            
+            $record=Account::model()->findAll(array(
+                'select'=>'iban, name',
+                'condition'=>'bank_user_id=:id',
+                'params'=>array(':id'=>$this->WebUser->id),
+            ));
+            
+            $accounts = array();
+            foreach($record as $account){                
+                $accounts[$account['iban']] = $account['name'];
+            }
+            
+            $iban = AccountTransaction::model()->find(array(
+                'select'=>'payer_iban',
+                'condition'=>'id=:id',
+                'params'=>array(':id'=>$id),
+            ))->payer_iban;
+            
+            if(array_key_exists($iban, $accounts)){
+                $this->render('view',array(
+                        'model'=>$this->loadModel($id),
+                ));
+            }
+            else echo "Unauthorized access";
 	}
 
 	/**

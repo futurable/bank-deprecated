@@ -13,7 +13,7 @@ class validReferenceNumber extends CValidator
         $verificationValue = $this->getReferenceNumberVerificationNumber($cleanNumber);
 
         if($verificationNumber != $verificationValue){
-            $this->addError($object, $attribute, "Invalid reference number");
+            $this->addError($object, $attribute, Yii::t("AccountTransaction","InvalidReferenceNumber"));
         }
     }
     

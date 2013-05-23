@@ -54,6 +54,7 @@ class AccountTransaction extends CActiveRecord
 		return array(
                         array('recipient_iban', 'ext.validators.validIban'),
                         array('reference_number', 'ext.validators.validReferenceNumber'),
+                        array('amount', 'ext.validators.validBankSaldo'),
                         array('recipient_iban', 'required'),
 			array('recipient_bic, payer_iban, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
                         array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),

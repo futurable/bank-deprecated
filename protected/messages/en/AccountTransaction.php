@@ -19,5 +19,6 @@ return array(
     "PayerName" => "Payer name",
     "InvalidReferenceNumber" => "Invalid reference number",
     "InvalidIBANAccount" => "Invalid IBAN account",
+    "ReferenceNumberOrMessageIsRequired" => "Reference number or message is required",
 );
 ?>

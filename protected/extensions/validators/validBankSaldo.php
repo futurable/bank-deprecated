@@ -16,6 +16,25 @@ class validBankSaldo extends CValidator{
         }
         else return true;
     }
+    
+    /**
+    * Returns the JavaScript needed for performing client-side validation.
+    * @param CModel $object the data object being validated
+    * @param string $attribute the name of the attribute to be validated.
+    * @return string the client-side validation script.
+    * @see CActiveForm::enableClientValidation
+    */
+    public function clientValidateAttribute($object,$attribute){
+        $saldo = $object->saldo;
+ 
+        $condition="value>$saldo";
+ 
+        return "
+        if(".$condition.") {
+            messages.push(".CJSON::encode(Yii::t("AccountTransaction", "InsufficientSaldo")).");
+        }
+        ";
+   }
 }
 
 ?>

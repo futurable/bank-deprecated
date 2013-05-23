@@ -35,8 +35,9 @@ class CreateAction extends CAction
                 $accountTransaction->exchange_rate=1;
                 $accountTransaction->currency="EUR";
                 
-                $accountTransaction->validate();
-
+                if(isset($accountTransaction->recipient_iban)){
+                    $accountTransaction->validate();
+                }
                 if($accountTransaction->save())
                 $controller->redirect(array('view','id'=>$accountTransaction->id));
             }

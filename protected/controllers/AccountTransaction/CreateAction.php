@@ -26,9 +26,10 @@ class CreateAction extends CAction
             }
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
-                
+
                 if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
-                if(!isset($accountTransaction->recipient_bic)) $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
+                $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
+                $accountTransaction->payer_bic = BICComponent::getBICFromIBAN($accountTransaction->payer_iban);
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
                 
                 $accountTransaction->validate();

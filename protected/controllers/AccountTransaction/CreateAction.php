@@ -34,12 +34,11 @@ class CreateAction extends CAction
                 // @TODO: multi-currency options
                 $accountTransaction->exchange_rate=1;
                 $accountTransaction->currency="EUR";
-                
-                if(isset($accountTransaction->recipient_iban)){
+                                           
+                if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();
+                    if($accountTransaction->save()) $controller->redirect(array('view','id'=>$accountTransaction->id));
                 }
-                if($accountTransaction->save())
-                $controller->redirect(array('view','id'=>$accountTransaction->id));
             }
 
             $controller->render('create',array(

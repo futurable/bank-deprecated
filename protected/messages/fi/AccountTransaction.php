@@ -19,9 +19,11 @@ return array(
     "PayerBankAccount" => "Maksajan IBAN",
     "PaymentInfo" => "Maksun tiedot",
     "CreateTransaction" => "Uusi maksu",
-    "PayerName" => "Maksajan Nimi",
+    "PayerName" => "Maksajan nimi",
     "InvalidReferenceNumber" => "Virheellinen viitenumero",
     "InvalidIBANAccount" => "Virheellinen IBAN-tili",
     "ReferenceNumberOrMessageIsRequired" => "Anna viitenumero tai viesti",
+    "InsufficientSaldo" => "Tilin saldo ei riitä",
+    "CreateTransaction" => "Tee maksu",
 );
 ?>

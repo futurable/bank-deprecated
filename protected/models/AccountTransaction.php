@@ -26,6 +26,7 @@
 class AccountTransaction extends CActiveRecord
 {
         public $form_step = 1;
+        public $saldo = 0;
     
 	/**
 	 * @return string the associated database table name
@@ -39,6 +40,14 @@ class AccountTransaction extends CActiveRecord
             if(parent::beforeSave()){
                 $this->event_date = date("Y-m-d", strtotime($this->event_date));
                 $this->create_date = date('Y-m-d H:i:s');
+                return true;
+            }
+            else return false;
+        }
+        
+        public function beforeValidate(){
+            if(parent::beforeValidate()){
+                $this->saldo = BankSaldo::getAccountSaldo($this->payer_iban);
                 return true;
             }
             else return false;

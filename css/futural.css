@@ -141,3 +141,10 @@ body {
 #account-transaction-form label{
     width: 30%;
 }
+
+.detail-view .even{
+    background-color: #eee !important;
+}
+.detail-view .odd{
+    background-color: #ddd !important;
+}

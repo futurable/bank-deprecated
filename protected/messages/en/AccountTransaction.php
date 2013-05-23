@@ -17,5 +17,7 @@ return array(
     "PaymentInfo" => "Payment Info",
     "CreateTransaction" => "Create transaction",
     "PayerName" => "Payer name",
+    "InvalidReferenceNumber" => "Invalid reference number",
+    "InvalidIBANAccount" => "Invalid IBAN account",
 );
 ?>

@@ -14,8 +14,6 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'htmlOptions'=>array('class'=>'well'),
 ));
 ?>
-    <?php echo $form->errorSummary($accountTransaction); ?>
-
     <fieldset>
     <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
     	<div class="row">

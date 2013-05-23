@@ -33,7 +33,7 @@ class CreateAction extends CAction
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
                 // @TODO: multi-currency options
                 $accountTransaction->exchange_rate=1;
-                $accountTransaction->currency="EUR";
+                $accountTransaction->currency="EUR"; 
                                            
                 if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();

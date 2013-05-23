@@ -19,5 +19,6 @@ return array(
     "PayerName" => "Maksajan Nimi",
     "InvalidReferenceNumber" => "Virheellinen viitenumero",
     "InvalidIBANAccount" => "Virheellinen IBAN-tili",
+    "ReferenceNumberOrMessageIsRequired" => "Anna viitenumero tai viesti",
 );
 ?>

@@ -13,7 +13,7 @@ class validIban extends CValidator
         
         if(!$validator::verify_iban($value))
         {
-            $this->addError($object, $attribute, "Invalid IBAN account");
+            $this->addError($object, $attribute, Yii::t("AccountTransaction", "InvalidIBANAccount"));
         }
     }
 }

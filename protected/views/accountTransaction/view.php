@@ -1,4 +1,4 @@
-<h1>View AccountTransaction #<?php echo $model->id; ?></h1>
+<h1>Transaction for the account <br/><?php echo $model->payer_iban; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

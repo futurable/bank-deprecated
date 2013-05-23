@@ -3,7 +3,6 @@
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
 		'recipient_iban',
 		'recipient_bic',
 		'recipient_name',

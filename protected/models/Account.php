@@ -26,6 +26,8 @@
  */
 class Account extends CActiveRecord
 {
+    public $start_date;
+    public $end_date;
 	/**
 	 * @return string the associated database table name
 	 */

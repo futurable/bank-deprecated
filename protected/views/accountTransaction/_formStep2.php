@@ -18,7 +18,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <legend><?php echo Yii::t('AccountTransaction', 'PayerInfo')?></legend>
     	<div class="row">
             <?php echo $form->label($accountTransaction,'payer_iban'); ?>
-            <?php echo $form->dropDownList($accountTransaction, 'payer_iban', $ibanDropdown );?>
+            <?php echo $form->dropDownList($accountTransaction, 'payer_iban', $ibanDropdown, array('class'=>'ibanDropdown')  );?>
             <?php echo $form->error($accountTransaction,'payer_iban'); ?>
 	</div>
     

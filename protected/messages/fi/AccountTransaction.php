@@ -25,5 +25,6 @@ return array(
     "ReferenceNumberOrMessageIsRequired" => "Anna viitenumero tai viesti",
     "InsufficientSaldo" => "Tilin saldo ei riitä",
     "CreateTransaction" => "Tee maksu",
+    "InvalidDueDate" => "Virheellinen eräpäivä",
 );
 ?>

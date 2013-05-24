@@ -5,13 +5,13 @@
 )); ?>
 
     <div class="row">
-            <?php echo $form->dropDownList($account, 'iban', $ibanDropdown, array('class'=>'ibanDropdown', 'submit'=>''));?>
+        <?php echo $form->dropDownList($Account, 'iban', $ibanDropdown, array('class'=>'ibanDropdown', 'submit'=>''));?>
     </div>
     
     <div class="row">
         <?php 
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'model'=>$account,
+            'model'=>$Account,
             'attribute'=>'start_date',
             // additional javascript options for the date picker plugin
             'options'=>array(
@@ -23,7 +23,7 @@
         ));
 
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'model'=>$account,
+            'model'=>$Account,
             'attribute'=>'end_date',
             // additional javascript options for the date picker plugin
             'options'=>array(
@@ -38,5 +38,5 @@
     </div>
 
 <?php $this->endWidget();?>
-<?php echo $account->start_date." ".$account->end_date." ".$account->iban; ?>
+<?php echo $Account->start_date." ".$Account->end_date." ".$Account->iban; ?>
 </div><!-- form -->

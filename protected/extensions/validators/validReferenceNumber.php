@@ -17,6 +17,21 @@ class validReferenceNumber extends CValidator
         }
     }
     
+    /*
+     * Only validates the number form, not the validation number itself
+     */
+    public function clientValidateAttribute($object,$attribute){
+        
+        $pattern = '/^[0-9 ]{2,20}$/';
+        $condition="!value.match({$pattern})";
+ 
+        return "
+        if(".$condition.") {
+            messages.push(".CJSON::encode(Yii::t("AccountTransaction", "InvalidReferenceNumber")).");
+        }
+        ";
+   }
+   
     /**
      * Function for calculating the verification number for reference number
      * 

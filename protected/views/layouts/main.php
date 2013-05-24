@@ -71,7 +71,7 @@
                             array('label'=>'Front page', 'url'=>array('/site/index')),
                             array('label'=>'New transaction', 'url'=>array('/accountTransaction/create')),
                             array('label'=>'Payments for due', 'url'=>array('/accountTransaction/index')),
-                            array('label'=>'Transactions', 'url'=>array('/account/index')),
+                            array('label'=>'Transactions', 'url'=>array('/accountTransaction/list')),
                             array('label'=>'Loan applications', 'url'=>array('/account/create')),
                             array('label'=>'Loans', 'url'=>array('/account/view')),
                         ),

@@ -176,4 +176,20 @@ class AccountTransactionController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        public function getIbanDropdown(){
+            $id = $this->WebUser->id;
+            $record=Account::model()->findAll(array(
+               'select'=>'iban, name',
+               'condition'=>'bank_user_id=:id',
+               'params'=>array(':id'=>$id),
+            ));
+
+            $ibanDropdown = array();
+            foreach($record as $account){
+                $saldo = BankSaldo::getAccountSaldo($account['iban']);
+                $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
+            }
+            return $ibanDropdown;
+        }
 }

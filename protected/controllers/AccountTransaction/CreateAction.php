@@ -79,7 +79,7 @@ class CreateAction extends CAction
         $ibanDropdown = array();
         foreach($record as $account){
             $saldo = BankSaldo::getAccountSaldo($account['iban']);
-            $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR)";
+            $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
         }
         return $ibanDropdown;
     }

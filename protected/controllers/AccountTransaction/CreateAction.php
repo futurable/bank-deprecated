@@ -30,7 +30,7 @@ class CreateAction extends CAction
             }
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
-                $ibanDropdown = $this->getIbanDropdown();
+                $ibanDropdown = $controller->getIbanDropdown();
                 
                 // Predefined values
                 if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
@@ -68,20 +68,5 @@ class CreateAction extends CAction
         return $form_step;
     }
     
-    private function getIbanDropdown(){
-        $id = $this->getController()->WebUser->id;
-        $record=Account::model()->findAll(array(
-           'select'=>'iban, name',
-           'condition'=>'bank_user_id=:id',
-           'params'=>array(':id'=>$id),
-        ));
-        
-        $ibanDropdown = array();
-        foreach($record as $account){
-            $saldo = BankSaldo::getAccountSaldo($account['iban']);
-            $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
-        }
-        return $ibanDropdown;
-    }
 }
 ?>

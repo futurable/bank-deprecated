@@ -55,6 +55,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                 $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                     'model'=>$accountTransaction,
                     'attribute'=>'event_date',
+                    'language'=>Yii::app()->language,
                     // additional javascript options for the date picker plugin
                     'options'=>array(
                         'minDate'=>date('d.m.y'),

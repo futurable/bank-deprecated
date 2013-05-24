@@ -25,5 +25,6 @@ return array(
     "ReferenceNumberOrMessageIsRequired" => "Reference number or message is required",
     "InsufficientSaldo" => "Insufficient saldo",
     "CreateTransaction" => "Create transaction",
+    "InvalidDueDate" => "Invalid due date",
 );
 ?>

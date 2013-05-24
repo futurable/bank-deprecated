@@ -25,6 +25,7 @@ class validBankSaldo extends CValidator{
     * @see CActiveForm::enableClientValidation
     */
     public function clientValidateAttribute($object,$attribute){
+        return true;
         $saldo = $object->saldo;
  
         $condition="value>$saldo";

@@ -42,6 +42,7 @@ class CreateAction extends CAction
                 $accountTransaction->currency="EUR";
                 
                 $accountTransaction->recipient_iban = preg_replace('/\s+/', '', $accountTransaction->recipient_iban);
+                $accountTransaction->reference_number = preg_replace('/\s+/', '', $accountTransaction->reference_number);
                                            
                 if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();

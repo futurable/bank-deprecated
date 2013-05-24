@@ -22,7 +22,7 @@ class validReferenceNumber extends CValidator
      */
     public function clientValidateAttribute($object,$attribute){
         
-        $pattern = '/^[0-9 ]{2,20}$/';
+        $pattern = '/^[0-9 ]{0,20}$/';
         $condition="!value.match({$pattern})";
  
         return "

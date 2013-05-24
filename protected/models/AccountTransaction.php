@@ -67,7 +67,6 @@ class AccountTransaction extends CActiveRecord
                         array('recipient_iban', 'required'),
 			array('recipient_bic, payer_iban, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
                         array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
-			array('reference_number', 'numerical'),
 			array('recipient_iban, payer_iban', 'length', 'max'=>32),
 			array('recipient_bic, payer_bic, exchange_rate', 'length', 'max'=>11),
 			array('recipient_name, payer_name', 'length', 'max'=>35),

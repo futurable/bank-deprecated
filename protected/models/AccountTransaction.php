@@ -62,8 +62,8 @@ class AccountTransaction extends CActiveRecord
 		// will receive user inputs.
 		return array(
                         array('recipient_iban', 'ext.validators.validIban'),
-                        array('reference_number', 'ext.validators.validReferenceNumber'),
-                        array('amount', 'ext.validators.validBankSaldo'),
+                        array('reference_number', 'ext.validators.validReferenceNumber', 'except'=>'stepOne'),
+                        array('amount', 'ext.validators.validBankSaldo', 'except'=>'stepOne'),
                         array('recipient_iban', 'required'),
 			array('recipient_bic, payer_iban, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
                         array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
@@ -71,6 +71,7 @@ class AccountTransaction extends CActiveRecord
 			array('recipient_bic, payer_bic, exchange_rate', 'length', 'max'=>11),
 			array('recipient_name, payer_name', 'length', 'max'=>35),
                         array('event_date', 'date', 'format'=>'dd.MM.yyyy'),
+                        array('event_date', 'ext.validators.validDueDate', 'except'=>'stepOne'),
 			array('amount', 'length', 'max'=>19),
                         array('amount', 'numerical'),
 			array('reference_number', 'length', 'max'=>20),

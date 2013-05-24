@@ -6,6 +6,7 @@ class AccountTransactionController extends Controller
         {
             return array(
                 'create'=>'application.controllers.accountTransaction.CreateAction',
+                'list'=>'application.controllers.accountTransaction.ListAction',
             );
         }
     

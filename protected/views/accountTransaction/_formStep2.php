@@ -62,7 +62,8 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                     'options'=>array(
                         'showAnim'=>'fold',
                         'dateFormat'=>'dd.mm.yy',
-                        'minDate'=>date('d.M.Y'),
+                        'minDate'=>date('d.m.y'),
+                        'firstDay'=>1,
                         'defaultDate'=>$accountTransaction->event_date,
                     ),
                     'htmlOptions'=>array(

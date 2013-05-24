@@ -31,7 +31,8 @@ class CreateAction extends CAction
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
                 $ibanDropdown = $this->getIbanDropdown();
-
+                
+                // Predefined values
                 if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
                 $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
                 $accountTransaction->payer_bic = BICComponent::getBICFromIBAN($accountTransaction->payer_iban);
@@ -39,6 +40,8 @@ class CreateAction extends CAction
                 // @TODO: multi-currency options
                 $accountTransaction->exchange_rate=1;
                 $accountTransaction->currency="EUR";
+                
+                $accountTransaction->recipient_iban = preg_replace('/\s+/', '', $accountTransaction->recipient_iban);
                                            
                 if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();

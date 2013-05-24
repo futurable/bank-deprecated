@@ -142,7 +142,7 @@ body {
     width: 30%;
 }
 
-#account-transaction-form select{
+.ibanDropdown{
     width: 65%;
 }
 #account-transaction-form input[type='text']{

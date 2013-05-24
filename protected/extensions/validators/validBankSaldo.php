@@ -25,7 +25,7 @@ class validBankSaldo extends CValidator{
     * @see CActiveForm::enableClientValidation
     */
     public function clientValidateAttribute($object,$attribute){
-        return true;
+        return true; // TODO: fix the saldo checking when account is changed
         $saldo = $object->saldo;
  
         $condition="value>$saldo";

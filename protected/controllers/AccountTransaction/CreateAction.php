@@ -23,6 +23,10 @@ class CreateAction extends CAction
                         $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
                     }
                 }
+                
+                $controller->render('create',array(
+                'accountTransaction'=>$accountTransaction,
+                ));
             }
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
@@ -40,12 +44,12 @@ class CreateAction extends CAction
                     $accountTransaction->validate();
                     if($accountTransaction->save()) $controller->redirect(array('view','id'=>$accountTransaction->id));
                 }
-            }
-
-            $controller->render('create',array(
+                
+                $controller->render('create',array(
                 'accountTransaction'=>$accountTransaction,
                 'ibanDropdown'=>$ibanDropdown,
-            ));
+                ));
+            }
     }
     
     /**

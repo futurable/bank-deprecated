@@ -129,6 +129,17 @@ return array(
                     'class'=>'ext.bootstrap.components.Bootstrap',
                     'responsiveCss'=>true,
                 ),
+            'widgetFactory'=>array(
+                'widgets'=>array(
+                    'CJuiDatePicker'=>array(
+                        'options'=>array(
+                            'firstDay'=>'1',
+                            'showAnim'=>'fold',
+                            'dateFormat'=>'dd.mm.yy',
+                        )
+                    )
+                )
+            )
 	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

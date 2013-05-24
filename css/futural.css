@@ -142,6 +142,13 @@ body {
     width: 30%;
 }
 
+#account-transaction-form select{
+    width: 60%;
+}
+#account-transaction-form input[type='text']{
+    width: 30%;
+}
+
 .detail-view .even{
     background-color: #eee !important;
 }

@@ -280,7 +280,6 @@ class DataValidator{
 	 * @return 	bool	$isValid	Returns true on success, false on error
 	 */
 	public static function isReferenceNumberValid( $value ) {
-		require_once 'CommonFunctions.php';
 		$isValid = false;
 		
 		// Archive number without verificaton number

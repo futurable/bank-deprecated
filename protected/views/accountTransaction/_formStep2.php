@@ -57,14 +57,8 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                     'attribute'=>'event_date',
                     // additional javascript options for the date picker plugin
                     'options'=>array(
-                        'showAnim'=>'fold',
-                        'dateFormat'=>'dd.mm.yy',
                         'minDate'=>date('d.m.y'),
-                        'firstDay'=>1,
                         'defaultDate'=>$accountTransaction->event_date,
-                    ),
-                    'htmlOptions'=>array(
-                        'style'=>'height:20px;'
                     ),
                 ));
             ?>

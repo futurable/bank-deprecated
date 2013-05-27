@@ -5,8 +5,8 @@ class AccountTransactionController extends Controller
         public function actions()
         {
             return array(
-                'create'=>'application.controllers.accountTransaction.CreateAction',
-                'list'=>'application.controllers.accountTransaction.ListAction',
+                'create'=>'application.controllers.AccountTransaction.CreateAction',
+                'list'=>'application.controllers.AccountTransaction.ListAction',
             );
         }
     

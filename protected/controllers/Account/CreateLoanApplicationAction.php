@@ -6,7 +6,9 @@ class CreateLoanApplicationAction extends CAction
         $controller=$this->getController();
         
         $loanAccount = new Account();
+        $loanInfo = new Loan();
         $controller->render('createLoanApplication',array(
+            'loanInfo'=>$loanInfo,
             'loanAccount'=>$loanAccount,
         ));
     }

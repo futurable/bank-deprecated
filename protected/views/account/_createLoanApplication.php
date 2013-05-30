@@ -31,6 +31,12 @@
 		<?php echo $form->error($loanInfo,'instalment'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->label($loanInfo,'term'); ?>
+		<?php echo $form->textField($loanInfo,'term'); ?>
+		<?php echo $form->error($loanInfo,'term'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Create'); ?>
 	</div>

@@ -39,7 +39,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'interval'); ?>
-		<?php echo $form->textField($loanInfo,'interval'); ?>
+		<?php echo ZHtml::enumDropDownList($loanInfo, 'interval');?>
 		<?php echo $form->error($loanInfo,'interval'); ?>
 	</div>
 

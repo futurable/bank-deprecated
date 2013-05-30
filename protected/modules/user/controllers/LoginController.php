@@ -11,7 +11,7 @@ class LoginController extends Controller
 	{
 		if (Yii::app()->user->isGuest) {
 			$model=new UserLogin;
-                        if($_GET['company']) $model->username = $_GET['company'];
+                        if(isset($_GET['company'])) $model->username = $_GET['company'];
 			// collect user input data
 			if(isset($_POST['UserLogin']))
 			{

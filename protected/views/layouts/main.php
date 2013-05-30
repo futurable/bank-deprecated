@@ -73,7 +73,7 @@
                             array('label'=>'New transaction', 'url'=>array('/accountTransaction/create')),
                             array('label'=>'Payments for due', 'url'=>array('/accountTransaction/index')),
                             array('label'=>'Transactions', 'url'=>array('/accountTransaction/list')),
-                            array('label'=>'Loan applications', 'url'=>array('/account/createLoanAccount')),
+                            array('label'=>'Loan applications', 'url'=>array('/account/createLoanApplication')),
                             array('label'=>'Loans', 'url'=>array('/account/view')),
                         ),
                     ));

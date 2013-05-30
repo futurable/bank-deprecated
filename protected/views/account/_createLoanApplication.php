@@ -37,6 +37,12 @@
 		<?php echo $form->error($loanInfo,'term'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->label($loanInfo,'interval'); ?>
+		<?php echo $form->textField($loanInfo,'interval'); ?>
+		<?php echo $form->error($loanInfo,'interval'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Create'); ?>
 	</div>

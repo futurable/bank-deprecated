@@ -5,8 +5,8 @@ class AccountController extends Controller
         public function actions()
         {
             return array(
-                'createBankAccount'=>'application.controllers.account.CreateBankAccountAction',
-                'createLoanAccount'=>'application.controllers.account.CreateLoanAccountAction',
+                'createBankAccount'=>'application.controllers.Account.CreateBankAccountAction',
+                'createLoanAccount'=>'application.controllers.Account.CreateLoanAccountAction',
             );
         }
 	/**

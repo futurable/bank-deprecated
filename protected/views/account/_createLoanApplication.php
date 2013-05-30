@@ -15,7 +15,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'type'); ?>
-		<?php echo $form->textField($loanInfo,'type'); ?>
+		<?php echo ZHtml::enumDropDownList($loanInfo, 'type');?>
 		<?php echo $form->error($loanInfo,'type'); ?>
 	</div>
 

@@ -43,6 +43,12 @@
 		<?php echo $form->error($loanInfo,'interval'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->label($loanInfo,'bank_interest_id'); ?>
+		<?php echo $form->textField($loanInfo,'bank_interest_id'); ?>
+		<?php echo $form->error($loanInfo,'bank_interest_id'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Create'); ?>
 	</div>

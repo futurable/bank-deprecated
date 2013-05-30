@@ -23,25 +23,37 @@ class CreateAction extends CAction
                         $controller->redirect(array('create','recipient_iban'=>$accountTransaction->recipient_iban));
                     }
                 }
+                
+                $controller->render('create',array(
+                'accountTransaction'=>$accountTransaction,
+                ));
             }
             elseif($accountTransaction->form_step === 2){
                 $accountTransaction->scenario = 'stepTwo';
+                $ibanDropdown = $controller->getIbanDropdown();
                 
+                // Predefined values
                 if(!isset($accountTransaction->recipient_iban)) $accountTransaction->recipient_iban=$_GET['recipient_iban'];
-                if(!isset($accountTransaction->recipient_bic)) $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
+                $accountTransaction->recipient_bic = BICComponent::getBICFromIBAN($accountTransaction->recipient_iban);
+                $accountTransaction->payer_bic = BICComponent::getBICFromIBAN($accountTransaction->payer_iban);
                 if(!isset($accountTransaction->event_date)) $accountTransaction->event_date=date('d.m.Y');
+                // @TODO: multi-currency options
+                $accountTransaction->exchange_rate=1;
+                $accountTransaction->currency="EUR";
                 
-                $accountTransaction->validate();
-                // Uncomment the following line if AJAX validation is needed
-                //$controller->performAjaxValidation($accountTransaction);
-
-                //if($model->save())
-                //$this->redirect(array('view','id'=>$model->id));
+                $accountTransaction->recipient_iban = preg_replace('/\s+/', '', $accountTransaction->recipient_iban);
+                $accountTransaction->reference_number = preg_replace('/\s+/', '', $accountTransaction->reference_number);
+                                           
+                if(isset($accountTransaction->payer_iban)){
+                    $accountTransaction->validate();
+                    if($accountTransaction->save()) $controller->redirect(array('view','id'=>$accountTransaction->id));
+                }
+                
+                $controller->render('create',array(
+                'accountTransaction'=>$accountTransaction,
+                'ibanDropdown'=>$ibanDropdown,
+                ));
             }
-
-            $controller->render('create',array(
-                    'accountTransaction'=>$accountTransaction,
-            ));
     }
     
     /**
@@ -55,5 +67,6 @@ class CreateAction extends CAction
      
         return $form_step;
     }
+    
 }
 ?>

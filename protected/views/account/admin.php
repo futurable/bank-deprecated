@@ -2,16 +2,6 @@
 /* @var $this AccountController */
 /* @var $model Account */
 
-$this->breadcrumbs=array(
-	'Accounts'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Account', 'url'=>array('index')),
-	array('label'=>'Create Account', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -47,12 +37,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'iban',
-		'currency',
 		'name',
 		'status',
 		'create_date',
-		/*
 		'modify_date',
+		/*
 		'bank_user_id',
 		'bank_bic_id',
 		'bank_interest_id',

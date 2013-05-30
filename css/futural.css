@@ -133,3 +133,25 @@ body {
 #loginForm{
     padding: 40px 80px;
 }
+
+#account-transaction-form label, #account-transaction-form input{
+    display: inline-block;
+}
+
+#account-transaction-form label{
+    width: 30%;
+}
+
+.ibanDropdown{
+    width: 65%;
+}
+#account-transaction-form input[type='text']{
+    width: 30%;
+}
+
+.detail-view .even{
+    background-color: #eee !important;
+}
+.detail-view .odd{
+    background-color: #ddd !important;
+}

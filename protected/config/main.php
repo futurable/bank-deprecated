@@ -38,7 +38,7 @@ return array(
                 'tableProfiles' => 'bank_profile',
                 'tableProfileFields' => 'bank_profile_field',
                 # encrypting method (php hash function)
-                'hash' => 'md5',
+                'hash' => 'sha512',
                 # send activation email
                 'sendActivationMail' => true,
                 # allow access for non-activated users
@@ -129,6 +129,17 @@ return array(
                     'class'=>'ext.bootstrap.components.Bootstrap',
                     'responsiveCss'=>true,
                 ),
+            'widgetFactory'=>array(
+                'widgets'=>array(
+                    'CJuiDatePicker'=>array(
+                        'options'=>array(
+                            'firstDay'=>'1',
+                            'showAnim'=>'fold',
+                            'dateFormat'=>'dd.mm.yy',
+                        )
+                    )
+                )
+            )
 	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']

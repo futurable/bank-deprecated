@@ -5,7 +5,8 @@ class AccountTransactionController extends Controller
         public function actions()
         {
             return array(
-                'create'=>'application.controllers.accountTransaction.CreateAction',
+                'create'=>'application.controllers.AccountTransaction.CreateAction',
+                'list'=>'application.controllers.AccountTransaction.ListAction',
             );
         }
     
@@ -39,7 +40,7 @@ class AccountTransactionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','list'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -58,9 +59,30 @@ class AccountTransactionController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+            
+            $record=Account::model()->findAll(array(
+                'select'=>'iban, name',
+                'condition'=>'bank_user_id=:id',
+                'params'=>array(':id'=>$this->WebUser->id),
+            ));
+            
+            $accounts = array();
+            foreach($record as $account){                
+                $accounts[$account['iban']] = $account['name'];
+            }
+            
+            $iban = AccountTransaction::model()->find(array(
+                'select'=>'payer_iban',
+                'condition'=>'id=:id',
+                'params'=>array(':id'=>$id),
+            ))->payer_iban;
+            
+            if(array_key_exists($iban, $accounts)){
+                $this->render('view',array(
+                        'model'=>$this->loadModel($id),
+                ));
+            }
+            else echo "Unauthorized access";
 	}
 
 	/**
@@ -154,4 +176,20 @@ class AccountTransactionController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        public function getIbanDropdown(){
+            $id = $this->WebUser->id;
+            $record=Account::model()->findAll(array(
+               'select'=>'iban, name',
+               'condition'=>'bank_user_id=:id',
+               'params'=>array(':id'=>$id),
+            ));
+
+            $ibanDropdown = array();
+            foreach($record as $account){
+                $saldo = BankSaldo::getAccountSaldo($account['iban']);
+                $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
+            }
+            return $ibanDropdown;
+        }
 }

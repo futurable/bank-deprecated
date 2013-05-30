@@ -5,8 +5,8 @@
  *
  * The followings are the available columns in table 'bank_interest':
  * @property integer $id
- * @property string $interest_rate
- * @property string $interest_type
+ * @property string $rate
+ * @property string $type
  * @property string $create_date
  * @property string $modify_date
  *
@@ -31,12 +31,12 @@ class Interest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('interest_rate', 'length', 'max'=>11),
-			array('interest_type', 'length', 'max'=>32),
+			array('rate', 'length', 'max'=>11),
+			array('type', 'length', 'max'=>32),
 			array('create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, interest_rate, interest_type, create_date, modify_date', 'safe', 'on'=>'search'),
+			array('id, rate, type, create_date, modify_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +59,8 @@ class Interest extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'interest_rate' => 'Interest Rate',
-			'interest_type' => 'Interest Type',
+			'rate' => 'Rate',
+			'type' => 'Type',
 			'create_date' => 'Create Date',
 			'modify_date' => 'Modify Date',
 		);
@@ -85,8 +85,8 @@ class Interest extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('interest_rate',$this->interest_rate,true);
-		$criteria->compare('interest_type',$this->interest_type,true);
+		$criteria->compare('rate',$this->rate,true);
+		$criteria->compare('type',$this->type,true);
 		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('modify_date',$this->modify_date,true);
 

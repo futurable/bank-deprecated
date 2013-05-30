@@ -45,7 +45,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'bank_interest_id'); ?>
-		<?php echo $form->textField($loanInfo,'bank_interest_id'); ?>
+                <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','name'),array('prompt'=>'- Select interest -'));?>
 		<?php echo $form->error($loanInfo,'bank_interest_id'); ?>
 	</div>
 

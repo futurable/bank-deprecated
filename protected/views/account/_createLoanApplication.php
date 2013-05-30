@@ -33,7 +33,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'term'); ?>
-		<?php echo $form->textField($loanInfo,'term'); ?>
+		<?php echo $form->dropDownList($loanInfo,'term', range(5,30)); ?>
 		<?php echo $form->error($loanInfo,'term'); ?>
 	</div>
 

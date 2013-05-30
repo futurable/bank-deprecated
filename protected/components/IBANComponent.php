@@ -51,8 +51,8 @@ Class IBANComponent{
                 }
                 
 		// Branch code is valid
-		if( Datavalidator::isPositiveIntValid($branchCode, 6) and
-                    Datavalidator::isPositiveIntValid($accountNumber) and strlen($accountNumber) <= 7){ 
+		if( DataValidator::isPositiveIntValid($branchCode, 6) and
+                    DataValidator::isPositiveIntValid($accountNumber) and strlen($accountNumber) <= 7){ 
                         // Add zero-padding to accountnumber
                         $BBANAccount = BBANComponent::generateFinnishBBANaccount((int)$branchCode, (int)$accountNumber);
 

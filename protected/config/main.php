@@ -38,7 +38,7 @@ return array(
                 'tableProfiles' => 'bank_profile',
                 'tableProfileFields' => 'bank_profile_field',
                 # encrypting method (php hash function)
-                'hash' => 'md5',
+                'hash' => 'sha512',
                 # send activation email
                 'sendActivationMail' => true,
                 # allow access for non-activated users

@@ -23,7 +23,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'iban',
-		'currency',
 		'name',
 		'status',
 		'create_date',

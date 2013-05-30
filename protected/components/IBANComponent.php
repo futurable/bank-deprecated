@@ -43,14 +43,16 @@ Class IBANComponent{
 	 * @param	int		$accountNumber
 	 * @return  string 	$IBAN
 	 */
-	public static function generateFinnishIBANaccount($branchCode, $accountNumber){
-		exit; // TODO: fix this
-                require_once 'CommonServices/Datavalidator.php';
+	public static function generateFinnishIBANaccount($branchCode, $accountNumber = false){
 		$iban = false;
-		
+                
+                if($accountNumber == false){
+                    $accountNumber = BankAccount::model()->count(array('select'=>'id'));
+                }
+                
 		// Branch code is valid
-		if( Datavalidator::isPositiveIntValid($branchCode, 6) and
-                    Datavalidator::isPositiveIntValid($accountNumber) and strlen($accountNumber) <= 7){ 
+		if( DataValidator::isPositiveIntValid($branchCode, 6) and
+                    DataValidator::isPositiveIntValid($accountNumber) and strlen($accountNumber) <= 7){ 
                         // Add zero-padding to accountnumber
                         $BBANAccount = BBANComponent::generateFinnishBBANaccount((int)$branchCode, (int)$accountNumber);
 

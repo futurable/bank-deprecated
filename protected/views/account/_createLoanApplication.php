@@ -25,6 +25,12 @@
 		<?php echo $form->error($loanInfo,'repayment'); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->label($loanInfo,'instalment'); ?>
+		<?php echo $form->textField($loanInfo,'instalment'); ?>
+		<?php echo $form->error($loanInfo,'instalment'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Create'); ?>
 	</div>

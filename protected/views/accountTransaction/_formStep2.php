@@ -24,7 +24,8 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     
         <div class="row">
             <?php echo $form->label($accountTransaction,'payer_name'); ?>
-            <?php $payerName = $this->WebUser->profile->firstname." ".$this->WebUser->profile->lastname; ?>
+            <?php if(!empty($this->WebUser->profile->company)) $payerName = $this->WebUser->profile->company;
+                  else $payerName = $this->WebUser->profile->firstname." ".$this->WebUser->profile->lastname; ?>
             <?php echo $form->textField($accountTransaction,'payer_name',array('readonly'=>true, 'value'=>$payerName)); ?>
             <?php echo $form->error($accountTransaction,'payer_name'); ?>
         </div>

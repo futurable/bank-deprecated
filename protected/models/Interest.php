@@ -6,12 +6,14 @@
  * The followings are the available columns in table 'bank_interest':
  * @property integer $id
  * @property string $rate
- * @property string $type
+ * @property string $name
  * @property string $create_date
  * @property string $modify_date
+ * @property integer $bank_account_type_id
  *
  * The followings are the available model relations:
  * @property Account[] $accounts
+ * @property AccountType $bankAccountType
  */
 class Interest extends CActiveRecord
 {
@@ -31,12 +33,14 @@ class Interest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('bank_account_type_id', 'required'),
+			array('bank_account_type_id', 'numerical', 'integerOnly'=>true),
 			array('rate', 'length', 'max'=>11),
-			array('type', 'length', 'max'=>32),
+			array('name', 'length', 'max'=>32),
 			array('create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, rate, type, create_date, modify_date', 'safe', 'on'=>'search'),
+			array('id, rate, name, create_date, modify_date, bank_account_type_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +53,7 @@ class Interest extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'accounts' => array(self::HAS_MANY, 'Account', 'bank_interest_id'),
+			'bankAccountType' => array(self::BELONGS_TO, 'AccountType', 'bank_account_type_id'),
 		);
 	}
 
@@ -60,9 +65,10 @@ class Interest extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'rate' => 'Rate',
-			'type' => 'Type',
+			'name' => 'Name',
 			'create_date' => 'Create Date',
 			'modify_date' => 'Modify Date',
+			'bank_account_type_id' => 'Bank Account Type',
 		);
 	}
 
@@ -86,9 +92,10 @@ class Interest extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('rate',$this->rate,true);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('create_date',$this->create_date,true);
 		$criteria->compare('modify_date',$this->modify_date,true);
+		$criteria->compare('bank_account_type_id',$this->bank_account_type_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

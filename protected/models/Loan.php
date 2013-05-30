@@ -19,6 +19,9 @@
  * @property string $status
  * @property integer $bank_interest_id
  * @property integer $bank_account_id
+ *
+ * The followings are the available model relations:
+ * @property Account $bankAccount
  */
 class Loan extends CActiveRecord
 {
@@ -59,6 +62,7 @@ class Loan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
 		);
 	}
 

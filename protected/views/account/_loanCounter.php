@@ -2,7 +2,7 @@
     <table id='loanCounterTable'>
         <tr>
             <th><?php echo Yii::t('Loan', 'Amount') ?></th>
-            <th><?php echo Yii::t('Loan', 'Interest') ?></th>
+            <th><?php echo Yii::t('Loan', 'TotalInterest') ?></th>
             <th><?php echo Yii::t('Loan', 'RealAmount') ?></th>
             <th><?php echo Yii::t('Loan', 'Instalment') ?></th>
             <th><?php echo Yii::t('Loan', 'Term') ?></th>

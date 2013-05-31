@@ -55,7 +55,7 @@
         
         <div class="row">
 		<?php echo $form->labelEx($Account,'bank_interest_id'); ?>
-		<?php echo $form->dropDownList($Account, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','type'),array('prompt'=>'- Select interest -'));?>
+		<?php echo $form->dropDownList($Account, 'bank_interest_id', CHtml::listData(Interest::model()->findAll(),'id','name'),array('prompt'=>'- Select interest -'));?>
 		<?php echo $form->error($Account,'bank_interest_id'); ?>
 	</div>
 

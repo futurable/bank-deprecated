@@ -8,6 +8,7 @@
  * @property string $type
  * @property string $amount
  * @property integer $term
+ * @property string $term_interval
  * @property string $instalment
  * @property string $repayment
  * @property string $interval
@@ -41,17 +42,17 @@ class Loan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('accept_date, bank_interest_id, bank_account_id', 'required'),
+			array('term_interval', 'accept_date, bank_interest_id, bank_account_id', 'required'),
 			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
                         array('amount, repayment, instalment', 'numerical'),
-			array('interval', 'length', 'max'=>5),
+			array('term_interval', 'interval', 'length', 'max'=>5),
 			array('status', 'length', 'max'=>8),
 			array('create_date, grant_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
+			array('type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +78,7 @@ class Loan extends CActiveRecord
 			'type' => Yii::t('Loan', 'Type'),
 			'amount' => Yii::t('Loan', 'Amount'),
 			'term' => Yii::t('Loan', 'Term'),
+                        'term_interval' => Yii::t('Loan', 'TermInterval'),
 			'instalment' => Yii::t('Loan', 'Instalment'),
 			'repayment' => Yii::t('Loan', 'Repayment'),
 			'interval' => Yii::t('Loan', 'Interval'),
@@ -113,6 +115,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('term',$this->term);
+                $criteria->compare('term_interval',$this->term_interval,true);
 		$criteria->compare('instalment',$this->instalment,true);
 		$criteria->compare('repayment',$this->repayment,true);
 		$criteria->compare('interval',$this->interval,true);

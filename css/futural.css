@@ -155,3 +155,8 @@ body {
 .detail-view .odd{
     background-color: #ddd !important;
 }
+
+#createLoanApplicationForm label{
+    display: inline-block;
+    width: 20%;
+}

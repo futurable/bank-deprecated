@@ -73,21 +73,21 @@ class Loan extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'type' => 'Type',
-			'amount' => 'Amount',
-			'term' => 'Term',
-			'instalment' => 'Instalment',
-			'repayment' => 'Repayment',
-			'interval' => 'Interval',
-			'event_day' => 'Event Day',
-			'create_date' => 'Create Date',
-			'grant_date' => 'Grant Date',
-			'accept_date' => 'Accept Date',
-			'modify_date' => 'Modify Date',
-			'status' => 'Status',
-			'bank_interest_id' => 'Bank Interest',
-			'bank_account_id' => 'Bank Account',
+			'id' => Yii::t('Loan', 'ID'),
+			'type' => Yii::t('Loan', 'Type'),
+			'amount' => Yii::t('Loan', 'Amount'),
+			'term' => Yii::t('Loan', 'Term'),
+			'instalment' => Yii::t('Loan', 'Instalment'),
+			'repayment' => Yii::t('Loan', 'Repayment'),
+			'interval' => Yii::t('Loan', 'Interval'),
+			'event_day' => Yii::t('Loan', 'EventDay'),
+			'create_date' => Yii::t('Loan', 'CreateDate'),
+			'grant_date' => Yii::t('Loan', 'GrantDate'),
+			'accept_date' => Yii::t('Loan', 'AcceptDate'),
+			'modify_date' => Yii::t('Loan', 'ModifyDate'),
+			'status' => Yii::t('Loan', 'Status'),
+			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
+			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
 		);
 	}
 

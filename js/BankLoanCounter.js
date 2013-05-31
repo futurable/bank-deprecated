@@ -10,9 +10,13 @@ $(document).ready(function(){
         var loanTerm = $("#Loan_term option:selected").text();
         var loanTermInterval = $("#Loan_term_interval option:selected").val();
         var interestType = $("#Loan_bank_interest_id option:selected").val();
-        var loanInterest = $("#Loan_bank_interest_id option:selected").text().match(/[0-9][.][0-9]+/); 
-        var realAmount = 0;
+        var loanInterest = $("#Loan_bank_interest_id option:selected").text().match(/[0-9][.][0-9]+/) / 100; 
         
+        var loanIntervalInDays = getIntervalInDays(loanInterval);
+        var loanInterestPart = getLoanInterestPart();
+        
+        var realAmount = fillPaymentPlan(loanAmount, loanInterestPart);
+        fillLoanCounter(loanAmount, realAmount);
     }
     
     loanCounter();
@@ -24,4 +28,23 @@ $(document).ready(function(){
         loanCounter();
 	});
     
+    getLoanInterestPart = function(interest, interval){    
+        interestDaily = interest / 365;
+        intervalInDays = getIntervalInDays();
+        var interestPart = interestDaily * intervalInDays;
+        
+        return interestPart;
+    }
+    
+    getIntervalInDays = function(loanInterval){
+        var loanIntervalInDays;
+        
+        if(loanInterval == "day"){ loanIntervalInDays = 1; }
+		else if(loanInterval == "week"){ loanIntervalInDays = 7; }
+		else if(loanInterval == "month"){ loanIntervalInDays = 30; }
+		else if(loanInterval == "year"){ loanIntervalInDays = 365; }
+		else { loanIntervalInDays = 0; }
+        
+        return loanIntervalInDays;
+    }
 });

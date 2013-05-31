@@ -43,8 +43,12 @@ Class BBANComponent{
 	 * @param	int		$accountNumber
 	 * @return  int(14) $bankAccount
 	 */
-	public static function generateFinnishBBANaccount($branchCode, $accountNumber){
+	public static function generateFinnishBBANaccount($branchCode, $accountNumber = false){
 		$bankAccount = false;
+        
+        if($accountNumber == false){
+           $accountNumber = BankAccount::model()->count(array('select'=>'id'));
+       }
 
 		// If branchcode and account number are valid 
 		if( Datavalidator::isPositiveIntValid($branchCode, 6) && Datavalidator::isPositiveIntValid($accountNumber) ){

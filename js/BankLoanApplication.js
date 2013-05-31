@@ -1,7 +1,5 @@
-$(document).ready(function(){
-    //$(".instalment").hide();
-    //$(".loanTermSelect").hide();
-
+$(document).ready(function(){ 
+    
     var toggleFields = function(){
         // Show repayment
         if($("#Loan_type").val() == "fixedRepayment"){

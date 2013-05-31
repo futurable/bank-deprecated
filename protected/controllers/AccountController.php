@@ -177,4 +177,18 @@ class AccountController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        public function getInterestDropdown(){
+            $record=Interest::model()->findAll(array(
+               'select'=>'name, rate',
+               'condition'=>'bank_account_type_id=2',
+            )); // Get loan account interests
+
+            $interestDropdown = array();
+            foreach($record as $interest){
+                $rate = number_format($interest->rate, 3);
+                $interestDropdown[$interest->name] = Yii::t('Account', $interest->name)." ($rate%)";
+            }
+            return $interestDropdown;
+        }
 }

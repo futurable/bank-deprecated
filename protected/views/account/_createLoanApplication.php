@@ -34,6 +34,7 @@
         <div class="row loanTerm">
 		<?php echo $form->label($loanInfo,'term'); ?>
 		<?php echo $form->dropDownList($loanInfo,'term', range(5,30)); ?>
+		<?php echo ZHtml::enumDropDownList($loanInfo, 'term_interval'); ?>
 		<?php echo $form->error($loanInfo,'term'); ?>
 	</div>
 

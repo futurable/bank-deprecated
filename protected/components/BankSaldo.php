@@ -10,6 +10,8 @@ class BankSaldo {
         ->andWhere("(payer_iban = '$iban' OR recipient_iban  = '$iban')")
         ->queryRow();
         
+        if(empty($record['saldo'])) $record['saldo'] = "0.00";
+        
         if(!empty($record)) return $record['saldo'];
         else return 0;
     } 

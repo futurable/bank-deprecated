@@ -1,5 +1,6 @@
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bankLoanApplication.js'); ?>
-<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bankLoanCounter.js'); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/BankLoanApplication.js'); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/BankLoanCounter.js'); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/FillPaymentPlan.js'); ?>
 
 <h1><?php echo Yii::t('Loan', 'CreateLoanApplication'); ?></h1>
 

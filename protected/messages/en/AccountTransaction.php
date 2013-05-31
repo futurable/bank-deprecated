@@ -26,5 +26,7 @@ return array(
     "InsufficientSaldo" => "Insufficient saldo",
     "CreateTransaction" => "Create transaction",
     "InvalidDueDate" => "Invalid due date",
+    "Continue" => "Continue",
+    "CreateTransaction" => "Create transaction",
 );
 ?>

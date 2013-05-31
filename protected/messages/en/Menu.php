@@ -6,5 +6,6 @@ return array(
     'Transactions' => 'Transactions',
     'LoanApplications' => 'Loan applications',
     'Loans' => 'Loans',
+    'Logout' => 'Logout',
 );
 ?>

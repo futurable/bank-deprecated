@@ -6,5 +6,6 @@ return array(
     'Transactions' => 'Tapahtumat',
     'LoanApplications' => 'Lainahakemukset',
     'Loans' => 'Lainat',
+    'Logout' => 'Kirjaudu ulos',
 );
 ?>

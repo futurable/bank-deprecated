@@ -1,7 +1,7 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'account-form',
+	'id'=>'createLoanApplicationForm',
         'enableClientValidation'=>true,
         'clientOptions'=>array('validateOnSubmit'=>true,'validateOnChange'=>true),
         'htmlOptions'=>array('class'=>'well'),
@@ -45,7 +45,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'bank_interest_id'); ?>
-                <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', $this->getInterestDropdown() ,array('prompt'=>'- Select interest -'));?>
+                <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', $this->getInterestDropdown());?>
 		<?php echo $form->error($loanInfo,'bank_interest_id'); ?>
 	</div>
 

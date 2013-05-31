@@ -27,5 +27,6 @@ return array(
     "CreateTransaction" => "Tee maksu",
     "InvalidDueDate" => "Virheellinen eräpäivä",
     "Continue" => "Jatka",
+    "CreateTransaction" => "Tee maksu",
 );
 ?>

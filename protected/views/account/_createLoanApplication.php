@@ -6,7 +6,7 @@
         'clientOptions'=>array('validateOnSubmit'=>true,'validateOnChange'=>true),
         'htmlOptions'=>array('class'=>'well'),
 )); ?>
-
+<?php echo $form->errorSummary($loanInfo); ?>
 	<div class="row">
 		<?php echo $form->label($loanInfo,'amount'); ?>
 		<?php echo $form->textField($loanInfo,'amount'); ?>

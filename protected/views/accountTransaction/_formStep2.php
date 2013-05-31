@@ -86,7 +86,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	</div>
 
 	<div class="row buttons">
-            <?php echo CHtml::submitButton(Yii::t('AccountTransaction','CreateTransaction')); ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('AccountTransaction', 'CreateTransaction'))); ?>
 	</div>
     </fieldset>
 <?php $this->endWidget(); ?>

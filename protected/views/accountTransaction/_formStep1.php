@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+<div class="form well">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'account-transaction-form',
@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Continue'); ?>
+        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('AccountTransaction', 'Continue'))); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

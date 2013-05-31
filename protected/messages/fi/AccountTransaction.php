@@ -26,5 +26,7 @@ return array(
     "InsufficientSaldo" => "Tilin saldo ei riitä",
     "CreateTransaction" => "Tee maksu",
     "InvalidDueDate" => "Virheellinen eräpäivä",
+    "Continue" => "Jatka",
+    "CreateTransaction" => "Tee maksu",
 );
 ?>

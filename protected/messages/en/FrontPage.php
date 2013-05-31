@@ -1,6 +1,6 @@
 <?php
 return array(
     "WelcomeText" => "Welcome to Futural bank.",
-    "DescriptionText" => "This is the front page.",
+    "DescriptionText" => "For all your virtual monetary needs.",
 );
 ?>

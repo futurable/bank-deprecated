@@ -1,15 +1,4 @@
-getTermInDays = function(){
-    var term = $("#Loan_term_interval option:selected").val();
-    var termInDays;
 
-    if(term == "days"){ termInDays = 1; }
-    else if(term == "weeks"){ termInDays = 7; }
-    else if(term == "months"){ termInDays = 30; }
-    else if(term == "years"){ termInDays = 360; }
-    else{ termInDays = 0; }
-
-    return termInDays;
-};
 
 fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 	if( $.isNumeric(loanAmount) && $.isNumeric(loanInterestPart) && $.isNumeric(loanIntervalInDays) ){
@@ -83,6 +72,7 @@ fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 		}
 		
 		$('#paymentPlanTable').html( loanCounterContent );
+        if( loanType != 'annuity') $("#Loan_term option:selected").text(repaymentNumber);
         return realAmount;
 	}
 	else{

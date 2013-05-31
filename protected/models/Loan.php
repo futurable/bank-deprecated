@@ -8,6 +8,7 @@
  * @property string $type
  * @property string $amount
  * @property integer $term
+ * @property string $term_interval
  * @property string $instalment
  * @property string $repayment
  * @property string $interval
@@ -19,6 +20,9 @@
  * @property string $status
  * @property integer $bank_interest_id
  * @property integer $bank_account_id
+ *
+ * The followings are the available model relations:
+ * @property Account $bankAccount
  */
 class Loan extends CActiveRecord
 {
@@ -38,16 +42,17 @@ class Loan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('accept_date, bank_interest_id, bank_account_id', 'required'),
+			array('term_interval, bank_interest_id, bank_account_id', 'required'),
 			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
-			array('interval', 'length', 'max'=>5),
+                        array('amount, repayment, instalment', 'numerical'),
+			array('term_interval, interval', 'length', 'max'=>5),
 			array('status', 'length', 'max'=>8),
 			array('create_date, grant_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
+			array('type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +64,7 @@ class Loan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
 		);
 	}
 
@@ -68,21 +74,22 @@ class Loan extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'type' => 'Type',
-			'amount' => 'Amount',
-			'term' => 'Term',
-			'instalment' => 'Instalment',
-			'repayment' => 'Repayment',
-			'interval' => 'Interval',
-			'event_day' => 'Event Day',
-			'create_date' => 'Create Date',
-			'grant_date' => 'Grant Date',
-			'accept_date' => 'Accept Date',
-			'modify_date' => 'Modify Date',
-			'status' => 'Status',
-			'bank_interest_id' => 'Bank Interest',
-			'bank_account_id' => 'Bank Account',
+			'id' => Yii::t('Loan', 'ID'),
+			'type' => Yii::t('Loan', 'Type'),
+			'amount' => Yii::t('Loan', 'Amount'),
+			'term' => Yii::t('Loan', 'Term'),
+                        'term_interval' => Yii::t('Loan', 'TermInterval'),
+			'instalment' => Yii::t('Loan', 'Instalment'),
+			'repayment' => Yii::t('Loan', 'Repayment'),
+			'interval' => Yii::t('Loan', 'Interval'),
+			'event_day' => Yii::t('Loan', 'EventDay'),
+			'create_date' => Yii::t('Loan', 'CreateDate'),
+			'grant_date' => Yii::t('Loan', 'GrantDate'),
+			'accept_date' => Yii::t('Loan', 'AcceptDate'),
+			'modify_date' => Yii::t('Loan', 'ModifyDate'),
+			'status' => Yii::t('Loan', 'Status'),
+			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
+			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
 		);
 	}
 
@@ -108,6 +115,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('term',$this->term);
+                $criteria->compare('term_interval',$this->term_interval,true);
 		$criteria->compare('instalment',$this->instalment,true);
 		$criteria->compare('repayment',$this->repayment,true);
 		$criteria->compare('interval',$this->interval,true);

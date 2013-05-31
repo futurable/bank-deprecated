@@ -187,7 +187,7 @@ class AccountController extends Controller
             $interestDropdown = array();
             foreach($record as $interest){
                 $rate = number_format($interest->rate, 3);
-                $interestDropdown[$interest->id] = Yii::t('Account', $interest->name)." ($rate%)";
+                $interestDropdown[$interest->id] = Yii::t('Interest', $interest->name)." ($rate%)";
             }
             return $interestDropdown;
         }

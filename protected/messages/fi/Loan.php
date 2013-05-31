@@ -7,7 +7,7 @@ return array(
     'day' => 'Päivä',
     'days' => 'päivää',
     'week' => 'Viikko',
-    'weeks' => 'kiikkoa',
+    'weeks' => 'viikkoa',
     'month' => 'Kuukausi',
     'months' => 'kuukautta',
     'year' => 'Vuosi',

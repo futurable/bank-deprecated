@@ -31,10 +31,29 @@ $(document).ready(function(){
         return intervalInDays; 
     };
     
-    formatLoanTermToHumanReadable = function( loanTerm, loanInterval ){
-		var loanIntervalInDays = getIntervalInDays(loanInterval); 
-		term = Math.ceil( loanTerm * loanIntervalInDays);
+    getTermInDays = function(){
+        var term = $("#Loan_term_interval option:selected").val();
+        var termInDays;
 
+        if(term == "days"){ termInDays = 1; }
+        else if(term == "weeks"){ termInDays = 7; }
+        else if(term == "months"){ termInDays = 30; }
+        else if(term == "years"){ termInDays = 360; }
+        else{ termInDays = 0; }
+
+        return termInDays;
+    };
+    
+    formatLoanTermToHumanReadable = function( loanTermInDays, loanType ){
+        if(loanType=='annuity'){
+            var loanInterval = $("#Loan_term_interval option:selected").val().slice(0,-1);
+        }
+        else var loanInterval = $("#Loan_interval option:selected").val();
+        
+        var loanIntervalInDays = getIntervalInDays(loanInterval);
+        
+		term = Math.ceil( loanTermInDays * loanIntervalInDays);
+        
 		var years = 0;
 		var months = 0;
 		var days = 0;
@@ -71,13 +90,13 @@ $(document).ready(function(){
         // @TODO: get translations
 		prettyTerm = "";
 		if( years > 0){
-			prettyTerm += years + " years";
+			prettyTerm += years + " years ";
 		}
 		if( months > 0){
-			prettyTerm += months + " months";
+			prettyTerm += months + " months ";
 		}
 		if( days > 0){
-			prettyTerm += days + " days";
+			prettyTerm += days + " days ";
 		}
 		
 		return prettyTerm;
@@ -90,16 +109,16 @@ $(document).ready(function(){
         var loanRepayment = $("#Loan_repayment");
         var loanInstalment = $("#Loan_instalment");
 		var loanInterval = $("#Loan_interval").val();
-        var loanTerm = $("#Loan_term option:selected").text();
         var loanTermInterval = $("#Loan_term_interval option:selected").val();
         var interestType = $("#Loan_bank_interest_id option:selected").val();
         var loanInterest = $("#Loan_bank_interest_id option:selected").text().match(/[0-9][.][0-9]+/) / 100; 
         
         var loanIntervalInDays = getIntervalInDays(loanInterval);
         var loanInterestPart = getLoanInterestPart(loanInterest, loanIntervalInDays);
-        var prettyLoanTerm = formatLoanTermToHumanReadable(loanTerm, loanInterval);
-        
+     
         var realAmount = fillPaymentPlan(loanAmount, loanInterestPart, loanIntervalInDays);
+        var loanTerm = $("#Loan_term option:selected").text();
+        var prettyLoanTerm = formatLoanTermToHumanReadable( loanTerm, loanType );
         fillLoanCounter(loanAmount, realAmount, prettyLoanTerm);
     }
     

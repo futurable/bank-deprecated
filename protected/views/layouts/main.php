@@ -16,8 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/futural.css" />
-        <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/css/img/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jqueryui/futural/jquery-ui.css" />
+    <link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/css/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jqueryui/futural/jquery-ui.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -69,12 +69,12 @@
                 elseif(!Yii::app()->user->isGuest){
                     $this->widget('zii.widgets.CMenu',array(
                         'items'=>array(
-                            array('label'=>'Front page', 'url'=>array('/site/index')),
-                            array('label'=>'New transaction', 'url'=>array('/accountTransaction/create')),
-                            array('label'=>'Payments for due', 'url'=>array('/accountTransaction/index')),
-                            array('label'=>'Transactions', 'url'=>array('/accountTransaction/list')),
-                            array('label'=>'Loan applications', 'url'=>array('/account/createLoanApplication')),
-                            array('label'=>'Loans', 'url'=>array('/account/view')),
+                            array('label'=>Yii::t('Menu', 'FrontPage'), 'url'=>array('/site/index')),
+                            array('label'=>Yii::t('Menu', 'NewTransaction'), 'url'=>array('/accountTransaction/create')),
+                            array('label'=>Yii::t('Menu', 'PaymentsForDue'), 'url'=>array('/accountTransaction/index')),
+                            array('label'=>Yii::t('Menu', 'Transactions'), 'url'=>array('/accountTransaction/list')),
+                            array('label'=>Yii::t('Menu', 'LoanApplications'), 'url'=>array('/account/createLoanApplication')),
+                            array('label'=>Yii::t('Menu', 'Loans'), 'url'=>array('/account/view')),
                         ),
                     ));
                 } 

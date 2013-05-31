@@ -45,6 +45,7 @@ class Loan extends CActiveRecord
 			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
+                        array('amount, repayment, instalment', 'numerical'),
 			array('interval', 'length', 'max'=>5),
 			array('status', 'length', 'max'=>8),
 			array('create_date, grant_date, modify_date', 'safe'),

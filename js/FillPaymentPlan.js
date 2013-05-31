@@ -1,4 +1,5 @@
-getTermInDays = function( term ){
+getTermInDays = function(){
+    var term = $("#Loan_term_interval option:selected").val();
     var termInDays;
 
     if(term == "days"){ termInDays = 1; }
@@ -25,19 +26,21 @@ fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 		// Loan types
 		if( loanType == 'fixedRepayment' ){
 			repaymentAmount = Number($("#Loan_repayment").val());
+            $("#Loan_instalment").val(repaymentAmount);
 		}
 		else if( loanType == 'fixedInstalment' ){
 			instalmentAmount = Number($("#Loan_instalment").val());
+            $("#Loan_repayment").val(instalmentAmount);
 		}
         else if( loanType == 'annuity' ){
-			loanTerm =  Number($("#Loan_term").val());
-			var termMultiplier = getTermInDays();
+			loanTerm =  Number($("#Loan_term option:selected").text());
+			var termInDays = getTermInDays(loanTerm);
 			
-			loanDays = loanTerm * termMultiplier;
+			loanDays = loanTerm * termInDays;
 			payments = loanDays / loanIntervalInDays;
 			
-			nominator = loanAmount * interest;
-			denominator = 1 - ( Math.pow( 1 + interest, -payments ) );
+			nominator = loanAmount * loanInterest;
+			denominator = 1 - ( Math.pow( 1 + loanInterest, -payments ) );
 			repaymentAmount = nominator / denominator;
 		}
 		

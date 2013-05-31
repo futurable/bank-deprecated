@@ -45,7 +45,7 @@
                 if(isset($this->WebUser)){
                     echo $this->WebUser->profile->firstname." ".$this->WebUser->profile->lastname."<br/>";
                     echo $this->WebUser->profile->company."<br/>";
-                    echo CHtml::link(Yii::t('Header','Logout'),array('user/logout'));
+                    echo CHtml::link(Yii::t('Menu','Logout'),array('user/logout'));
                 } ?></p>
             </div>
            

@@ -1,5 +1,24 @@
 $(document).ready(function(){ 
     
+    getIntervalInDays = function(loanInterval){
+        var loanIntervalInDays;
+
+        if(loanInterval == "day"){ loanIntervalInDays = 1; }
+        else if(loanInterval == "week"){ loanIntervalInDays = 7; }
+        else if(loanInterval == "month"){ loanIntervalInDays = 30; }
+        else if(loanInterval == "year"){ loanIntervalInDays = 365; }
+        else { loanIntervalInDays = 0; }
+
+        return loanIntervalInDays;
+    }
+    
+    getLoanInterestPart = function(interest, loanIntervalInDays){    
+        var interestDaily = interest / 360;
+        var interestPart = interestDaily * loanIntervalInDays;
+        
+        return interestPart;
+    }
+    
     loanCounter = function(){
         // Get variables
         var loanAmount = $("#Loan_amount").val();
@@ -13,10 +32,10 @@ $(document).ready(function(){
         var loanInterest = $("#Loan_bank_interest_id option:selected").text().match(/[0-9][.][0-9]+/) / 100; 
         
         var loanIntervalInDays = getIntervalInDays(loanInterval);
-        var loanInterestPart = getLoanInterestPart();
+        var loanInterestPart = getLoanInterestPart(loanInterest, loanIntervalInDays); alert (loanInterestPart);
         
-        var realAmount = fillPaymentPlan(loanAmount, loanInterestPart);
-        fillLoanCounter(loanAmount, realAmount);
+        //var realAmount = fillPaymentPlan(loanAmount, loanInterestPart);
+        //fillLoanCounter(loanAmount, realAmount);
     }
     
     loanCounter();
@@ -27,24 +46,4 @@ $(document).ready(function(){
 	$("#createLoanApplicationForm select").change(function(){
         loanCounter();
 	});
-    
-    getLoanInterestPart = function(interest, interval){    
-        interestDaily = interest / 365;
-        intervalInDays = getIntervalInDays();
-        var interestPart = interestDaily * intervalInDays;
-        
-        return interestPart;
-    }
-    
-    getIntervalInDays = function(loanInterval){
-        var loanIntervalInDays;
-        
-        if(loanInterval == "day"){ loanIntervalInDays = 1; }
-		else if(loanInterval == "week"){ loanIntervalInDays = 7; }
-		else if(loanInterval == "month"){ loanIntervalInDays = 30; }
-		else if(loanInterval == "year"){ loanIntervalInDays = 365; }
-		else { loanIntervalInDays = 0; }
-        
-        return loanIntervalInDays;
-    }
 });

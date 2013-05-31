@@ -49,7 +49,7 @@ fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 			
 			interestAmount = loanAmount*loanInterest;
 			var loanWithInterest = parseFloat(loanAmount+interestAmount);
-            realAmount += loanInterest;
+            realAmount += interestAmount;
 			
 			if( loanType == 'fixedInstalment' ){
 				repaymentAmount = instalmentAmount + interestAmount;

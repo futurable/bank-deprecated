@@ -51,7 +51,7 @@ Class BBANComponent{
        }
 
 		// If branchcode and account number are valid 
-		if( Datavalidator::isPositiveIntValid($branchCode, 6) && Datavalidator::isPositiveIntValid($accountNumber) ){
+		if( DataValidator::isPositiveIntValid($branchCode, 6) && DataValidator::isPositiveIntValid($accountNumber) ){
 			// If account number is too short, fill with zeros from left
 			$accountNumber = sprintf("%07s", $accountNumber);
 			

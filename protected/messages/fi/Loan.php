@@ -22,5 +22,6 @@ return array(
     'Status' => 'Status',
     'BankInterest' => 'Lainan korko',
     'BankAccount' => 'Pankkitili',
+    'RealAmount' => 'Todellinen määrä',
 );
 ?>

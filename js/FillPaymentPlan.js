@@ -1,14 +1,13 @@
-getTermMultiplier = function(){
-    var loanTermInterval = $("#Loan_term_interval").val();
-    var termMultiplier;
+getTermInDays = function( term ){
+    var termInDays;
 
-    if(loanTermInterval == "days"){ termMultiplier = 1; }
-    else if(loanTermInterval == "weeks"){ termMultiplier = 7; }
-    else if(loanTermInterval == "months"){ termMultiplier = 30; }
-    else if(loanTermInterval == "years"){ termMultiplier = 360; }
-    else{ termMultiplier = 0; }
+    if(term == "days"){ termInDays = 1; }
+    else if(term == "weeks"){ termInDays = 7; }
+    else if(term == "months"){ termInDays = 30; }
+    else if(term == "years"){ termInDays = 360; }
+    else{ termInDays = 0; }
 
-    return termMultiplier;
+    return termInDays;
 };
 
 fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
@@ -32,7 +31,7 @@ fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 		}
         else if( loanType == 'annuity' ){
 			loanTerm =  Number($("#Loan_term").val());
-			var termMultiplier = getTermMultiplier();
+			var termMultiplier = getTermInDays();
 			
 			loanDays = loanTerm * termMultiplier;
 			payments = loanDays / loanIntervalInDays;

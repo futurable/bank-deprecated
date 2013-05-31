@@ -19,19 +19,19 @@
 		<?php echo $form->error($loanInfo,'type'); ?>
 	</div>
 
-        <div class="row">
+        <div class="row loanRepayment">
 		<?php echo $form->label($loanInfo,'repayment'); ?>
 		<?php echo $form->textField($loanInfo,'repayment'); ?>
 		<?php echo $form->error($loanInfo,'repayment'); ?>
 	</div>
 
-        <div class="row">
+        <div class="row loanInstalment">
 		<?php echo $form->label($loanInfo,'instalment'); ?>
 		<?php echo $form->textField($loanInfo,'instalment'); ?>
 		<?php echo $form->error($loanInfo,'instalment'); ?>
 	</div>
 
-        <div class="row">
+        <div class="row loanTerm">
 		<?php echo $form->label($loanInfo,'term'); ?>
 		<?php echo $form->dropDownList($loanInfo,'term', range(5,30)); ?>
 		<?php echo $form->error($loanInfo,'term'); ?>

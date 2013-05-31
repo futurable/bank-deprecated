@@ -1,5 +1,6 @@
 <?php
 return array(
+    'CreateLoanApplication' => 'Tee lainahakemus',
     'fixedRepayment' => 'Kiinteä tasaerä',
     'fixedInstalment' => 'Tasalyhennys ',
     'annuity' => 'Annuiteetti',

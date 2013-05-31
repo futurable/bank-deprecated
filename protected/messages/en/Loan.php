@@ -1,5 +1,6 @@
 <?php
 return array(
+    'CreateLoanApplication' => 'Create a loan application',
     'fixedRepayment' => 'Fixed repayment',
     'fixedInstalment' => 'Fixed instalment',
     'annuity' => 'Annuity',

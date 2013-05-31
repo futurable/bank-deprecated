@@ -23,5 +23,6 @@ return array(
     'BankInterest' => 'Loan interest',
     'BankAccount' => 'Bank account',
     'RealAmount' => 'Real amount',
+    'TotalInterest' => 'Total interest',
 );
 ?>

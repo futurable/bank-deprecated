@@ -23,5 +23,6 @@ return array(
     'BankInterest' => 'Lainan korko',
     'BankAccount' => 'Pankkitili',
     'RealAmount' => 'Todellinen määrä',
+    'TotalInterest' => 'Korko-osuus',
 );
 ?>

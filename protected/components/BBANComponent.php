@@ -47,7 +47,7 @@ Class BBANComponent{
 		$bankAccount = false;
         
         if($accountNumber == false){
-           $accountNumber = BankAccount::model()->count(array('select'=>'id'));
+           $accountNumber = Account::model()->count(array('select'=>'id'));
        }
 
 		// If branchcode and account number are valid 

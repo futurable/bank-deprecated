@@ -7,6 +7,7 @@ class AccountController extends Controller
             return array(
                 'createBankAccount'=>'application.controllers.Account.CreateBankAccountAction',
                 'createLoanApplication'=>'application.controllers.Account.CreateLoanApplicationAction',
+                'manageLoanApplication'=>'application.controllers.Account.ManageLoanApplicationAction'
             );
         }
 	/**
@@ -43,7 +44,7 @@ class AccountController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','createBankAccount'),
+				'actions'=>array('admin','delete','createBankAccount', 'manageLoanApplication'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users

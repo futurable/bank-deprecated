@@ -19,7 +19,7 @@
         echo "<tr>";
             echo "<td>".$loanApplication->bankAccount->iban."</td>";
             echo "<td>".$loanApplication->bankAccount->bankUser->profile->company."</td>";
-            echo "<td>".$loanApplication->amount."</td>";
+            echo "<td>".$loanApplication->amount."&euro;</td>";
             echo "<td>".$loanApplication->repayment."&euro;</td>";
             echo "<td>$status</td>";
             echo "<td>";

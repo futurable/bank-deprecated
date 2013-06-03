@@ -59,6 +59,7 @@
                             array('label'=>'Accounts', 'url'=>array('/account/'), 'items'=>array(
                                 array('label'=>'Create', 'url'=>array('/account/createBankAccount')),
                                 array('label'=>'Manage', 'url'=>array('/account/admin')),
+                                array('label'=>'Loan Applications', 'url'=>array('/account/manageLoanApplication')),
                                 ),  
                             ),
                             array('label'=>'Users', 'url'=>array('/user')),

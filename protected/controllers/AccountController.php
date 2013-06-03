@@ -39,7 +39,7 @@ class AccountController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createLoanApplication'),
+				'actions'=>array('create','update','createLoanApplication', 'viewLoanApplication'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -149,6 +149,13 @@ class AccountController extends Controller
 			'model'=>$model,
 		));
 	}
+    
+    public function actionViewLoanApplication(){
+        $Account=new Account();
+        $this->render('viewLoanApplication',array(
+            'Account'=>$Account,
+        ));
+    }
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

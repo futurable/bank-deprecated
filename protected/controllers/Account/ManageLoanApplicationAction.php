@@ -5,8 +5,18 @@ class ManageLoanApplicationAction extends CAction
     {
         $controller=$this->getController();
         
-        $controller->render('manageLoanApplication',array(
+        $loanApplications = Loan::model()->findall();
+        
+        if(isset($_POST)&& $_POST['Loan']){
+            $id = $_POST['Loan']['id'];
+            
+            $Loan=Loan::model()->findByPk($id);
+            
 
+        }
+        
+        $controller->render('manageLoanApplication',array(
+            'loanApplications' => $loanApplications,
         ));
     }
 }

@@ -53,7 +53,6 @@
 	<div class="row buttons">
 		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'CreateLoanApplication'))); ?>
 	</div>
-	</div>
 
 <?php $this->endWidget(); ?>
 

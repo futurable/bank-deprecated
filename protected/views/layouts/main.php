@@ -28,7 +28,7 @@
     <p>
             Welcome to <a href='http://futurable.fi/index.php/en/tuotteet-ja-palvelut/oppimisymparistot'>Futural</a> - a virtual learning environment 
             by <a href='http://futurable.fi'>Futurable</a>.
-            <a href='#'>Give feedback</a>.
+            <a href="mailto:futurality@futurable.fi?subject=Feedback">Give feedback</a> 
     </p>
 </div>
     
@@ -59,6 +59,7 @@
                             array('label'=>'Accounts', 'url'=>array('/account/'), 'items'=>array(
                                 array('label'=>'Create', 'url'=>array('/account/createBankAccount')),
                                 array('label'=>'Manage', 'url'=>array('/account/admin')),
+                                array('label'=>'Loan Applications', 'url'=>array('/account/manageLoanApplication')),
                                 ),  
                             ),
                             array('label'=>'Users', 'url'=>array('/user')),

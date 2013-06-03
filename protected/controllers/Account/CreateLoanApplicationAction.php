@@ -32,7 +32,7 @@ class CreateLoanApplicationAction extends CAction
             
             if($accountSuccess AND $loanSuccess){
                 $transaction->commit();
-                $controller->redirect(array('view','id'=>$loanAccount->id));
+                $controller->redirect(array('viewLoanApplication','id'=>$loanAccount->id));
             }
             else{
                 $transaction->rollback();

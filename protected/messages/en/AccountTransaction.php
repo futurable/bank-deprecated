@@ -28,5 +28,7 @@ return array(
     "InvalidDueDate" => "Invalid due date",
     "Continue" => "Continue",
     "CreateTransaction" => "Create transaction",
+    "GetTransactions" => "Get transactions",
+    "Transactions" => "Transactions",
 );
 ?>

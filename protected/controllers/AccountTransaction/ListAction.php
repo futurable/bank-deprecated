@@ -6,16 +6,16 @@ class ListAction extends CAction{
         $Account = new Account();
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();
-        
-        $Account->start_date = date('d.m.Y');
-        $Account->end_date = date('d.m.Y');
-        
+        print_r($_POST);
         if(isset($_POST['Account'])){
-            $Account->attributes=$_POST['Account'];
+            $Account->attributes=$_POST['Account']; echo "str $Account->start_date ";
             $AccountTransactions=new CActiveDataProvider('AccountTransaction');
             //$AccountTransactions = $this->getTransactions($Account->iban);
         }
-        
+
+        if(!isset($Account->start_date)) $Account->start_date = date('d.m.Y', strtotime('-1 month'));
+        if(!isset($Account->end_date)) $Account->end_date = date('d.m.Y');
+ 
         $controller->render('list',array(
             'Account'=>$Account,
             'AccountTransactions'=>$AccountTransactions,

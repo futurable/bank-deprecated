@@ -4,6 +4,7 @@ class ListAction extends CAction{
         $controller=$this->getController();
         
         $Account = new Account();
+        $Account->scenario = 'selectAccount';
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();
         
@@ -16,6 +17,8 @@ class ListAction extends CAction{
         if(!isset($Account->start_date)) $Account->start_date = date('d.m.Y', strtotime('-1 month'));
         if(!isset($Account->end_date)) $Account->end_date = date('d.m.Y');
  
+        $Account->validate();
+        
         $controller->render('list',array(
             'Account'=>$Account,
             'AccountTransactions'=>$AccountTransactions,

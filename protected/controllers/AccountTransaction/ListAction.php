@@ -9,14 +9,18 @@ class ListAction extends CAction{
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();
         
+        $Account->start_date = date('d.m.Y', strtotime('-1 month'));
+        $Account->end_date = date('d.m.Y');
+        
         if(isset($_POST['Account'])){
             $Account->attributes=$_POST['Account'];
-            $AccountTransactions=new CActiveDataProvider('AccountTransaction');
-            //$AccountTransactions = $this->getTransactions($Account->iban);
+            
+            $startDateISO = Format::formatEURODateToISOFormat($Account->start_date);
+            $endDateISO= Format::formatEURODateToISOFormat($Account->end_date);
+            $AccountTransactions=AccountTransaction::model()->findAll(array(
+                'condition'=>"status='active' AND event_date >= '$startDateISO' AND event_date <= '$endDateISO'",
+            ));
         }
-
-        if(!isset($Account->start_date)) $Account->start_date = date('d.m.Y', strtotime('-1 month'));
-        if(!isset($Account->end_date)) $Account->end_date = date('d.m.Y');
  
         $Account->validate();
         

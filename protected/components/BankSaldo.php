@@ -1,9 +1,6 @@
 <?php
 class BankSaldo {
-    public function getAccountSaldo($iban, $start_date = false, $end_date = false){
-        if(isset($start_date) && DataValidator::isDateISOSyntaxValid($start_date)) return false;
-        if(isset($end_date) && DataValidator::isDateISOSyntaxValid($end_date)) return false;
-        
+    public function getAccountSaldo($iban, $start_date = false, $end_date = false){     
         if(!DataValidator::isDateISOSyntaxValid($start_date)) $start_date = date('Y-m-d', 0);
         if(!DataValidator::isDateISOSyntaxValid($end_date)) $end_date = date('Y-m-d');
         

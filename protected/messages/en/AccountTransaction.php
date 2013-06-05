@@ -30,5 +30,7 @@ return array(
     "CreateTransaction" => "Create transaction",
     "GetTransactions" => "Get transactions",
     "Transactions" => "Transactions",
+    "Recipient" => "Recipient",
+    "Payer" => "Payer",
 );
 ?>

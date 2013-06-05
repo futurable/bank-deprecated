@@ -30,5 +30,7 @@ return array(
     "CreateTransaction" => "Tee maksu",
     "GetTransactions" => "Hae tapahtumat",
     "Transactions" => "Tapahtumat",
+    "Recipient" => "Saaja",
+    "Payer" => "Maksaja",
 );
 ?>

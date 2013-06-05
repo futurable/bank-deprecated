@@ -7,6 +7,9 @@ class ListAction extends CAction{
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();
         
+        $Account->start_date = date('d.m.Y');
+        $Account->end_date = date('d.m.Y');
+        
         if(isset($_POST['Account'])){
             $Account->attributes=$_POST['Account'];
             $AccountTransactions=new CActiveDataProvider('AccountTransaction');

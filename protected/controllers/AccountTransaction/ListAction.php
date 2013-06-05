@@ -4,6 +4,7 @@ class ListAction extends CAction{
         $controller=$this->getController();
         
         $Account = new Account();
+        $Account->bank_user_id = Yii::app()->user->id;
         $Account->scenario = 'selectAccount';
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();

@@ -18,7 +18,11 @@ class ListAction extends CAction{
             $startDateISO = Format::formatEURODateToISOFormat($Account->start_date);
             $endDateISO= Format::formatEURODateToISOFormat($Account->end_date);
             $AccountTransactions=AccountTransaction::model()->findAll(array(
-                'condition'=>"status='active' AND event_date >= '$startDateISO' AND event_date <= '$endDateISO'",
+                'condition'=>"status='active' 
+                    AND event_date >= '$startDateISO'
+                    AND event_date <= '$endDateISO'
+                    AND ( payer_iban='$Account->iban' OR recipient_iban='$Account->iban' )",
+                'order'=>'event_date'
             ));
         }
  

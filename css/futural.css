@@ -167,3 +167,9 @@ body {
 thead th{
     background-color: #eee;
 }
+.light{
+    background-color: #fefefe !important;
+}
+#listTransactions tr{
+    border-bottom: 1px dotted #999;
+}

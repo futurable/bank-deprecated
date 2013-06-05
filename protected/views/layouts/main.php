@@ -87,8 +87,9 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> Futurable Oy<br/>
-		All Rights Reserved<br/>
+        <a href='https://github.com/futurable/bank'>Futural Bank</a><br/>
+        By <a href='http://futurable.fi'>Futurable Oy</a><br/>
+        <?php echo date('Y'); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->

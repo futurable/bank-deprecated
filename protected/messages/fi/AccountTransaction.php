@@ -28,5 +28,9 @@ return array(
     "InvalidDueDate" => "Virheellinen eräpäivä",
     "Continue" => "Jatka",
     "CreateTransaction" => "Tee maksu",
+    "GetTransactions" => "Hae tapahtumat",
+    "Transactions" => "Tapahtumat",
+    "Recipient" => "Saaja",
+    "Payer" => "Maksaja",
 );
 ?>

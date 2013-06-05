@@ -1,4 +1,4 @@
-<table>
+<table class='light well'>
     <tr>
         <th><?php echo Yii::t('AccountTransaction', 'EventDate') ?></th>
         <th><?php echo Yii::t('AccountTransaction', 'Payer'); ?></th>

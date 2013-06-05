@@ -50,6 +50,7 @@ class Account extends CActiveRecord
 			array('iban', 'length', 'max'=>32),
 			array('name', 'length', 'max'=>64),
 			array('status', 'length', 'max'=>8),
+            array('start_date, end_date', 'date', 'format'=>'dd.mm.yyyy'),
 			array('create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

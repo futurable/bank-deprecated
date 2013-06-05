@@ -44,19 +44,21 @@ class Account extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id, iban, status', 'required'),
+			array('bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id, status', 'required'),
+            array('iban', 'required', 'except'=>'selectAccount'),
 			array('bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'numerical', 'integerOnly'=>true),
-                        array('iban', 'unique'),
+            array('iban', 'unique', 'except'=>'selectAccount'),
 			array('iban', 'length', 'max'=>32),
 			array('name', 'length', 'max'=>64),
 			array('status', 'length', 'max'=>8),
+            array('start_date, end_date', 'date', 'format'=>'dd.mm.yyyy'),
 			array('create_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, iban, name, status, create_date, modify_date, bank_user_id, bank_bic_id, bank_interest_id, bank_currency_id, bank_account_type_id', 'safe', 'on'=>'search'),
-                        array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
-                        array('modify_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
-                );
+            array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('modify_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
+            );
 	}
 
 	/**

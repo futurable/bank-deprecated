@@ -4,14 +4,29 @@ class ListAction extends CAction{
         $controller=$this->getController();
         
         $Account = new Account();
+        $Account->bank_user_id = Yii::app()->user->id;
+        $Account->scenario = 'selectAccount';
         $AccountTransactions = null;
         $ibanDropdown = $controller->getIbanDropdown();
         
+        $Account->start_date = date('d.m.Y', strtotime('-1 month'));
+        $Account->end_date = date('d.m.Y');
+        
         if(isset($_POST['Account'])){
             $Account->attributes=$_POST['Account'];
-            $AccountTransactions=new CActiveDataProvider('AccountTransaction');
-            //$AccountTransactions = $this->getTransactions($Account->iban);
+            
+            $startDateISO = Format::formatEURODateToISOFormat($Account->start_date);
+            $endDateISO= Format::formatEURODateToISOFormat($Account->end_date);
+            $AccountTransactions=AccountTransaction::model()->findAll(array(
+                'condition'=>"status='active' 
+                    AND event_date >= '$startDateISO'
+                    AND event_date <= '$endDateISO'
+                    AND ( payer_iban='$Account->iban' OR recipient_iban='$Account->iban' )",
+                'order'=>'event_date'
+            ));
         }
+ 
+        $Account->validate();
         
         $controller->render('list',array(
             'Account'=>$Account,

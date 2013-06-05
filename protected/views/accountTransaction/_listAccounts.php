@@ -1,5 +1,7 @@
 <div class="form">
 
+<?php echo CHtml::errorSummary($Account); ?>
+    
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'account-form',
 )); ?>
@@ -8,35 +10,37 @@
         <?php echo $form->dropDownList($Account, 'iban', $ibanDropdown, array('class'=>'ibanDropdown', 'submit'=>''));?>
     </div>
     
-    <div class="row">
-        <?php 
+    <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'model'=>$Account,
-            'attribute'=>'start_date',
-            // additional javascript options for the date picker plugin
-            'options'=>array(
-                'showAnim'=>'fold',
-                'dateFormat'=>'dd.mm.yy',
-                'maxDate'=>date('d.m.Y'),
-                'firstDay'=>1,
+            'model' => $Account,
+            'attribute' => 'start_date',
+            'language'=>Yii::app()->language,
+            'options' => array(
+                'changeYear' => true,
+                'changeMonth' => true,
+                'maxDate' => '0',
+                'minDate' => '-3y',
             ),
         ));
-
+        
+        echo " - ";
+        
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'model'=>$Account,
-            'attribute'=>'end_date',
-            // additional javascript options for the date picker plugin
-            'options'=>array(
-                'showAnim'=>'fold',
-                'dateFormat'=>'dd.mm.yy',
-                'maxDate'=>date('d.m.y'),
-                'firstDay'=>1,
+            'model' => $Account,
+            'attribute' => 'end_date',
+            'language'=>Yii::app()->language,
+            'options' => array(
+                'changeYear' => true,
+                'changeMonth' => true,
+                'maxDate' => '0',
+                'minDate' => '-3y',
             ),
         ));
-        ?>
-            
-    </div>
+    ?>
 
+	<div class="row buttons">
+        <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('AccountTransaction', 'GetTransactions'))); ?>
+	</div>
+    
 <?php $this->endWidget();?>
-<?php echo $Account->start_date." ".$Account->end_date." ".$Account->iban; ?>
 </div><!-- form -->

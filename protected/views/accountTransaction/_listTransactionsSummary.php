@@ -1,5 +1,8 @@
 <?php $theDaybefore = strtotime('-1 day', strtotime($Account->start_date));?>
-<table class='well'>
+<table class='light well'>
+    <tr>
+        <th colspan='2'><?php echo Yii::t('Account', 'Summary'); ?></th>
+    </tr>
     <tr>
         <td><?php echo Yii::t('Account', 'Account')?></td>
         <td><?php echo $Account->iban ?></td>

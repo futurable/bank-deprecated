@@ -8,5 +8,6 @@ return array(
     "BankTransactionsBetween" => "Tilitapahtumat aikaväliltä",
     "StartSaldo" => "Alkusaldo",
     "EndSaldo" => "Loppusaldo",
+    "Summary" => "Yhteenveto",
 );
 ?>

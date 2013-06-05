@@ -8,5 +8,6 @@ return array(
     "BankTransactionsBetween" => "Bank transactions between",
     "StartSaldo" => "Start saldo",
     "EndSaldo" => "End saldo",
+    "Summary" => "Summary",
 );
 ?>

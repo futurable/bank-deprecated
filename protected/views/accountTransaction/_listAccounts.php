@@ -43,5 +43,4 @@
 	</div>
     
 <?php $this->endWidget();?>
-<?php echo $Account->start_date." ".$Account->end_date." ".$Account->iban; ?>
 </div><!-- form -->

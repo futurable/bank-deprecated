@@ -7,6 +7,7 @@ class AccountTransactionController extends Controller
             return array(
                 'create'=>'application.controllers.AccountTransaction.CreateAction',
                 'listTransactions'=>'application.controllers.AccountTransaction.ListTransactionsAction',
+                'listPaymentsForDue'=>'application.controllers.AccountTransaction.ListPaymentsForDueAction',
             );
         }
     
@@ -40,7 +41,7 @@ class AccountTransactionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','list','listTransactions'),
+				'actions'=>array('create','update','list','listTransactions','listPaymentsForDue'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions

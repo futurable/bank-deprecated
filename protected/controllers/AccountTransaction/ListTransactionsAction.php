@@ -1,5 +1,5 @@
 <?php
-class ListAction extends CAction{
+class ListTransactionsAction extends CAction{
     public function run(){
         $controller=$this->getController();
         
@@ -28,7 +28,7 @@ class ListAction extends CAction{
  
         $Account->validate();
         
-        $controller->render('list',array(
+        $controller->render('listTransactions',array(
             'Account'=>$Account,
             'AccountTransactions'=>$AccountTransactions,
             'ibanDropdown'=>$ibanDropdown,

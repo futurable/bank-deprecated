@@ -35,5 +35,6 @@ return array(
     "GetPayments" => "Hae maksut",
     "NoPaymentsForDue" => "Ei erääntyviä maksuja.",
     "CancelPayment" => "Peru maksu",
+    "PaymentsForDue" => "Erääntyvät maksut",
 );
 ?>

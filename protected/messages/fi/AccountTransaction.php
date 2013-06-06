@@ -32,5 +32,9 @@ return array(
     "Transactions" => "Tapahtumat",
     "Recipient" => "Saaja",
     "Payer" => "Maksaja",
+    "GetPayments" => "Hae maksut",
+    "NoPaymentsForDue" => "Ei erääntyviä maksuja.",
+    "CancelPayment" => "Peru maksu",
+    "PaymentsForDue" => "Erääntyvät maksut",
 );
 ?>

@@ -32,5 +32,9 @@ return array(
     "Transactions" => "Transactions",
     "Recipient" => "Recipient",
     "Payer" => "Payer",
+    "GetPayments" => "Get payments",
+    "NoPaymentsForDue" => "No payments for due.",
+    "CancelPayment" => "Cancel payment",
+    "PaymentsForDue" => "Payments for due",
 );
 ?>

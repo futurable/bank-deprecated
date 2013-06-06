@@ -35,5 +35,6 @@ return array(
     "GetPayments" => "Get payments",
     "NoPaymentsForDue" => "No payments for due.",
     "CancelPayment" => "Cancel payment",
+    "PaymentsForDue" => "Payments for due",
 );
 ?>

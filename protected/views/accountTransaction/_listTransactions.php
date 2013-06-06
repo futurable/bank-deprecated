@@ -4,7 +4,7 @@
         <th><?php echo Yii::t('AccountTransaction', 'Payer'); ?></th>
         <th><?php echo Yii::t('AccountTransaction', 'Recipient'); ?></th>
         <th><?php echo Yii::t('AccountTransaction', 'Amount') ?></th>
-        <th><?php echo Yii::t('AccountTransaction', 'ReferenceNumber')." /<br/>".Yii::t('AccountTransaction', 'Message') ?></th>
+        <th><?php echo Yii::t('AccountTransaction', 'ReferenceNumber')."/<br/>".Yii::t('AccountTransaction', 'Message') ?></th>
     </tr>
     <?php
     foreach($AccountTransactions as $AccountTransaction){

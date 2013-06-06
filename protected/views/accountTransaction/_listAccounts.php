@@ -3,7 +3,7 @@
 <?php echo CHtml::errorSummary($Account); ?>
     
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'account-form',
+	'id'=>'selectAccount',
 )); ?>
 
     <div class="row">

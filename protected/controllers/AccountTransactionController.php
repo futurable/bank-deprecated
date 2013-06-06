@@ -6,7 +6,8 @@ class AccountTransactionController extends Controller
         {
             return array(
                 'create'=>'application.controllers.AccountTransaction.CreateAction',
-                'list'=>'application.controllers.AccountTransaction.ListAction',
+                'listTransactions'=>'application.controllers.AccountTransaction.ListTransactionsAction',
+                'listPaymentsForDue'=>'application.controllers.AccountTransaction.ListPaymentsForDueAction',
             );
         }
     
@@ -40,7 +41,7 @@ class AccountTransactionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','list'),
+				'actions'=>array('create','update','list','listTransactions','listPaymentsForDue'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -177,19 +178,19 @@ class AccountTransactionController extends Controller
 		}
 	}
         
-        public function getIbanDropdown(){
-            $id = $this->WebUser->id;
-            $record=Account::model()->findAll(array(
-               'select'=>'iban, name',
-               'condition'=>'bank_user_id=:id AND bank_account_type_id=1',
-               'params'=>array(':id'=>$id),
-            ));
+    public function getIbanDropdown(){
+        $id = $this->WebUser->id;
+        $record=Account::model()->findAll(array(
+           'select'=>'iban, name',
+           'condition'=>'bank_user_id=:id AND bank_account_type_id=1',
+           'params'=>array(':id'=>$id),
+        ));
 
-            $ibanDropdown = array();
-            foreach($record as $account){
-                $saldo = BankSaldo::getAccountSaldo($account['iban']);
-                $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
-            }
-            return $ibanDropdown;
+        $ibanDropdown = array();
+        foreach($record as $account){
+            $saldo = BankSaldo::getAccountSaldo($account['iban']);
+            $ibanDropdown[$account->iban] = $account->iban." ($saldo EUR), $account->name";
         }
+        return $ibanDropdown;
+    }
 }

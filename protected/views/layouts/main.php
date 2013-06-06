@@ -72,8 +72,8 @@
                         'items'=>array(
                             array('label'=>Yii::t('Menu', 'FrontPage'), 'url'=>array('/site/index')),
                             array('label'=>Yii::t('Menu', 'NewTransaction'), 'url'=>array('/accountTransaction/create')),
-                            array('label'=>Yii::t('Menu', 'PaymentsForDue'), 'url'=>array('/accountTransaction/index')),
-                            array('label'=>Yii::t('Menu', 'Transactions'), 'url'=>array('/accountTransaction/list')),
+                            array('label'=>Yii::t('Menu', 'PaymentsForDue'), 'url'=>array('/accountTransaction/listPaymentsForDue')),
+                            array('label'=>Yii::t('Menu', 'Transactions'), 'url'=>array('/accountTransaction/listTransactions')),
                             array('label'=>Yii::t('Menu', 'LoanApplications'), 'url'=>array('/account/createLoanApplication')),
                             array('label'=>Yii::t('Menu', 'Loans'), 'url'=>array('/account/view')),
                         ),

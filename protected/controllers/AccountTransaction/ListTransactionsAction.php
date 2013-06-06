@@ -1,5 +1,5 @@
 <?php
-class ListAction extends CAction{
+class ListTransactionsAction extends CAction{
     public function run(){
         $controller=$this->getController();
         
@@ -28,21 +28,11 @@ class ListAction extends CAction{
  
         $Account->validate();
         
-        $controller->render('list',array(
+        $controller->render('listTransactions',array(
             'Account'=>$Account,
             'AccountTransactions'=>$AccountTransactions,
             'ibanDropdown'=>$ibanDropdown,
         ));
-    }
-    
-    private function getTransactions($iban){
-            $record=AccountTransaction::model()->findAll(array(
-                'select'=>'recipient_iban, recipient_name, amount, reference_number, message, currency',
-                'condition'=>'payer_iban=:iban OR recipient_iban=:iban',
-                'params'=>array(':iban'=>$iban),
-            ));
-            
-            return $record;
     }
 }
 

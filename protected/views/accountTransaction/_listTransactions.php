@@ -5,10 +5,13 @@
         <th><?php echo Yii::t('AccountTransaction', 'Recipient'); ?></th>
         <th><?php echo Yii::t('AccountTransaction', 'Amount') ?></th>
         <th><?php echo Yii::t('AccountTransaction', 'ReferenceNumber')." /<br/>".Yii::t('AccountTransaction', 'Message') ?></th>
+        <th></th>
     </tr>
     <?php
     foreach($AccountTransactions as $AccountTransaction){
+        $form=$this->beginWidget('CActiveForm');
         $eventDateISO = Format::formatISODateToEUROFormat($AccountTransaction->event_date);
+        echo $form->hiddenField($AccountTransaction,'id');
         
         if($AccountTransaction->payer_iban == $Account->iban){
             $payerIban = $AccountTransaction->payer_iban;
@@ -25,7 +28,12 @@
             echo "<td>$AccountTransaction->recipient_name<br/>$AccountTransaction->recipient_iban</td>";
             echo "<td>{$sign}$AccountTransaction->amount $AccountTransaction->currency</td>";
             echo "<td>$AccountTransaction->reference_number $AccountTransaction->message</td>";
+            echo "<td>";
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('AccountTransaction','CancelPayment')));
+            echo "</td>";
         echo "</tr>";
+        
+         $this->endWidget();
     }
     ?>
 </table>

@@ -22,7 +22,7 @@
     
     <?php 
     if(is_array($AccountTransactions)){
-        if(empty($AccountTransactions)) echo "<p class='light well'>".Yii::t('AccountTransactions', 'NoPaymentsForDue')."</p>";
+        if(empty($AccountTransactions)) echo "<p class='light well'>".Yii::t('AccountTransaction', 'NoPaymentsForDue')."</p>";
         else $this->renderPartial('_listPaymentsForDue', array('AccountTransactions'=>$AccountTransactions, 'Account'=>$Account));
     }
     ?>

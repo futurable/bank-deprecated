@@ -21,8 +21,10 @@
     </div><!-- form -->
     
     <?php 
-    if(is_array($AccountTransactions) && !empty($AccountTransactions)) echo $this->renderPartial('_listTransactions', array('AccountTransactions'=>$AccountTransactions, 'Account'=>$Account));
-    else echo "<p>".Yii::t('AccountTransactions', 'NoPaymentsForDue')."</p>";
+    if(is_array($AccountTransactions)){
+        if(empty($AccountTransactions)) echo "<p class='light well'>".Yii::t('AccountTransactions', 'NoPaymentsForDue')."</p>";
+        else $this->renderPartial('_listTransactions', array('AccountTransactions'=>$AccountTransactions, 'Account'=>$Account));
+    }
     ?>
     
 </div><!-- well -->

@@ -9,7 +9,11 @@
     </tr>
     <?php
     foreach($AccountTransactions as $AccountTransaction){
+        $form=$this->beginWidget('CActiveForm');
         $eventDateISO = Format::formatISODateToEUROFormat($AccountTransaction->event_date);
+        
+        echo $form->hiddenField($AccountTransaction,'id');
+        echo $form->hiddenField($Account,'iban');
         
         if($AccountTransaction->payer_iban == $Account->iban){
             $payerIban = $AccountTransaction->payer_iban;
@@ -30,6 +34,7 @@
                 $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('AccountTransaction','CancelPayment')));
             echo "</td>";
         echo "</tr>";
+        $this->endWidget();
     }
     ?>
 </table>

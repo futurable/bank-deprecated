@@ -46,7 +46,10 @@ class CreateAction extends CAction
                                            
                 if(isset($accountTransaction->payer_iban)){
                     $accountTransaction->validate();
-                    if($accountTransaction->save()) $controller->redirect(array('view','id'=>$accountTransaction->id));
+                    // Don't allow to create transactions to other users accounts with post-injection
+                    if($accountTransaction->payerIban->bank_user_id == Yii::app()->user->id ){
+                        if($accountTransaction->save()) $controller->redirect(array('view','id'=>$accountTransaction->id));
+                    }
                 }
                 
                 $controller->render('create',array(

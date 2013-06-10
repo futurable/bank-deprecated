@@ -75,7 +75,7 @@
                             array('label'=>Yii::t('Menu', 'PaymentsForDue'), 'url'=>array('/accountTransaction/listPaymentsForDue')),
                             array('label'=>Yii::t('Menu', 'Transactions'), 'url'=>array('/accountTransaction/listTransactions')),
                             array('label'=>Yii::t('Menu', 'LoanApplications'), 'url'=>array('/account/createLoanApplication')),
-                            array('label'=>Yii::t('Menu', 'Loans'), 'url'=>array('/account/view')),
+                            array('label'=>Yii::t('Menu', 'Loans'), 'url'=>array('/account/viewLoans')),
                         ),
                     ));
                 } 

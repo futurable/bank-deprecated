@@ -19,10 +19,11 @@
  * @property string $modify_date
  * @property string $status
  * @property integer $bank_interest_id
- * @property integer $bank_account_id
+ * @property integer $bank_currency_id
  *
  * The followings are the available model relations:
  * @property Account $bankAccount
+ * @property Currency $bankCurrency
  */
 class Loan extends CActiveRecord
 {
@@ -43,7 +44,7 @@ class Loan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('term_interval, bank_interest_id, bank_account_id', 'required'),
-			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
+			array('term, event_day, bank_interest_id, bank_account_id, bank_currency', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
                         array('amount, repayment, instalment', 'numerical'),
@@ -69,6 +70,7 @@ class Loan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
+            'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
 		);
 	}
 
@@ -94,6 +96,7 @@ class Loan extends CActiveRecord
 			'status' => Yii::t('Loan', 'Status'),
 			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
 			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
+            'bank_currency_id' => Yii::t('Loan', 'Currency'),
 		);
 	}
 
@@ -131,6 +134,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('bank_interest_id',$this->bank_interest_id);
 		$criteria->compare('bank_account_id',$this->bank_account_id);
+        $criteria->compare('bank_currency_id',$this->bank_currency_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

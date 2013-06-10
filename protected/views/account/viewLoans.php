@@ -15,7 +15,7 @@ foreach($Accounts as $Account){
     
     echo "<tr>";
         echo "<td>$loanInfo->accept_date</td>";
-        echo "<td>$loanInfo->amount</td>";
+        echo "<td>$loanInfo->amount ".$loanInfo->bankCurrency->code."</td>";
         echo "<td>$Account->iban</td>";
         echo "<td>";
             $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));

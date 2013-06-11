@@ -30,6 +30,10 @@ h1{
 	color: #C8DA30;
 }
 
+#content{
+    padding-top: 10px;
+}
+
 .startup {
         position: absolute;
         bottom: 0;

@@ -70,12 +70,36 @@
                 elseif(!Yii::app()->user->isGuest){
                     $this->widget('zii.widgets.CMenu',array(
                         'items'=>array(
-                            array('label'=>Yii::t('Menu', 'FrontPage'), 'url'=>array('/site/index')),
-                            array('label'=>Yii::t('Menu', 'NewTransaction'), 'url'=>array('/accountTransaction/create')),
-                            array('label'=>Yii::t('Menu', 'PaymentsForDue'), 'url'=>array('/accountTransaction/listPaymentsForDue')),
-                            array('label'=>Yii::t('Menu', 'Transactions'), 'url'=>array('/accountTransaction/listTransactions')),
-                            array('label'=>Yii::t('Menu', 'LoanApplications'), 'url'=>array('/account/createLoanApplication')),
-                            array('label'=>Yii::t('Menu', 'Loans'), 'url'=>array('/account/viewLoans')),
+                            array(
+                                'label'=>Yii::t('Menu', 'FrontPage'), 
+                                'url'=>array('/site/index'), 
+                                'linkOptions'=>array('id'=>'menuFrontPage'),
+                            ),
+                            array(
+                                'label'=>Yii::t('Menu', 'NewTransaction'), 
+                                'url'=>array('/accountTransaction/create'), 
+                                'linkOptions'=>array('id'=>'menuNewTransaction'),
+                            ),
+                            array(
+                                'label'=>Yii::t('Menu', 'PaymentsForDue'), 
+                                'url'=>array('/accountTransaction/listPaymentsForDue'), 
+                                'linkOptions'=>array('id'=>'menuPaymentsForDue'),
+                            ),
+                            array(
+                                'label'=>Yii::t('Menu', 'Transactions'), 
+                                'url'=>array('/accountTransaction/listTransactions'), 
+                                'linkOptions'=>array('id'=>'menuTransactions'),
+                            ),
+                            array(
+                                'label'=>Yii::t('Menu', 'LoanApplications'),
+                                'url'=>array('/account/createLoanApplication'),
+                                'linkOptions'=>array('id'=>'menuLoanApplications'),
+                            ),
+                            array(
+                                'label'=>Yii::t('Menu', 'Loans'),
+                                'url'=>array('/account/viewLoans'),
+                                'linkOptions'=>array('id'=>'menuLoans'),
+                            ),
                         ),
                     ));
                 } 

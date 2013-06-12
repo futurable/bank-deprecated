@@ -9,5 +9,12 @@ return array(
     "StartSaldo" => "Start saldo",
     "EndSaldo" => "End saldo",
     "Summary" => "Summary",
+    "Loans" => "Loans",
+    "AcceptDate" => "Accept date",
+    "Amount" => "Amount",
+    "LoanAccount" => "Loan account",
+    "Details" => "Details",
+    "PaymentPlan" => "Payment plan",
+    "View" => "View",
 );
 ?>

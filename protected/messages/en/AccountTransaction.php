@@ -37,5 +37,6 @@ return array(
     "CancelPayment" => "Cancel payment",
     "PaymentsForDue" => "Payments for due",
     "TransactionSuccessful" => "Transaction successful",
+    "NewTransaction" => "New transaction",
 );
 ?>

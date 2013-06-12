@@ -44,7 +44,7 @@ class Loan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('term_interval, bank_interest_id, bank_account_id', 'required'),
-			array('term, event_day, bank_interest_id, bank_account_id, bank_currency', 'numerical', 'integerOnly'=>true),
+			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
                         array('amount, repayment, instalment', 'numerical'),
@@ -84,7 +84,7 @@ class Loan extends CActiveRecord
 			'type' => Yii::t('Loan', 'Type'),
 			'amount' => Yii::t('Loan', 'Amount'),
 			'term' => Yii::t('Loan', 'Term'),
-                        'term_interval' => Yii::t('Loan', 'TermInterval'),
+            'term_interval' => Yii::t('Loan', 'TermInterval'),
 			'instalment' => Yii::t('Loan', 'Instalment'),
 			'repayment' => Yii::t('Loan', 'Repayment'),
 			'interval' => Yii::t('Loan', 'Interval'),
@@ -122,7 +122,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('term',$this->term);
-                $criteria->compare('term_interval',$this->term_interval,true);
+        $criteria->compare('term_interval',$this->term_interval,true);
 		$criteria->compare('instalment',$this->instalment,true);
 		$criteria->compare('repayment',$this->repayment,true);
 		$criteria->compare('interval',$this->interval,true);

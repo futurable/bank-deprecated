@@ -41,3 +41,5 @@
     </tr>
     
 </table>
+
+<?php $this->widget('bootstrap.widgets.TbButton', array('url'=>'create', 'label'=>Yii::t('AccountTransaction', 'NewTransaction'))); ?>

@@ -14,7 +14,7 @@ foreach($Accounts as $Account){
     $form=$this->beginWidget('CActiveForm');
     
     echo "<tr>";
-        echo "<td>$loanInfo->accept_date</td>";
+        echo "<td>".Format::formatISODateToEUROFormat($loanInfo->accept_date)."</td>";
         echo "<td>$loanInfo->amount ".$loanInfo->bankCurrency->code."</td>";
         echo "<td>$Account->iban</td>";
         echo "<td>";

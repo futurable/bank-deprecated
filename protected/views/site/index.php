@@ -1,3 +1,4 @@
+<div class="span-19">
 <?php
 /* @var $this SiteController */
 
@@ -9,3 +10,4 @@
     
     echo Yii::t("FrontPage", "DescriptionText");
 ?>
+</div>

@@ -19,10 +19,11 @@
  * @property string $modify_date
  * @property string $status
  * @property integer $bank_interest_id
- * @property integer $bank_account_id
+ * @property integer $bank_currency_id
  *
  * The followings are the available model relations:
  * @property Account $bankAccount
+ * @property Currency $bankCurrency
  */
 class Loan extends CActiveRecord
 {
@@ -53,7 +54,11 @@ class Loan extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
-		);
+            array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('accept_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
+            array('grant_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
+            array('modify_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
+        );
 	}
 
 	/**
@@ -65,6 +70,7 @@ class Loan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
+            'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
 		);
 	}
 
@@ -78,7 +84,7 @@ class Loan extends CActiveRecord
 			'type' => Yii::t('Loan', 'Type'),
 			'amount' => Yii::t('Loan', 'Amount'),
 			'term' => Yii::t('Loan', 'Term'),
-                        'term_interval' => Yii::t('Loan', 'TermInterval'),
+            'term_interval' => Yii::t('Loan', 'TermInterval'),
 			'instalment' => Yii::t('Loan', 'Instalment'),
 			'repayment' => Yii::t('Loan', 'Repayment'),
 			'interval' => Yii::t('Loan', 'Interval'),
@@ -90,6 +96,7 @@ class Loan extends CActiveRecord
 			'status' => Yii::t('Loan', 'Status'),
 			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
 			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
+            'bank_currency_id' => Yii::t('Loan', 'Currency'),
 		);
 	}
 
@@ -115,7 +122,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('type',$this->type,true);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('term',$this->term);
-                $criteria->compare('term_interval',$this->term_interval,true);
+        $criteria->compare('term_interval',$this->term_interval,true);
 		$criteria->compare('instalment',$this->instalment,true);
 		$criteria->compare('repayment',$this->repayment,true);
 		$criteria->compare('interval',$this->interval,true);
@@ -127,6 +134,7 @@ class Loan extends CActiveRecord
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('bank_interest_id',$this->bank_interest_id);
 		$criteria->compare('bank_account_id',$this->bank_account_id);
+        $criteria->compare('bank_currency_id',$this->bank_currency_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

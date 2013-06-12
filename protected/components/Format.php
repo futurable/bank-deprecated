@@ -126,6 +126,7 @@ class Format {
 	public static function formatEURODateToISOFormat( $dateInEUROFormat ) {
 		$dateInISOFormat = NULL;
 		date_default_timezone_set('Europe/Helsinki');
+        $dateInEUROFormat = substr(trim($dateInEUROFormat), 0, 10);
 		
 		if ( DataValidator::isDateEUROSyntaxValid($dateInEUROFormat) === true ) {
 			$dateInISOFormat = DateTime::createFromFormat('d.m.Y', $dateInEUROFormat);
@@ -145,6 +146,7 @@ class Format {
 	public static function formatISODateToEUROFormat( $dateInISOFormat ) {
 		$dateInEUROFormat = NULL;
 		date_default_timezone_set('Europe/Helsinki');
+        $dateInISOFormat = substr(trim($dateInISOFormat), 0, 10);
 		
 		if (DataValidator::isDateISOSyntaxValid( $dateInISOFormat )) {
 			$dateInEUROFormat = new DateTime( $dateInISOFormat );

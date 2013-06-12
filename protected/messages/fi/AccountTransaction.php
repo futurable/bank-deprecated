@@ -36,5 +36,6 @@ return array(
     "NoPaymentsForDue" => "Ei erääntyviä maksuja.",
     "CancelPayment" => "Peru maksu",
     "PaymentsForDue" => "Erääntyvät maksut",
+    "TransactionSuccessful" => "Maksu suoritettu",
 );
 ?>

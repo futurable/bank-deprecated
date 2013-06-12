@@ -30,12 +30,52 @@ h1{
 	color: #C8DA30;
 }
 
+#content{
+    padding-top: 10px;
+}
+
 .startup {
         position: absolute;
         bottom: 0;
         margin: 0;
         width: 100%;
 }
+
+/* Main menu */
+
+/* Button icons */
+/*
+#mainmenu ul{
+    padding-right: 0;
+}
+#mainmenu a{
+    background-repeat: no-repeat;
+    background-position: right;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    display: block;
+    padding: 15px 60px 15px 10px !important;
+}
+#menuFrontPage{
+    background-image: url('../images/menu/FrontPageIcon.png');
+}
+#menuNewTransaction{
+    background-image: url('../images/menu/NewTransactionIcon.png');
+}
+#menuPaymentsForDue{
+    background-image: url('../images/menu/PaymentsForDueIcon.png');
+}
+#menuTransactions{
+    background-image: url('../images/menu/TransactionsIcon.png');
+}
+#menuLoanApplications{
+    background-image: url('../images/menu/LoanApplicationsIcon.png');
+}
+#menuLoans{
+    background-image: url('../images/menu/LoansIcon.png');
+}
+*/
 
 body {
 	background-color: #555;
@@ -160,9 +200,9 @@ body {
     display: inline-block;
     width: 20%;
 }
-.form button[type='submit']{
+.btn{
     float: right;
-    padding: 10px 20px;
+    padding: 10px 20px !important;
 }
 thead th{
     background-color: #eee;

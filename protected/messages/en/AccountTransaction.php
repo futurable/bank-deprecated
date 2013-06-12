@@ -36,5 +36,7 @@ return array(
     "NoPaymentsForDue" => "No payments for due.",
     "CancelPayment" => "Cancel payment",
     "PaymentsForDue" => "Payments for due",
+    "TransactionSuccessful" => "Transaction successful",
+    "NewTransaction" => "New transaction",
 );
 ?>

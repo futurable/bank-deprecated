@@ -9,5 +9,12 @@ return array(
     "StartSaldo" => "Alkusaldo",
     "EndSaldo" => "Loppusaldo",
     "Summary" => "Yhteenveto",
+    "Loans" => "Lainat",
+    "AcceptDate" => "Myöntämispäivä",
+    "Amount" => "Määrä",
+    "LoanAccount" => "Lainatili",
+    "Details" => "Tiedot",
+    "PaymentPlan" => "Maksusuunnitelma",
+    "View" => "Tarkastele",
 );
 ?>

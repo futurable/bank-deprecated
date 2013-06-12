@@ -37,5 +37,6 @@ return array(
     "CancelPayment" => "Peru maksu",
     "PaymentsForDue" => "Erääntyvät maksut",
     "TransactionSuccessful" => "Maksu suoritettu",
+    "NewTransaction" => "Uusi maksu",
 );
 ?>

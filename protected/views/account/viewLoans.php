@@ -21,7 +21,7 @@ foreach($Accounts as $Account){
             $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
         echo "</td>";
         echo "<td>";
-            $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'PaymentPlan')));
+            $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
         echo "</td>";
     echo "</tr>";
     

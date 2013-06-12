@@ -42,6 +42,9 @@ h1{
 }
 
 /* Main menu */
+
+/* Button icons */
+/*
 #mainmenu ul{
     padding-right: 0;
 }
@@ -72,6 +75,7 @@ h1{
 #menuLoans{
     background-image: url('../images/menu/LoansIcon.png');
 }
+*/
 
 body {
 	background-color: #555;

@@ -200,9 +200,9 @@ body {
     display: inline-block;
     width: 20%;
 }
-.form button[type='submit']{
+.btn{
     float: right;
-    padding: 10px 20px;
+    padding: 10px 20px !important;
 }
 thead th{
     background-color: #eee;

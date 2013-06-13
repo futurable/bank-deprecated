@@ -32,5 +32,12 @@ return array(
     'Principal' => 'Loan principal',
     'IndexLoanApplications' => 'Loan applications',
     'ApplicationCreated' => 'Application created',
+    'active' => 'Active',
+    'open' => 'Open',
+    'granted' => 'Granted',
+    'declined' => 'Declined',
+    'denied' => 'Denied',
+    'paid' => 'Paid',
+    'Status' => 'Status',
 );
 ?>

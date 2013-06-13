@@ -216,3 +216,6 @@ thead th{
 #listTransactions tr{
     border-bottom: 1px dotted #999;
 }
+.padding40top{
+    padding-top: 40px;
+}

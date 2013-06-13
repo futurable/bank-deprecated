@@ -16,5 +16,6 @@ return array(
     "Details" => "Tiedot",
     "PaymentPlan" => "Maksusuunnitelma",
     "View" => "Tarkastele",
+    "LoanApplications" => "Tarkastele lainahakemuksia",
 );
 ?>

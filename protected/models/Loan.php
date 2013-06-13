@@ -12,6 +12,8 @@
  * @property string $instalment
  * @property string $repayment
  * @property string $interval
+ * @property string $interest
+ * @property string $interest_updated
  * @property integer $event_day
  * @property string $create_date
  * @property string $grant_date
@@ -19,9 +21,41 @@
  * @property string $modify_date
  * @property string $status
  * @property integer $bank_interest_id
+ * @property integer $bank_account_id
  * @property integer $bank_currency_id
+ * @property integer $bank_user_id
+ *
+ * The followings are the available model relations:	
+
+<?php
+
+/**
+ * This is the model class for table "bank_loan".
+ *
+ * The followings are the available columns in table 'bank_loan':
+ * @property integer $id
+ * @property string $type
+ * @property string $amount
+ * @property integer $term
+ * @property string $term_interval
+ * @property string $instalment
+ * @property string $repayment
+ * @property string $interval
+ * @property string $interest
+ * @property string $interest_updated
+ * @property integer $event_day
+ * @property string $create_date
+ * @property string $grant_date
+ * @property string $accept_date
+ * @property string $modify_date
+ * @property string $status
+ * @property integer $bank_interest_id
+ * @property integer $bank_account_id
+ * @property integer $bank_currency_id
+ * @property integer $bank_user_id
  *
  * The followings are the available model relations:
+ * @property User $bankUser
  * @property Account $bankAccount
  * @property Currency $bankCurrency
  */
@@ -44,22 +78,49 @@ class Loan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('term_interval, bank_interest_id, bank_account_id', 'required'),
-			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
+			array('term, event_day, bank_interest_id, bank_account_id, bank_currency_id, bank_user_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
-                        array('amount, repayment, instalment', 'numerical'),
-			array('term_interval, interval', 'length', 'max'=>5),
+            array('amount, repayment, instalment', 'numerical'),
+			array('term_interval', 'length', 'max'=>6),
 			array('status', 'length', 'max'=>8),
-			array('create_date, grant_date, modify_date', 'safe'),
+            array('interval', 'length', 'max'=>5),
+			array('interest', 'length', 'max'=>11),
+            array('amount', 'numerical', 'min'=> '1000'),
+			array('create_date, grant_date, accept_date, modify_date', 'safe'),
+            array('amount', 'required_repayment_ratio'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
             array('create_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+            array('interest_updated','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
             array('accept_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
             array('grant_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
             array('modify_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
         );
 	}
+    
+    public function required_repayment_ratio($attribute_name, $params){
+        $baseInterest = 2/100;
+        
+        if($this->interval == 'year') $interest = $baseInterest;
+        if($this->interval == 'month') $interest = $baseInterest / 12;
+        if($this->interval == 'week') $interest = $baseInterest / 52;
+        if($this->interval == 'day') $interest = $baseInterest / 365;
+        
+        $minRepayment = $this->amount * $interest * 1.1;
+        if($this->repayment <= $minRepayment){
+            $this->addError($attribute_name, Yii::t('AccountTransaction', 'RepaymentTooLow'));
+            return false;
+        }
+        else return true;
+    }
+    
+    public function beforeSave(){
+        $this->interest = Interest::model()->findByPk($this->bank_interest_id)->rate;
+
+        return true;
+    }
 
 	/**
 	 * @return array relational rules.
@@ -71,6 +132,7 @@ class Loan extends CActiveRecord
 		return array(
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
             'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
+            'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
 		);
 	}
 
@@ -88,6 +150,8 @@ class Loan extends CActiveRecord
 			'instalment' => Yii::t('Loan', 'Instalment'),
 			'repayment' => Yii::t('Loan', 'Repayment'),
 			'interval' => Yii::t('Loan', 'Interval'),
+            'interest' => Yii::t('Loan', 'Interest'),
+			'interest_updated' => Yii::t('Loan', 'InterestUpdated'),
 			'event_day' => Yii::t('Loan', 'EventDay'),
 			'create_date' => Yii::t('Loan', 'CreateDate'),
 			'grant_date' => Yii::t('Loan', 'GrantDate'),
@@ -97,6 +161,7 @@ class Loan extends CActiveRecord
 			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
 			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
             'bank_currency_id' => Yii::t('Loan', 'Currency'),
+            'bank_user_id' => Yii::t('Loan', 'BankUser'),
 		);
 	}
 

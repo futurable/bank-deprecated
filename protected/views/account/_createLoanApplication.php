@@ -46,7 +46,7 @@
 
         <div class="row">
 		<?php echo $form->label($loanInfo,'bank_interest_id'); ?>
-                <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', $this->getInterestDropdown());?>
+        <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', $this->getInterestDropdown());?>
 		<?php echo $form->error($loanInfo,'bank_interest_id'); ?>
 	</div>
 

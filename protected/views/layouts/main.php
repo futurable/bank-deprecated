@@ -92,7 +92,7 @@
                             ),
                             array(
                                 'label'=>Yii::t('Menu', 'LoanApplications'),
-                                'url'=>array('/account/createLoanApplication'),
+                                'url'=>array('/account/indexLoanApplications'),
                                 'linkOptions'=>array('id'=>'menuLoanApplications'),
                             ),
                             array(

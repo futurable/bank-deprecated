@@ -38,5 +38,6 @@ return array(
     "PaymentsForDue" => "Payments for due",
     "TransactionSuccessful" => "Transaction successful",
     "NewTransaction" => "New transaction",
+    "RepaymentTooLow" => "Repayment amount is too low",
 );
 ?>

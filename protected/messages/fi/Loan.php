@@ -30,5 +30,14 @@ return array(
     'TotalInterest' => 'Korko-osuus',
     'Interest' => 'Korko',
     'Principal' => 'Lainapääoma',
+    'IndexLoanApplications' => 'Lainahakemukset',
+    'ApplicationCreated' => 'Hakemus tehty',
+    'active' => 'Aktiivinen',
+    'open' => 'Avoin',
+    'granted' => 'Myönnetty',
+    'declined' => 'Hylätty',
+    'denied' => 'Hylätty',
+    'paid' => 'Maksettu',
+    'Status' => 'Tila',
 );
 ?>

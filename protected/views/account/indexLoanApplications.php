@@ -8,6 +8,7 @@
         <th><?php echo Yii::t('Loan', 'Repayment'); ?></th>
         <th><?php echo Yii::t('Loan', 'Interest'); ?></th>
         <th><?php echo Yii::t('Loan', 'Interval'); ?></th>
+        <th><?php echo Yii::t('Loan', 'Status'); ?></th>
     </tr>
     
     <?php
@@ -19,6 +20,7 @@
                 echo "<td>$loanApplication->repayment</td>";
                 echo "<td>".number_format($loanApplication->interest,3)." %</td>";
                 echo "<td>".Yii::t('Loan',$loanApplication->interval)."</td>";
+                echo "<td>".Yii::t('Loan',$loanApplication->status)."</td>";
             echo "</tr>";
         }
     ?>

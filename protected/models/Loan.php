@@ -69,11 +69,20 @@ class Loan extends CActiveRecord
 	}
     
     public function required_repayment_ratio($attribute_name, $params){
-        $this->amount;
-        $this->bank_interest_id;
+        $baseInterest = 2/100;
         
-        $this->addError($attribute_name, Yii::t('AccountTransaction', 'error '.$this->bank_interest_id));
-        return false;
+        if($this->interval == 'year') $interest = $baseInterest;
+        if($this->interval == 'month') $interest = $baseInterest / 12;
+        if($this->interval == 'week') $interest = $baseInterest / 52;
+        if($this->interval == 'day') $interest = $baseInterest / 365;
+        
+        $minRepayment = $this->amount * $interest * 1.1;
+        if($this->repayment <= $minRepayment){
+            $this->addError($attribute_name, Yii::t('AccountTransaction', 'RepaymentTooLow'));
+            return false;
+        }
+        else return true;
+ 
     }
 
 	/**

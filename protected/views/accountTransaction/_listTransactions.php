@@ -8,7 +8,7 @@
     </tr>
     <?php
     foreach($AccountTransactions as $AccountTransaction){
-        $eventDateISO = Format::formatISODateToEUROFormat($AccountTransaction->event_date);
+        $eventDateEURO = Format::formatISODateToEUROFormat($AccountTransaction->event_date);
         
         if($AccountTransaction->payer_iban == $Account->iban){
             $payerIban = $AccountTransaction->payer_iban;
@@ -20,7 +20,7 @@
         }
         
         echo "<tr>";
-            echo "<td>$eventDateISO</td>";
+            echo "<td>$eventDateEURO</td>";
             echo "<td>$AccountTransaction->payer_name<br/>$payerIban</td>";
             echo "<td>$AccountTransaction->recipient_name<br/>$AccountTransaction->recipient_iban</td>";
             echo "<td>{$sign}$AccountTransaction->amount $AccountTransaction->currency</td>";

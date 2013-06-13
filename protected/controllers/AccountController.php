@@ -9,6 +9,7 @@ class AccountController extends Controller
                 'createLoanApplication'=>'application.controllers.Account.CreateLoanApplicationAction',
                 'manageLoanApplication'=>'application.controllers.Account.ManageLoanApplicationAction',
                 'viewLoans' => 'application.controllers.Account.ViewLoansAction',
+                'indexLoanApplications' => 'application.controllers.Account.IndexLoanApplicationsAction',
             );
         }
 	/**
@@ -41,7 +42,7 @@ class AccountController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createLoanApplication', 'viewLoanApplication', 'viewLoans'),
+				'actions'=>array('create','update','createLoanApplication', 'viewLoanApplication', 'viewLoans', 'indexLoanApplications'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions

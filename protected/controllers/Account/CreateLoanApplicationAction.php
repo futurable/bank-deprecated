@@ -28,6 +28,7 @@ class CreateLoanApplicationAction extends CAction
             $loanInfo->attributes=$_POST['Loan'];
             $loanInfo->bank_account_id=$loanAccount->id;
             $loanInfo->bank_currency_id = 1; // @TODO: get currency
+            $loanInfo->bank_user_id = Yii::app()->user->id;
             
             $loanSuccess = $loanInfo->save();
             

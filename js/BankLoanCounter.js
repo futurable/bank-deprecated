@@ -90,13 +90,16 @@ $(document).ready(function(){
         // @TODO: get translations
 		prettyTerm = "";
 		if( years > 0){
-			prettyTerm += years + " years ";
+            var intervalText = $("#Loan_term_interval option[value='years']").text();
+			prettyTerm += years + " " + intervalText + " ";
 		}
 		if( months > 0){
-			prettyTerm += months + " months ";
+            var intervalText = $("#Loan_term_interval option[value='months']").text();
+			prettyTerm += months + " " + intervalText + " ";
 		}
 		if( days > 0){
-			prettyTerm += days + " days ";
+            intervalText = $("#Loan_term_interval option[value='days']").text();
+			prettyTerm += days + " " + intervalText;
 		}
 		
 		return prettyTerm;

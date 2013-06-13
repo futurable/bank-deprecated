@@ -38,5 +38,6 @@ return array(
     "PaymentsForDue" => "Erääntyvät maksut",
     "TransactionSuccessful" => "Maksu suoritettu",
     "NewTransaction" => "Uusi maksu",
+    "RepaymentTooLow" => "Maksuerän suuruus ei riitä",
 );
 ?>

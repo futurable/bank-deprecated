@@ -7,10 +7,10 @@
             <th><?php echo Yii::t('Loan', 'Term') ?></th>
         </tr>
         <tr>
-            <td class='loanAmountTd'>0</td>
-            <td class='interestAmountTd'>0</td>
-            <td class='realAmountTd'>0</td>
-            <td class='termTd'>0</td>
+            <td id='loanAmountTd'>0</td>
+            <td id='interestAmountTd'>0</td>
+            <td id='realAmountTd'>0</td>
+            <td id='termTd'>0</td>
         </tr>
     </table>	
 </div><!-- loanCounterFrame -->

@@ -23,8 +23,39 @@
  * @property integer $bank_interest_id
  * @property integer $bank_account_id
  * @property integer $bank_currency_id
+ * @property integer $bank_user_id
+ *
+ * The followings are the available model relations:	
+
+<?php
+
+/**
+ * This is the model class for table "bank_loan".
+ *
+ * The followings are the available columns in table 'bank_loan':
+ * @property integer $id
+ * @property string $type
+ * @property string $amount
+ * @property integer $term
+ * @property string $term_interval
+ * @property string $instalment
+ * @property string $repayment
+ * @property string $interval
+ * @property string $interest
+ * @property string $interest_updated
+ * @property integer $event_day
+ * @property string $create_date
+ * @property string $grant_date
+ * @property string $accept_date
+ * @property string $modify_date
+ * @property string $status
+ * @property integer $bank_interest_id
+ * @property integer $bank_account_id
+ * @property integer $bank_currency_id
+ * @property integer $bank_user_id
  *
  * The followings are the available model relations:
+ * @property User $bankUser
  * @property Account $bankAccount
  * @property Currency $bankCurrency
  */
@@ -47,7 +78,7 @@ class Loan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('term_interval, bank_interest_id, bank_account_id', 'required'),
-			array('term, event_day, bank_interest_id, bank_account_id, bank_currency_id', 'numerical', 'integerOnly'=>true),
+			array('term, event_day, bank_interest_id, bank_account_id, bank_currency_id, bank_user_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
             array('amount, repayment, instalment', 'numerical'),
@@ -101,6 +132,7 @@ class Loan extends CActiveRecord
 		return array(
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
             'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
+            'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
 		);
 	}
 
@@ -129,6 +161,7 @@ class Loan extends CActiveRecord
 			'bank_interest_id' => Yii::t('Loan', 'BankInterest'),
 			'bank_account_id' => Yii::t('Loan', 'BankAccount'),
             'bank_currency_id' => Yii::t('Loan', 'Currency'),
+            'bank_user_id' => Yii::t('Loan', 'BankUser'),
 		);
 	}
 

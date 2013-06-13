@@ -12,6 +12,8 @@
  * @property string $instalment
  * @property string $repayment
  * @property string $interval
+ * @property string $interest
+ * @property string $interest_updated
  * @property integer $event_day
  * @property string $create_date
  * @property string $grant_date
@@ -19,6 +21,7 @@
  * @property string $modify_date
  * @property string $status
  * @property integer $bank_interest_id
+ * @property integer $bank_account_id
  * @property integer $bank_currency_id
  *
  * The followings are the available model relations:
@@ -44,14 +47,17 @@ class Loan extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('term_interval, bank_interest_id, bank_account_id', 'required'),
-			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
+			array('term, event_day, bank_interest_id, bank_account_id, bank_currency_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
             array('amount, repayment, instalment', 'numerical'),
-			array('term_interval, interval', 'length', 'max'=>5),
+			array('term_interval', 'length', 'max'=>6),
 			array('status', 'length', 'max'=>8),
+            array('interval', 'length', 'max'=>5),
+			array('interest', 'length', 'max'=>11),
             array('amount', 'numerical', 'min'=> '1000'),
-			array('create_date, grant_date, modify_date', 'safe'),
+			array('create_date, grant_date, accept_date, modify_date', 'safe'),
+            array('amount', 'required_repayment_ratio'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('type, amount, term, instalment, repayment, interval, event_day, create_date, grant_date, accept_date, modify_date, status, bank_interest_id, bank_account_id', 'safe', 'on'=>'search'),
@@ -61,6 +67,14 @@ class Loan extends CActiveRecord
             array('modify_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'update'),
         );
 	}
+    
+    public function required_repayment_ratio($attribute_name, $params){
+        $this->amount;
+        $this->bank_interest_id;
+        
+        $this->addError($attribute_name, Yii::t('AccountTransaction', 'error '.$this->bank_interest_id));
+        return false;
+    }
 
 	/**
 	 * @return array relational rules.
@@ -89,6 +103,8 @@ class Loan extends CActiveRecord
 			'instalment' => Yii::t('Loan', 'Instalment'),
 			'repayment' => Yii::t('Loan', 'Repayment'),
 			'interval' => Yii::t('Loan', 'Interval'),
+            'interest' => Yii::t('Loan', 'Interest'),
+			'interest_updated' => Yii::t('Loan', 'InterestUpdated'),
 			'event_day' => Yii::t('Loan', 'EventDay'),
 			'create_date' => Yii::t('Loan', 'CreateDate'),
 			'grant_date' => Yii::t('Loan', 'GrantDate'),

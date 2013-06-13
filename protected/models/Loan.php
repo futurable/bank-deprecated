@@ -47,9 +47,10 @@ class Loan extends CActiveRecord
 			array('term, event_day, bank_interest_id, bank_account_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),
-                        array('amount, repayment, instalment', 'numerical'),
+            array('amount, repayment, instalment', 'numerical'),
 			array('term_interval, interval', 'length', 'max'=>5),
 			array('status', 'length', 'max'=>8),
+            array('amount', 'numerical', 'min'=> '1000'),
 			array('create_date, grant_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

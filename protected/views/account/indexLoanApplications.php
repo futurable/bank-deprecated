@@ -1,4 +1,4 @@
-<h1><?php echo Yii::t('Account', 'IndexLoanApplications'); ?></h1>
+<h1><?php echo Yii::t('Loan', 'IndexLoanApplications'); ?></h1>
 
 <table>
     <tr>

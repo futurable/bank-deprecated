@@ -32,5 +32,12 @@ return array(
     'Principal' => 'Lainapääoma',
     'IndexLoanApplications' => 'Lainahakemukset',
     'ApplicationCreated' => 'Hakemus tehty',
+    'active' => 'Aktiivinen',
+    'open' => 'Avoin',
+    'granted' => 'Myönnetty',
+    'declined' => 'Hylätty',
+    'denied' => 'Hylätty',
+    'paid' => 'Maksettu',
+    'Status' => 'Tila',
 );
 ?>

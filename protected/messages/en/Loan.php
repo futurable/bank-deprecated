@@ -30,5 +30,7 @@ return array(
     'TotalInterest' => 'Total interest',
     'Interest' => 'Interest',
     'Principal' => 'Loan principal',
+    'IndexLoanApplications' => 'Loan applications',
+    'ApplicationCreated' => 'Application created',
 );
 ?>

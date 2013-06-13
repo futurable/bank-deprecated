@@ -46,12 +46,14 @@ fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 				repaymentAmount = instalmentAmount + interestAmount;
 			}
 			
-			if(instalmentAmount <= 0){ break; }; // Don't count if instalment is zero or negative
+			if(instalmentAmount <= 0) break; ; // Don't count if instalment is zero or negative
 			
 			if(repaymentAmount >= loanWithInterest){ repaymentAmount = loanAmount+interestAmount; };
 			instalmentAmount = repaymentAmount - interestAmount;
             if(instalmentAmount < 0) instalmentAmount = 0;
 			
+            if(instalmentAmount <= interestAmount) break; // Don't count if loan is infinite
+            
 			loanAmount = loanAmount + interestAmount;
 			loanAmount -= repaymentAmount;
 			loanAmount = Math.round(loanAmount*1000) / 1000;

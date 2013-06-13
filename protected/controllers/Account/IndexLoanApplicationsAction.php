@@ -4,7 +4,15 @@ class IndexLoanApplicationsAction extends CAction{
     {
         $controller=$this->getController();
         
-        $controller->render('indexLoanApplications');
+        $loanApplications = Loan::model()->findAll(array(
+                'condition'=>'bank_user_id=:bankUser',
+                'params'=>array(':bankUser'=>Yii::app()->user->id),
+            )
+        );
+        
+        $controller->render('indexLoanApplications', array(
+            'loanApplications' => $loanApplications,
+        ));
     }
 }
 

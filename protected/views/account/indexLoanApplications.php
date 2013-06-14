@@ -1,6 +1,6 @@
 <h1><?php echo Yii::t('Loan', 'IndexLoanApplications'); ?></h1>
 
-<table>
+<table id='tableLoanApplications'>
     <tr>
         <th><?php echo Yii::t('Loan', 'ApplicationCreated'); ?></th>
         <th><?php echo Yii::t('Loan', 'Amount'); ?></th>

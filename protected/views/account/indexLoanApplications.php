@@ -27,10 +27,10 @@
                     $type = 'success';
                     break;
                 case 'denied':
-                    $type = 'warning';
+                    $type = 'important';
                     break;
                 case 'declined':
-                    $type = '';
+                    $type = 'warning';
                     break;
                 default:
                     $type = null;
@@ -53,11 +53,11 @@
                 
                 echo "<td>";
                 if($loanApplication->status=='open'){
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>Yii::t('Account', 'Cancel'), 'htmlOptions'=>array('name'=>'action', 'value'=>'cancel')));
+                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>Yii::t('Account', 'Cancel'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'cancel')));
                 }
                 elseif($loanApplication->status=='granted'){
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>Yii::t('Account', 'Accept'), 'htmlOptions'=>array('name'=>'action', 'value'=>'accept')));
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger' ,'label'=>Yii::t('Account', 'Decline'), 'htmlOptions'=>array('name'=>'action', 'value'=>'decline')));
+                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>Yii::t('Account', 'Accept'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'accept')));
+                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger' ,'label'=>Yii::t('Account', 'Decline'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'decline')));
                 }
                 echo "</td>";
                 

@@ -219,3 +219,7 @@ thead th{
 .padding40top{
     padding-top: 40px;
 }
+
+#tableLoanApplications .btn{
+    width: 100px;
+}

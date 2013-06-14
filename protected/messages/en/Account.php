@@ -17,5 +17,8 @@ return array(
     "PaymentPlan" => "Payment plan",
     "View" => "View",
     "LoanApplications" => "View loan applications",
+    "Accept" => "Accept",
+    "Decline" => "Decline",
+    "Cancel" => "Cancel",
 );
 ?>

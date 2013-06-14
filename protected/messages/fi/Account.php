@@ -17,5 +17,8 @@ return array(
     "PaymentPlan" => "Maksusuunnitelma",
     "View" => "Tarkastele",
     "LoanApplications" => "Tarkastele lainahakemuksia",
+     "Accept" => "Hyväksy",
+    "Decline" => "Hylkää",
+    "Cancel" => "Peruuta",
 );
 ?>

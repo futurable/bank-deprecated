@@ -38,6 +38,7 @@ return array(
     'declined' => 'Hylätty',
     'denied' => 'Hylätty',
     'paid' => 'Maksettu',
+    'removed' => 'Poistettu',
     'Status' => 'Tila',
 );
 ?>

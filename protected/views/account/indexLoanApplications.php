@@ -37,6 +37,9 @@
                     break;
             }
             
+            $form=$this->beginWidget('CActiveForm');
+            echo $form->hiddenField($loanApplication,'id');
+            
             echo "<tr>";
                 echo "<td>".Format::formatISODateToEUROFormat($loanApplication->create_date)."</td>";
                 echo "<td>$loanApplication->amount ".$loanApplication->bankCurrency->code."</td>";
@@ -59,6 +62,8 @@
                 echo "</td>";
                 
             echo "</tr>";
+            
+            $this->endWidget();
         }
     ?>
 </table>

@@ -12,6 +12,28 @@
     <?php
     foreach($loanApplications as $loanApplication){
         $status = $loanApplication->status;
+        
+        switch ($status) {
+            case 'active':
+                $type = 'inverse';
+                break;
+            case 'open':
+                $type = 'info';
+                break;
+            case 'granted':
+                $type = 'success';
+                break;
+            case 'denied':
+                $type = 'warning';
+                break;
+            case 'declined':
+                $type = '';
+                break;
+            default:
+                $type = null;
+                break;
+        }
+        
         $form=$this->beginWidget('CActiveForm');
         
         echo $form->hiddenField($loanApplication,'id');
@@ -21,9 +43,14 @@
             echo "<td>".$loanApplication->bankAccount->bankUser->profile->company."</td>";
             echo "<td>".$loanApplication->amount."&euro;</td>";
             echo "<td>".$loanApplication->repayment."&euro;</td>";
-            echo "<td>$status</td>";
             echo "<td>";
-            if($status=='open') $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Grant'));
+                $this->widget('bootstrap.widgets.TbLabel', array('type'=>$type, 'label'=>$status));
+            echo "</td>";
+            echo "<td>";
+            if($status=='open'){ 
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>'Grant', 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'grant')));
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>'Deny', 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'deny')));
+            }
             echo "</td>";
         echo "</tr>";
         

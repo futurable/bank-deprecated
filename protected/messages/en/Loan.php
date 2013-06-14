@@ -38,6 +38,7 @@ return array(
     'declined' => 'Declined',
     'denied' => 'Denied',
     'paid' => 'Paid',
+    'removed' => 'Removed',
     'Status' => 'Status',
 );
 ?>

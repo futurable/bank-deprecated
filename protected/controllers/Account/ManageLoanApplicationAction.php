@@ -18,6 +18,7 @@ class ManageLoanApplicationAction extends CAction
             }
 
             $LoanSuccess = $Loan->save();
+            $controller->redirect(array('manageLoanApplication'));
         }
         
         $loanApplications = Loan::model()->findall();

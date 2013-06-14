@@ -14,6 +14,29 @@
     
     <?php
         foreach($loanApplications as $loanApplication){
+            
+            $status = $loanApplication->status;
+            switch ($status) {
+                case 'active':
+                    $type = 'inverse';
+                    break;
+                case 'open':
+                    $type = 'info';
+                    break;
+                case 'granted':
+                    $type = 'success';
+                    break;
+                case 'denied':
+                    $type = 'warning';
+                    break;
+                case 'declined':
+                    $type = '';
+                    break;
+                default:
+                    $type = null;
+                    break;
+            }
+            
             echo "<tr>";
                 echo "<td>".Format::formatISODateToEUROFormat($loanApplication->create_date)."</td>";
                 echo "<td>$loanApplication->amount ".$loanApplication->bankCurrency->code."</td>";
@@ -21,7 +44,9 @@
                 echo "<td>$loanApplication->repayment ".$loanApplication->bankCurrency->code."</td>";
                 echo "<td>".number_format($loanApplication->interest,3)."%</td>";
                 echo "<td>".Yii::t('Loan',$loanApplication->interval)."</td>";
-                echo "<td>".Yii::t('Loan',$loanApplication->status)."</td>";
+                echo "<td>";
+                    $this->widget('bootstrap.widgets.TbLabel', array('type'=>$type, 'label'=>Yii::t('Loan',$status)));
+                echo "</td>";
                 
                 echo "<td>";
                 if($loanApplication->status=='open'){

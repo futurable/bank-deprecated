@@ -48,8 +48,8 @@
             echo "</td>";
             echo "<td>";
             if($status=='open'){ 
-                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>'Grant', 'htmlOptions'=>array('name'=>'action', 'value'=>'grant')));
-                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>'Deny', 'htmlOptions'=>array('name'=>'action', 'value'=>'deny')));
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>'Grant', 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'grant')));
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>'Deny', 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'deny')));
             }
             echo "</td>";
         echo "</tr>";

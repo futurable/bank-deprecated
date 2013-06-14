@@ -10,10 +10,10 @@ class ManageLoanApplicationAction extends CAction
             
             $Loan=Loan::model()->findByPk($id);
 
-            if($_POST['action'] == 'grant'){
+            if($_POST['Loan']['action'] == 'grant'){
                 $Loan->status = 'granted';
             }
-            if($_POST['action'] == 'deny'){
+            if($_POST['Loan']['action'] == 'deny'){
                 $Loan->status = 'denied';
             }
 

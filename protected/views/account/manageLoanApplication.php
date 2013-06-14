@@ -15,7 +15,7 @@
         
         switch ($status) {
             case 'active':
-                $type = 'success';
+                $type = 'inverse';
                 break;
             case 'open':
                 $type = 'info';
@@ -27,7 +27,7 @@
                 $type = 'warning';
                 break;
             case 'declined':
-                $type = 'inverse';
+                $type = '';
                 break;
             default:
                 $type = null;

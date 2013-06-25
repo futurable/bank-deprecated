@@ -117,7 +117,7 @@ class Loan extends CActiveRecord
     }
     
     public function beforeSave(){
-        $this->interest = Interest::model()->findByPk($this->bank_interest_id)->rate;
+        $this->interest = Interest::model()->findByPk($this->bank_interest_id)->rate + Interest::model()->findByAttributes(array('name'=>'loanMargin'))->rate;
 
         return true;
     }

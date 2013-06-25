@@ -11,21 +11,23 @@
 <?php
 foreach($Accounts as $Account){
     $loanInfo = Loan::model()->findbyattributes(array('bank_account_id'=>$Account->id));
-    $form=$this->beginWidget('CActiveForm');
-    
-    echo "<tr>";
-        echo "<td>".Format::formatISODateToEUROFormat($loanInfo->accept_date)."</td>";
-        echo "<td>$loanInfo->amount ".$loanInfo->bankCurrency->code."</td>";
-        echo "<td>$Account->iban</td>";
-        echo "<td>";
-            $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
-        echo "</td>";
-        echo "<td>";
-            $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
-        echo "</td>";
-    echo "</tr>";
-    
-    $this->endWidget();
+    if(is_a($loanInfo, 'Loan')){
+        $form=$this->beginWidget('CActiveForm');
+
+        echo "<tr>";
+            echo "<td>".Format::formatISODateToEUROFormat($loanInfo->accept_date)."</td>";
+            echo "<td>$loanInfo->amount ".$loanInfo->bankCurrency->code."</td>";
+            echo "<td>$Account->iban</td>";
+            echo "<td>";
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
+            echo "</td>";
+            echo "<td>";
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
+            echo "</td>";
+        echo "</tr>";
+
+        $this->endWidget();
+    }
 }
 ?>
 </table>

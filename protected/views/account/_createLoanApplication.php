@@ -13,42 +13,45 @@
 		<?php echo $form->error($loanInfo,'amount'); ?>
 	</div>
 
-        <div class="row">
+    <div class="row">
 		<?php echo $form->label($loanInfo,'type'); ?>
 		<?php echo ZHtml::enumDropDownList($loanInfo, 'type');?>
 		<?php echo $form->error($loanInfo,'type'); ?>
-	</div>
+    </div>
 
-        <div class="row loanRepayment">
+    <div class="row loanRepayment">
 		<?php echo $form->label($loanInfo,'repayment'); ?>
 		<?php echo $form->textField($loanInfo,'repayment'); ?>
 		<?php echo $form->error($loanInfo,'repayment'); ?>
-	</div>
+    </div>
 
-        <div class="row loanInstalment">
+    <div class="row loanInstalment">
 		<?php echo $form->label($loanInfo,'instalment'); ?>
 		<?php echo $form->textField($loanInfo,'instalment'); ?>
 		<?php echo $form->error($loanInfo,'instalment'); ?>
-	</div>
+    </div>
 
-        <div class="row loanTerm">
+    <div class="row loanTerm">
 		<?php echo $form->label($loanInfo,'term'); ?>
 		<?php echo $form->dropDownList($loanInfo,'term', range(5,30)); ?>
 		<?php echo ZHtml::enumDropDownList($loanInfo, 'term_interval'); ?>
 		<?php echo $form->error($loanInfo,'term'); ?>
-	</div>
+    </div>
 
-        <div class="row">
+    <div class="row">
 		<?php echo $form->label($loanInfo,'interval'); ?>
 		<?php echo ZHtml::enumDropDownList($loanInfo, 'interval');?>
 		<?php echo $form->error($loanInfo,'interval'); ?>
-	</div>
+    </div>
 
-        <div class="row">
+    <div class="row">
 		<?php echo $form->label($loanInfo,'bank_interest_id'); ?>
         <?php echo $form->dropDownList($loanInfo, 'bank_interest_id', $this->getInterestDropdown());?>
 		<?php echo $form->error($loanInfo,'bank_interest_id'); ?>
-	</div>
+
+        <?php $margin = number_format(Interest::model()->findByAttributes(array('name'=>'loanMargin'))->rate, 3)."%"; ?>
+        <?php echo "( ".Yii::t('Loan', 'IncludesMargin')." $margin )"; ?>
+    </div>
 
 	<div class="row buttons">
 		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'CreateLoanApplication'))); ?>

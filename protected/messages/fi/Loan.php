@@ -17,12 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  '#' => '',
+  '#' => '#',
   'BankUser' => '',
-  'Currency' => '',
-  'ID' => '',
-  'InterestUpdated' => '',
-  'TermInterval' => '',
+  'Currency' => 'Valuutta',
+  'ID' => 'Id',
+  'IncludesMargin' => 'Sisältää marginaalin',
+  'InterestUpdated' => 'Korko päivitetty',
+  'TermInterval' => 'Maksuväli',
   'active' => 'Aktiivinen',
   'annuity' => 'Annuiteetti',
   'day' => 'Päivä',

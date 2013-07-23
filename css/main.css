@@ -4,10 +4,6 @@
 	padding: 0;
 }
 
-#content
-{
-}
-
 #sidebar
 {
 	padding: 20px 20px 20px 0;
@@ -22,15 +18,15 @@
 #mainmenu
 {
 	background-color: transparent;
-        padding-top: 20px;
-        float: left;
+    padding-top: 20px;
+    float: left;
 }
 
 #mainmenu ul
 {
 	padding:6px 20px 5px 20px;
 	margin:0px;
-        list-style-type: none;
+    list-style-type: none;
 }
 
 #mainmenu ul li
@@ -45,11 +41,11 @@
 	font-weight:bold;
 	text-decoration:none;
 	padding: 6px 8px;
-        border-radius: 15px;
-        margin-right: 2px;
-        display: inline-block;
-        width: 100px;
-        text-align: center;
+    border-radius: 15px;
+    margin-right: 2px;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
 }
 
 #mainmenu ul li a:hover{
@@ -141,7 +137,7 @@ div.search-form
 {
 	padding: 5px 5px;
 	background: #C8DA30;
-        border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .portlet-title
@@ -158,7 +154,7 @@ div.search-form
 	font-size:0.9em;
 	margin: 0 0 15px 0;
 	background: #fff;
-        border: 3px solid #C8DA30;
+    border: 3px solid #C8DA30;
 }
 
 .portlet-content ul
@@ -204,5 +200,5 @@ div.search-form
 
 .operations li a:hover
 {
-        color: #C8DA30;
+    color: #C8DA30;
 }

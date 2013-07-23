@@ -17,15 +17,12 @@ h1{
 	color: #eee;
 	background-color: #000;
 }
-
 .disclaimer p {
 	margin-bottom: 0;
 }
-
 .disclaimer a:link, .disclaimer a:visited {
-	color: #eee;
+	color: #0088CC;
 }
-
 .disclaimer a:hover {
 	color: #C8DA30;
 }
@@ -171,7 +168,7 @@ body {
     border-radius: 0 0 15px 15px;
 }
 #footer a{
-    color: #333;
+    color: #0088CC;
 }
 #loginForm{
     padding: 40px 80px;

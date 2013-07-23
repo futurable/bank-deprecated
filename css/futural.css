@@ -32,10 +32,10 @@ h1{
 }
 
 .startup {
-        position: absolute;
-        bottom: 0;
-        margin: 0;
-        width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    width: 100%;
 }
 
 /* Main menu */
@@ -77,8 +77,8 @@ h1{
 body {
 	background-color: #555;
 	font-family: 'Ubuntu','Helvetica', 'sans-serif' !important;
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #page{

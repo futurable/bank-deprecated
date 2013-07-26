@@ -1,5 +1,6 @@
 <h1><?php echo Yii::t('Loan', 'IndexLoanApplications'); ?></h1>
 
+<?php if(!empty($loanApplications)){ ?>
 <table id='tableLoanApplications'>
     <tr>
         <th><?php echo Yii::t('Loan', 'ApplicationCreated'); ?></th>
@@ -67,6 +68,7 @@
         }
     ?>
 </table>
+<?php }; ?>
 
 <div class="row buttons">
     <?php $this->widget('bootstrap.widgets.TbButton', array('url'=>'createLoanApplication', 'type'=>'primary', 'label'=>Yii::t('Account', 'CreateLoanApplication'))); ?>

@@ -40,6 +40,9 @@ h1{
 
 /* Main menu */
 
+#mainmenu li a{
+    text-align: left !important;
+}
 /* Button icons */
 /*
 #mainmenu ul{

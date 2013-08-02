@@ -223,3 +223,15 @@ thead th{
 #tableLoanApplications .btn{
     width: 100px;
 }
+.actions li{
+    list-style-type: none;
+}
+.actions a{
+    display: box;
+    border: 1px solid #000;
+    padding: 10px;
+    text-decoration: none !important;
+}
+.actions a:hover{
+    
+}

@@ -37,7 +37,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($Account,'bank_bic_id'); ?>
-		<?php echo $form->textField($Account,'bank_bic_id', array('readonly'=>true)); ?>
+		<?php echo $form->hiddenField($Account,'bank_bic_id'); ?>
+		<?php echo $form->textField($Account,'bank_bic_id', array('disabled'=>true, 'value'=>$Account->bankBic->bic)); ?>
 		<?php echo $form->error($Account,'bank_bic_id'); ?>
 	</div>
 

@@ -19,10 +19,10 @@ foreach($Accounts as $Account){
             echo "<td>$loanInfo->amount ".$loanInfo->bankCurrency->code."</td>";
             echo "<td>$Account->iban</td>";
             echo "<td>";
-                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View'), 'htmlOptions'=>array('name'=>'Details', 'value'=>'show') ));
             echo "</td>";
             echo "<td>";
-                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View')));
+                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'View'), 'htmlOptions'=>array('name'=>'PaymentPlan', 'value'=>'show') ));
             echo "</td>";
         echo "</tr>";
 

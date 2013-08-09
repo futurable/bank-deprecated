@@ -19,7 +19,7 @@ class ViewLoansAction extends CAction
         }
         elseif(isset($_POST['PaymentPlan']) && !empty($_POST['PaymentPlan'])){
             $Loan=Loan::model()->find(array(
-                'condition'=>"id={$_POST['Details']}
+                'condition'=>"id={$_POST['PaymentPlan']}
                  AND bank_user_id = '$userId'",
             ));
             

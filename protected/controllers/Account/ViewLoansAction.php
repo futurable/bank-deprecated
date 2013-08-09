@@ -22,10 +22,14 @@ class ViewLoansAction extends CAction
                 'condition'=>"id={$_POST['Details']}
                  AND bank_user_id = '$userId'",
             ));
-                
+            
+            $controller->render('viewLoans',array(
+                'Accounts' => $Accounts,
+            ));
+            /*
             $controller->render('viewLoanPaymentPlan',array(
                 'Loan' => $Loan,
-            ));
+            )); */
         }
         else {
             $Accounts=Account::model()->findAll(array(

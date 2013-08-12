@@ -9,16 +9,27 @@
         'data'=>array(
             'id'=>'LoanDetails', 
             'LoanAccount'=>$Loan->bankAccount->iban, 
+            'CreateDate'=> Format::formatISODateToEUROFormat($Loan->create_date), 
+            'GrantDate'=> Format::formatISODateToEUROFormat($Loan->grant_date), 
             'AcceptDate'=> Format::formatISODateToEUROFormat($Loan->accept_date), 
             'Amount'=>$Loan->amount." ".$Loan->bankCurrency->code,
+            'Interest'=>$Loan->bankAccount->bankInterest->rate." %",
+            'Type'=>Yii::t('Loan',$Loan->type),
+            'Interval'=>Yii::t('Loan', $Loan->interval),
+            'Repayment'=>$Loan->repayment." ".$Loan->bankCurrency->code,
         ),
         'attributes'=>array(
             array('name'=>'LoanAccount', 'label'=> Yii::t('Account', 'LoanAccount')),
-            array('name'=>'AcceptDate', 'label'=>Yii::t('Account', 'AcceptDate')),
-            array('name'=>'Amount', 'label'=>Yii::t('Account', 'Amount')),
+            array('name'=>'CreateDate', 'label'=>Yii::t('Loan', 'CreateDate')),
+            array('name'=>'GrantDate', 'label'=>Yii::t('Loan', 'GrantDate')),
+            array('name'=>'AcceptDate', 'label'=>Yii::t('Loan', 'AcceptDate')),
+            array('name'=>'Amount', 'label'=>Yii::t('Loan', 'Amount')),
+            array('name'=>'Interest', 'label'=>Yii::t('Loan', 'Interest')),
+            array('name'=>'Type', 'label'=>Yii::t('Loan', 'Type')),
+            array('name'=>'Interval', 'label'=>Yii::t('Loan', 'Interval')),
+            array('name'=>'Repayment', 'label'=>Yii::t('Loan', 'Repayment')),
         ),
     ));
-    
     
     echo $this->renderPartial('_loanCounter');
     echo $this->renderPartial('_paymentPlan');

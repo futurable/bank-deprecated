@@ -127,10 +127,10 @@ $(document).ready(function(){
     
     loanCounter();
 	
-	$("#createLoanApplicationForm input").keyup(function(){
-            loanCounter();	
-	});
-	$("#createLoanApplicationForm select").change(function(){
-            loanCounter();
-	});
+    $("#createLoanApplicationForm input").keyup(function(){
+        loanCounter();	
+    });
+    $("#createLoanApplicationForm select").change(function(){
+        loanCounter();
+    });
 });

@@ -14,4 +14,8 @@
             array('name'=>'Amount', 'label'=>Yii::t('Account', 'Amount')),
         ),
     ));
+    
+    $this->beginWidget('CActiveForm');
+        $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('Account', 'Back'), 'htmlOptions'=>array('name'=>'ViewLoans', 'value'=>'show') ));
+    $this->endWidget();
 ?>

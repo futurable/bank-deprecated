@@ -1,5 +1,3 @@
-
-
 fillPaymentPlan = function( loanAmount, loanInterestPart, loanIntervalInDays){
 	if( $.isNumeric(loanAmount) && $.isNumeric(loanInterestPart) && $.isNumeric(loanIntervalInDays) ){
 		var repaymentNumber = 0;

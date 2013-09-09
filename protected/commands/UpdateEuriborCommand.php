@@ -1,9 +1,13 @@
 <?php
 class UpdateEuriborCommand extends CConsoleCommand
 {
+    private $euriborRates;
+    
     public function run($args)
     {
-        $this->fetchEuriborRates();
+        $euriborRates = $this->fetchEuriborRates();
+        $this->updateEuribors();
+        echo "Euribors updated.\n";
     }
     
     /**
@@ -38,7 +42,33 @@ class UpdateEuriborCommand extends CConsoleCommand
             $euriborRates[$act][$span][$number] = $rate;
         }
         
-        return $euriborRates;
+        $this->euriborRates = $euriborRates;
+    }
+    
+    private function updateEuribors(){
+        $euriborRates = $this->euriborRates;
+        // Use act 360 monthly rates
+        $AMR = $euriborRates[360]['month'];
+        
+        // Update 1 month euribor
+        $euribor1m = Interest::model()->findByAttributes(array('name'=>'loanEuribor1'));
+        $euribor1m->rate = $AMR[1];
+        $euribor1m->save();
+        
+        // Update 3 month euribor
+        $euribor3m = Interest::model()->findByAttributes(array('name'=>'loanEuribor3'));
+        $euribor3m->rate = $AMR[3];
+        $euribor3m->save();
+        
+        // Update 6 month euribor
+        $euribor6m = Interest::model()->findByAttributes(array('name'=>'loanEuribor6'));
+        $euribor6m->rate = $AMR[6];
+        $euribor6m->save();
+        
+        // Update 12 month euribor
+        $euribor12m = Interest::model()->findByAttributes(array('name'=>'loanEuribor12'));
+        $euribor12m->rate = $AMR[12];
+        $euribor12m->save();
     }
 }
 ?>

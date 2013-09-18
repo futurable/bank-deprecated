@@ -7,7 +7,7 @@ class UpdateEuriborCommand extends CConsoleCommand
     {
         $euriborRates = $this->fetchEuriborRates();
         $this->updateEuribors();
-        echo "Euribors updated.\n";
+        echo date("Y-m-d").": Euribors updated.\n";
     }
     
     /**

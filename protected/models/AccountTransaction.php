@@ -19,7 +19,8 @@
  * @property string $message
  * @property string $exchange_rate
  * @property string $currency
- *
+ * @property string $status
+ * 
  * The followings are the available model relations:
  * @property Account $payerIban
  */
@@ -77,6 +78,7 @@ class AccountTransaction extends CActiveRecord
 			array('reference_number', 'length', 'max'=>20),
 			array('message', 'length', 'max'=>420),
 			array('currency', 'length', 'max'=>3),
+            array('status', 'length', 'max'=>7),
 			array('event_date, create_date, modify_date', 'safe'),
                         // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -126,6 +128,7 @@ class AccountTransaction extends CActiveRecord
 			'message' => Yii::t('AccountTransaction', 'Message'),
 			'exchange_rate' => Yii::t('AccountTransaction', 'ExchangeRate'),
 			'currency' => Yii::t('AccountTransaction', 'Currency'),
+			'status' => Yii::t('AccountTransaction', 'Status'),
 		);
 	}
 
@@ -151,7 +154,7 @@ class AccountTransaction extends CActiveRecord
 		$criteria->compare('recipient_iban',$this->recipient_iban,true);
 		$criteria->compare('recipient_bic',$this->recipient_bic,true);
 		$criteria->compare('recipient_name',$this->recipient_name,true);
-                $criteria->compare('payer_iban',$this->payer_iban,true);
+        $criteria->compare('payer_iban',$this->payer_iban,true);
 		$criteria->compare('payer_bic',$this->payer_bic,true);
 		$criteria->compare('payer_name',$this->payer_name,true);
 		$criteria->compare('event_date',$this->event_date,true);
@@ -162,6 +165,7 @@ class AccountTransaction extends CActiveRecord
 		$criteria->compare('message',$this->message,true);
 		$criteria->compare('exchange_rate',$this->exchange_rate,true);
 		$criteria->compare('currency',$this->currency,true);
+        $criteria->compare('status',$this->status,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

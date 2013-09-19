@@ -106,6 +106,7 @@ class Loan extends CActiveRecord
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
             'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
             'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
+            'loanTransactions' => array(self::HAS_MANY, 'LoanTransaction', 'id'),
 		);
 	}
 

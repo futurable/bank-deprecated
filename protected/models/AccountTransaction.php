@@ -64,7 +64,7 @@ class AccountTransaction extends CActiveRecord
 		return array(
             array('recipient_iban', 'ext.validators.validIban'),
             array('reference_number', 'ext.validators.validReferenceNumber', 'except'=>'stepOne'),
-            array('amount', 'ext.validators.validBankSaldo', 'except'=>'stepOne'),
+            array('amount', 'ext.validators.validBankSaldo', 'except'=>'stepOne, loanInit'),
             array('recipient_iban', 'required'),
 			array('recipient_bic, payer_iban, recipient_name, event_date, amount', 'required', 'except'=>'stepOne'),
             array('reference_number, message', 'required_referencenumber_or_msg', 'except'=>'stepOne'),
@@ -80,7 +80,7 @@ class AccountTransaction extends CActiveRecord
 			array('currency', 'length', 'max'=>3),
             array('status', 'length', 'max'=>7),
 			array('event_date, create_date, modify_date', 'safe'),
-                        // The following rule is used by search().
+            // The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, recipient_iban, recipient_bic, recipient_name, payer_iban, payer_bic, payer_name, event_date, create_date, modify_date, amount, reference_number, message, exchange_rate, currency', 'safe', 'on'=>'search'),
 		);
@@ -117,7 +117,7 @@ class AccountTransaction extends CActiveRecord
 			'recipient_iban' => Yii::t('AccountTransaction', 'RecipientIban'),
 			'recipient_bic' => Yii::t('AccountTransaction', 'RecipientBic'),
 			'recipient_name' => Yii::t('AccountTransaction', 'RecipientName'),
-                        'payer_iban' => Yii::t('AccountTransaction', 'PayerIban'),
+            'payer_iban' => Yii::t('AccountTransaction', 'PayerIban'),
 			'payer_bic' => Yii::t('AccountTransaction', 'PayerBic'),
 			'payer_name' => Yii::t('AccountTransaction', 'PayerName'),
 			'event_date' => Yii::t('AccountTransaction', 'EventDate'),

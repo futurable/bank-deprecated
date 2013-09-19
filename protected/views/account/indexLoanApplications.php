@@ -38,9 +38,6 @@
                     break;
             }
             
-            $form=$this->beginWidget('CActiveForm');
-            echo $form->hiddenField($loanApplication,'id');
-            
             echo "<tr>";
                 echo "<td>".Format::formatISODateToEUROFormat($loanApplication->create_date)."</td>";
                 echo "<td>$loanApplication->amount ".$loanApplication->bankCurrency->code."</td>";
@@ -54,17 +51,23 @@
                 
                 echo "<td>";
                 if($loanApplication->status=='open'){
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>Yii::t('Account', 'Cancel'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'cancel')));
+                    $form=$this->beginWidget('CActiveForm');      
+                        echo $form->hiddenField($loanApplication,'id');
+                        $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger', 'label'=>Yii::t('Account', 'Cancel'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'cancel')));
+                    $this->endWidget();
                 }
                 elseif($loanApplication->status=='granted'){
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>Yii::t('Account', 'Accept'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'accept')));
-                    $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger' ,'label'=>Yii::t('Account', 'Decline'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'decline')));
+                    $form=$this->beginWidget('CActiveForm');
+                        echo $form->hiddenField($loanApplication,'id');
+                        $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'success', 'label'=>Yii::t('Account', 'Accept'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'accept')));
+                        $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'danger' ,'label'=>Yii::t('Account', 'Decline'), 'htmlOptions'=>array('name'=>'Loan[action]', 'value'=>'decline')));
+                    $this->endWidget();
                 }
                 echo "</td>";
                 
             echo "</tr>";
             
-            $this->endWidget();
+            
         }
     ?>
 </table>

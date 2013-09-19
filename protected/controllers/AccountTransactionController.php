@@ -182,7 +182,7 @@ class AccountTransactionController extends Controller
         $id = $this->WebUser->id;
         $record=Account::model()->findAll(array(
            'select'=>'iban, name',
-           'condition'=>'bank_user_id=:id AND bank_account_type_id=1',
+           'condition'=>'bank_user_id=:id AND status="enabled"',
            'params'=>array(':id'=>$id),
         ));
 

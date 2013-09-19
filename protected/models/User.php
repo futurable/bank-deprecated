@@ -56,6 +56,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'accounts' => array(self::HAS_MANY, 'Account', 'bank_user_id'),
+            'profile' => array(self::HAS_ONE, 'Profile', 'id'),
 		);
 	}
 

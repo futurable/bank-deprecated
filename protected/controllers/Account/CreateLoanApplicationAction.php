@@ -21,6 +21,7 @@ class CreateLoanApplicationAction extends CAction
             $loanAccount->name= "Loan account";
             $loanAccount->bank_user_id = $loanUser->id;
             $loanAccount->bank_account_type_id=2;
+            $loanAccount->status='disabled';
             
             $transaction = Yii::app()->db->beginTransaction();
             $accountSuccess = $loanAccount->save();

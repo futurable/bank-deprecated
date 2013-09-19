@@ -1,33 +1,5 @@
 <?php
 
-/**
- * This is the model class for table "bank_loan".
- *
- * The followings are the available columns in table 'bank_loan':
- * @property integer $id
- * @property string $type
- * @property string $amount
- * @property integer $term
- * @property string $term_interval
- * @property string $instalment
- * @property string $repayment
- * @property string $interval
- * @property string $interest
- * @property string $interest_updated
- * @property integer $event_day
- * @property string $create_date
- * @property string $grant_date
- * @property string $accept_date
- * @property string $modify_date
- * @property string $status
- * @property integer $bank_interest_id
- * @property integer $bank_account_id
- * @property integer $bank_currency_id
- * @property integer $bank_user_id
- *
- * The followings are the available model relations:	
-
-<?php
 
 /**
  * This is the model class for table "bank_loan".
@@ -58,6 +30,7 @@
  * @property User $bankUser
  * @property Account $bankAccount
  * @property Currency $bankCurrency
+ * @property User $bankUser
  */
 class Loan extends CActiveRecord
 {
@@ -133,6 +106,7 @@ class Loan extends CActiveRecord
 			'bankAccount' => array(self::BELONGS_TO, 'Account', 'bank_account_id'),
             'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
             'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
+            'loanTransactions' => array(self::HAS_MANY, 'LoanTransaction', 'id'),
 		);
 	}
 

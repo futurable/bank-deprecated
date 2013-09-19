@@ -7,20 +7,20 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
 {
     public function run($args)
     {   
-        echo( date('Y-m-d H:i:s')." MakeLoanRepayments run started.\n" );
+        echo( date('Y-m-d H:i:s').": MakeLoanRepayments run started.\n" );
         
         # 1. Get all loan accounts
-        $loanAccounts = Loan::model()->findAll();
+        $loans = Loan::model()->findAll(array('condition'=>'bank_user_id=103'));
         
-        foreach($loanAccounts as $loanAccount){
+        foreach($loans as $loan){
             
-            echo("Using company {$loanAccount->bankUser->profile->company}\n");
-            echo("Using account {$loanAccount->bankAccount->iban}\n");
+            echo("Using company {$loan->bankUser->profile->company}\n");
+            echo("Using account {$loan->bankAccount->iban}\n");
             
             echo("\n");
         }
         
-        echo( date('Y-m-d H:i:s')." MakeLoanRepayments run ended.\n\n" );
+        echo( date('Y-m-d H:i:s').": MakeLoanRepayments run ended.\n\n" );
     }
 }
 ?>

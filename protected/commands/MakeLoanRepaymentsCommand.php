@@ -10,4 +10,5 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
         # 1. Get all loan accounts
         $loanAccounts = Loan::model()->findAll();
     }
+}
 ?>

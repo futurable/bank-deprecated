@@ -17,7 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'IncludesMargin' => 'Includes margin',
   'active' => 'Active',
   'annuity' => 'Annuity',
   'day' => 'Day',
@@ -34,8 +33,6 @@ return array (
   'removed' => 'Removed',
   'week' => 'Week',
   'weeks' => 'weeks',
-  'month' => 'Month',
-  'months' => 'months',
   'year' => 'Year',
   'years' => 'years',
   '#' => '#',
@@ -51,6 +48,7 @@ return array (
   'EventDay' => 'Event day',
   'GrantDate' => 'Grant date',
   'ID' => 'ID',
+  'IncludesMargin' => 'Includes margin',
   'IndexLoanApplications' => 'Loan applications',
   'Instalment' => 'Instalment',
   'Interest' => 'Interest',

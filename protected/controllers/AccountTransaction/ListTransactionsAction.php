@@ -7,7 +7,7 @@ class ListTransactionsAction extends CAction{
         $Account->bank_user_id = Yii::app()->user->id;
         $Account->scenario = 'selectAccount';
         $AccountTransactions = null;
-        $ibanDropdown = $controller->getIbanDropdown();
+        $ibanDropdown = $controller->getIbanDropdown(true);
         
         $Account->start_date = date('d.m.Y', strtotime('-1 month'));
         $Account->end_date = date('d.m.Y');

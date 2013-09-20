@@ -9,10 +9,15 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
     {   
         echo( date('Y-m-d H:i:s').": MakeLoanRepayments run started.\n" );
         
-        # 1. Get all loan accounts
-        $loans = Loan::model()->findAll(array('condition'=>'bank_user_id=103'));
+        # 1. Get all active loans
+        $loans = Loan::model()->findAll(array('condition'=>'status="active" AND id=52'));
         
         foreach($loans as $loan){
+            $loanTransactions = LoanTransaction::model()->findAll(
+                    array(
+                        'condition'=>"bank_loan_id=52", 
+                        'params'=>array(':id'=>$loan->id),
+                    ));
             
             echo("Using company {$loan->bankUser->profile->company}\n");
             echo("Using account {$loan->bankAccount->iban}\n");

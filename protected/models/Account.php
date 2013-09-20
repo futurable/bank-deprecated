@@ -74,7 +74,8 @@ class Account extends CActiveRecord
 			'bankCurrency' => array(self::BELONGS_TO, 'Currency', 'bank_currency_id'),
 			'bankInterest' => array(self::BELONGS_TO, 'Interest', 'bank_interest_id'),
 			'bankUser' => array(self::BELONGS_TO, 'User', 'bank_user_id'),
-			'accountTransactions' => array(self::HAS_MANY, 'AccountTransaction', 'bank_account_id'),
+			'accountTransactionDebit' => array(self::HAS_MANY, 'AccountTransaction', 'payer_iban'),
+			'accountTransactionCredit' => array(self::HAS_MANY, 'AccountTransaction', 'recipient_iban'),
 		);
 	}
 

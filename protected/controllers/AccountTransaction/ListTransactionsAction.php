@@ -22,7 +22,7 @@ class ListTransactionsAction extends CAction{
                     AND event_date >= '$startDateISO'
                     AND event_date <= '$endDateISO'
                     AND ( payer_iban='$Account->iban' OR recipient_iban='$Account->iban' )",
-                'order'=>'event_date DESC'
+                'order'=>'event_date DESC, create_date DESC'
             ));
         }
  

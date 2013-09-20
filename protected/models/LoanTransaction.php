@@ -53,6 +53,7 @@ class LoanTransaction extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'loan' => array(self::BELONGS_TO, 'Loan', 'bank_loan_id'),
+            'accountTransaction' => array(self::BELONGS_TO, 'AccountTransaction', 'bank_account_transaction_id'),
 		);
 	}
 

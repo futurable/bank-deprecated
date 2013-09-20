@@ -1,8 +1,4 @@
 <?php
-# 1. Get loan accounts
-# 2. Check if payment is due
-# 3. Calculate the remaining loan
-# 4. Make a payment
 class MakeLoanRepaymentsCommand extends CConsoleCommand
 {
     public function run($args)
@@ -69,7 +65,56 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
                  echo( "Repayment is {$repayment}\n"); 
                  echo( "Instalment is {$instalment}\n" );
                  echo( "Interest is $interestPart\n" );
+                 
+                 // Get account to use for the payment
+                 // @TODO: globalize this function
+                $AccountId = Account::model()->find(array(
+                    'select'=>'id',
+                    'condition'=>'bank_user_id=:bankUser AND bank_account_type_id=1',
+                    'params'=>array(':bankUser'=>$loan->bankAccount->bank_user_id),
+                ))->id;
+                $Account=Account::model()->findByPk($AccountId);
+                
+                $transaction = Yii::app()->db->beginTransaction();
+                
+                // Make a new bank transaction
+                $accountTransaction = new AccountTransaction;
+                
+                $accountTransaction->scenario = 'loanInit'; // Setup scenario so the account amount validator doesn't act up
+                $accountTransaction->recipient_iban = $loan->bankAccount->iban;
+                $accountTransaction->recipient_bic = $loan->bankAccount->bankBic->bic;
+                $accountTransaction->recipient_name = "Futural bank"; // @TODO: get this from somewhere
+                $accountTransaction->payer_iban = $Account->iban;
+                $accountTransaction->payer_bic = $loan->bankAccount->bankBic->bic;
+                $accountTransaction->payer_name = $loan->bankAccount->bankUser->profile->company;
+                $accountTransaction->event_date = date('d.m.Y');
+                $accountTransaction->amount = $repayment;
+                $accountTransaction->message = Yii::t('Loan', 'Repayment');
+                
+                $accountTransactionSuccess = $accountTransaction->save();
+                
+                // Make a new loan transaction
+                $loanTransaction = new LoanTransaction;
+                
+                $sequenceNumber = empty($loanTransactions) ? 1 : $loanTransactions[0]->sequence_number + 1;
+                $loanTransaction->sequence_number = $sequenceNumber;
+                $loanTransaction->instalment_amount = $instalment;
+                $loanTransaction->interest_amount = $interestPart;
+                $loanTransaction->bank_loan_id = $loan->id;
+                $loanTransaction->bank_account_transaction_id = $accountTransaction->id;
+                 
+                $loanTransactionSuccess = $loanTransaction->save();
+                
+                if($accountTransactionSuccess && $loanTransactionSuccess){
+                    $transaction->commit();
+                    echo( "Transaction made\n" );
+                }
+                else{
+                    $transaction->rollback();
+                    echo( "Transaction failed\n" );
+                }
             }
+            else echo( "No payments due.\n");
             
             echo("\n");
         }

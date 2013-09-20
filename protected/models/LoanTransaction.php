@@ -33,7 +33,7 @@ class LoanTransaction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, bank_loan_id, bank_account_transaction_id', 'required'),
+			array('bank_loan_id, bank_account_transaction_id', 'required'),
 			array('id, sequence_number, bank_loan_id, bank_account_transaction_id', 'numerical', 'integerOnly'=>true),
 			array('instalment_amount, interest_amount', 'length', 'max'=>19),
 			array('notification_penalty_sent', 'length', 'max'=>5),

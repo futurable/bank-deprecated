@@ -178,11 +178,13 @@ class AccountTransactionController extends Controller
 		}
 	}
         
-    public function getIbanDropdown(){
+    public function getIbanDropdown($getLoanAccounts = false){
+        $condition = $getLoanAccounts == true ? null : 'AND bank_account_type_id=1';
+        
         $id = $this->WebUser->id;
         $record=Account::model()->findAll(array(
            'select'=>'iban, name',
-           'condition'=>'bank_user_id=:id AND status="enabled" AND bank_account_type_id=1',
+           'condition'=>'bank_user_id=:id AND status="enabled" '.$condition,
            'params'=>array(':id'=>$id),
         ));
 

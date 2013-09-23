@@ -33,7 +33,7 @@ class LoanTransaction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, bank_loan_id, bank_account_transaction_id', 'required'),
+			array('bank_loan_id, bank_account_transaction_id', 'required'),
 			array('id, sequence_number, bank_loan_id, bank_account_transaction_id', 'numerical', 'integerOnly'=>true),
 			array('instalment_amount, interest_amount', 'length', 'max'=>19),
 			array('notification_penalty_sent', 'length', 'max'=>5),
@@ -41,7 +41,8 @@ class LoanTransaction extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, sequence_number, instalment_amount, interest_amount, notification_penalty_sent, create_date, due_date, event_date, bank_loan_id, bank_account_transaction_id', 'safe', 'on'=>'search'),
-		);
+            array('create_date, due_date, event_date','default', 'value'=>new CDbExpression('NOW()'), 'setOnEmpty'=>false,'on'=>'insert'),
+        );
 	}
 
 	/**
@@ -53,6 +54,7 @@ class LoanTransaction extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'loan' => array(self::BELONGS_TO, 'Loan', 'bank_loan_id'),
+            'accountTransaction' => array(self::BELONGS_TO, 'AccountTransaction', 'bank_account_transaction_id'),
 		);
 	}
 

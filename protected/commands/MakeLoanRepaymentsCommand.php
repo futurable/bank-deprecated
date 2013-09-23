@@ -13,7 +13,7 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
                     array(
                         'condition'=>"bank_loan_id=:id", 
                         'params'=>array(':id'=>$loan->id),
-                        'order'=>'event_date',
+                        'order'=>'event_date DESC',
                     ));
             
             echo("Using company {$loan->bankUser->profile->company}\n");
@@ -29,11 +29,11 @@ class MakeLoanRepaymentsCommand extends CConsoleCommand
                 $interval = $this->getInterval($loan->interval);
                 
                 $interval *= 60*60*24; // interval in seconds
-                $difference = time() - $lastPayment;
+                $difference = strtotime(date('Y-m-d')) - $lastPayment;
             }
             if(empty($loanTransactions) OR $difference > $interval ){
                 if(empty($loanTransactions)){
-                    $difference = time() - strtotime($loan->accept_date);
+                    $difference = strtotime(date('Y-m-d')) - strtotime($loan->accept_date);
                 }
                 
                 # 3. Calculate the payment amount

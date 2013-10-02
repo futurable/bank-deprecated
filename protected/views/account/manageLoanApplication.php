@@ -6,6 +6,7 @@
         <th>Company</th>
         <th>Amount</th>
         <th>Repayment</th>
+        <th>Interval</th>
         <th>Status</th>
         <th></th>
     </tr>
@@ -43,6 +44,7 @@
             echo "<td>".$loanApplication->bankAccount->bankUser->profile->company."</td>";
             echo "<td>".$loanApplication->amount."&euro;</td>";
             echo "<td>".$loanApplication->repayment."&euro;</td>";
+            echo "<td>".$loanApplication->interval."</td>";
             echo "<td>";
                 $this->widget('bootstrap.widgets.TbLabel', array('type'=>$type, 'label'=>$status));
             echo "</td>";

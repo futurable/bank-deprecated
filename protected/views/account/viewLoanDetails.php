@@ -9,7 +9,7 @@
             'GrantDate'=> Format::formatISODateToEUROFormat($Loan->grant_date), 
             'AcceptDate'=> Format::formatISODateToEUROFormat($Loan->accept_date), 
             'Amount'=>$Loan->amount." ".$Loan->bankCurrency->code,
-            'Interest'=>$Loan->bankAccount->bankInterest->rate." %",
+            'Interest'=>$Loan->interest." %",
             'Type'=>Yii::t('Loan',$Loan->type),
             'Interval'=>Yii::t('Loan', $Loan->interval),
             'Repayment'=>$Loan->repayment." ".$Loan->bankCurrency->code,

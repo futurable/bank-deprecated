@@ -6,7 +6,7 @@
         <th><?php echo Yii::t('Account', 'Amount'); ?></th>
         <th><?php echo Yii::t('Account', 'LoanAccount'); ?></th>
         <th><?php echo Yii::t('Account', 'Details'); ?></th>
-        <th><?php echo Yii::t('Account', 'PaymentPlan'); ?></th>
+        <th><?php // echo Yii::t('Account', 'PaymentPlan'); ?></th>
     </tr>
 <?php
 foreach($Accounts as $Account){
@@ -22,7 +22,7 @@ foreach($Accounts as $Account){
                 $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>Yii::t('Account', 'View'), 'htmlOptions'=>array('name'=>'Details', 'value'=>$loanInfo->id) ));
             echo "</td>";
             echo "<td>";
-                $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>Yii::t('Account', 'View'), 'htmlOptions'=>array('name'=>'PaymentPlan', 'value'=>$loanInfo->id) ));
+                //$this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'type'=>'primary', 'label'=>Yii::t('Account', 'View'), 'htmlOptions'=>array('name'=>'PaymentPlan', 'value'=>$loanInfo->id) ));
             echo "</td>";
         echo "</tr>";
 

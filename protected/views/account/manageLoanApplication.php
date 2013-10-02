@@ -2,7 +2,7 @@
 
 <table>
     <tr>
-        <th>IBAN</th>
+        <th>Username</th>
         <th>Company</th>
         <th>Amount</th>
         <th>Repayment</th>
@@ -40,7 +40,7 @@
         echo $form->hiddenField($loanApplication,'id');
         
         echo "<tr>";
-            echo "<td>".$loanApplication->bankAccount->iban."</td>";
+            echo "<td>".$loanApplication->bankAccount->bankUser->username."</td>";
             echo "<td>".$loanApplication->bankAccount->bankUser->profile->company."</td>";
             echo "<td>".$loanApplication->amount."&euro;</td>";
             echo "<td>".$loanApplication->repayment."&euro;</td>";

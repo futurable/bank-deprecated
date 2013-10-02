@@ -21,7 +21,8 @@ class ManageLoanApplicationAction extends CAction
             $controller->redirect(array('manageLoanApplication'));
         }
         
-        $loanApplications = Loan::model()->findall();
+        $grantOrder = "CASE status WHEN 'open' THEN 1 WHEN 'granted' THEN 2 WHEN 'active' THEN 3 WHEN 'denied' THEN 4 ELSE 5 END";
+        $loanApplications = Loan::model()->findall(array('order'=>"$grantOrder, create_date DESC"));
         
         $controller->render('manageLoanApplication',array(
             'loanApplications' => $loanApplications,

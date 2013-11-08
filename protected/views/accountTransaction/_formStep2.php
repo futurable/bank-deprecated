@@ -5,8 +5,11 @@
 ?>
 
 <div class="form">
+<?php
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/ReplaceSpaceWithEmpty.js');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/ReplaceCommaWithDot.js');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/TidyPaymentForm.js');
 
-<?php 
 $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'account-transaction-form',
     'enableClientValidation'=>true,

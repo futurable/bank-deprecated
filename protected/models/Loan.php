@@ -74,6 +74,8 @@ class Loan extends CActiveRecord
 	}
     
     public function required_repayment_ratio($attribute_name, $params){
+        if($this->type == 'annuity') return true;
+        
         $baseInterest = 2/100;
         
         if($this->interval == 'year') $interest = $baseInterest;

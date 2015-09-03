@@ -50,7 +50,7 @@ class Loan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('term_interval, bank_interest_id, bank_account_id', 'required'),
+			array('term_interval, bank_interest_id', 'required'),
 			array('term, event_day, bank_interest_id, bank_account_id, bank_currency_id, bank_user_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>15),
 			array('amount, instalment, repayment', 'length', 'max'=>19),

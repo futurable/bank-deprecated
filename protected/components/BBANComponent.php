@@ -49,6 +49,7 @@ Class BBANComponent{
         if($accountNumber == false){
            $account = Account::model()->find(array('order' => 'id DESC'));
            $accountNumber = substr($account->attributes['iban'], 10, 6);
+           $accountNumber++;
        }
 
 		// If branchcode and account number are valid 
